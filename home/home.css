@@ -1,0 +1,27 @@
+.black-nav { 
+    display: flex;
+    width: 100vw;
+    background-color: black;
+    height: 20px;
+    padding: 0.5rem;
+    justify-content: flex-end;
+}
+
+.black-nav-img { 
+    padding: 0.2rem 0 0;
+    align-items: center;
+    width: 5rem;
+    margin: 0 0.5rem 0;
+
+}
+
+:root { 
+    font-size: 16px;
+}
+
+
+/* Global  */
+
+body { 
+    margin: 0;
+}
