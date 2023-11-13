@@ -1,3 +1,5 @@
+
+/* Black navigation bar */
 .black-nav { 
     display: flex;
     width: 100vw;
@@ -19,9 +21,36 @@
     font-size: 16px;
 }
 
+/* Top navigation bar */
+.top-nav {
+    display: flex;
+    height: 35px;
+    background-color: red;
+    padding: 0 1rem;
+    color: lightgray;
+}
+
+.top-nav-sony-icon img { 
+    max-width: 100%;
+    max-height: 100%;
+    
+}
 
 /* Global  */
 
 body { 
     margin: 0;
 }
+
+@font-face {
+    font-family: 'bebas neue';
+    src: url('/BebasNeue-Regular.ttf');
+}
+
+button {
+    all: unset;
+}
+
+button:focus {
+    outline: revert;
+  }
