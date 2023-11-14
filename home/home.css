@@ -30,21 +30,54 @@
     color: lightgray;
 }
 
+.top-nav-sony-icon {
+    margin-right: 0.5rem;
+}
+
 .top-nav-sony-icon img { 
+    max-width: 100%;
+    max-height: 100%;
+   
+    
+}
+
+.top-nav-category-container { 
+    display: flex;
+    
+    align-items: center;
+    background-color: blue; 
+    font-size: 0.8rem;
+    margin: 0 0.5rem;
+}
+
+
+
+.top-nav-category-button {
+    display: flex;
+    align-items: center;
     max-width: 100%;
     max-height: 100%;
     
 }
 
+.top-nav-category-button img { 
+    object-fit: cover;
+    
+    padding-top: 0.1rem;
+    align-items: center;
+    width: 0.7rem;
+    filter: brightness(0) saturate(100%) invert(100%) sepia(0%) saturate(1438%) hue-rotate(303deg) brightness(89%) contrast(85%);
+    
+}
+
+.top-nav-category-button span {
+    margin: 0.3rem;
+}
 /* Global  */
 
 body { 
     margin: 0;
-}
-
-@font-face {
-    font-family: 'bebas neue';
-    src: url('/BebasNeue-Regular.ttf');
+    font-family: ui-sans-serif, Arial, Helvetica;
 }
 
 button {
@@ -54,3 +87,6 @@ button {
 button:focus {
     outline: revert;
   }
+
+
+  
