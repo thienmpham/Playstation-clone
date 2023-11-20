@@ -34,7 +34,7 @@
     margin-right: 0.5rem;
 }
 
-.top-nav-sony-icon.open {
+.top-nav-sony-icon-open {
     margin-right: 0.8rem;
 }
 
@@ -80,13 +80,13 @@
     
 
 }
-
+/* 
 .category-image { 
-    transform: rotate(0deg);
+    transform: rotate(180deg);
     transition: transform 0.1s linear;
-}
+} */
 
-.category-image.open  {
+.category-image-open  {
     transform: rotate(180deg);
     transition: transform 0.1s linear;
 
@@ -94,6 +94,10 @@
 
 .top-nav-category-button span {
     margin: 0.3rem;
+}
+
+.top-nav-category-item {
+    margin-right: 0.5rem;
 }
 /* Global  */
 
