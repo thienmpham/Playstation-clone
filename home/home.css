@@ -22,19 +22,33 @@
 }
 
 /* Top navigation bar */
+
+.top-nav-right { 
+    display: flex;
+    align-items: center;
+}
+
+.sign-in {
+    background-color: #015499;
+    padding: 0.3rem 0.7rem;
+    border-radius: 1rem;
+    
+}
 .top-nav {
     display: flex;
     height: 35px;
     background-color: red;
     padding: 0 1rem;
     color: lightgray;
+    
 }
 
 .top-nav-sony-icon {
+    display: inline-block;
     margin-right: 0.5rem;
 }
 
-.top-nav-sony-icon-open {
+.top-nav-sony-icon.open {
     margin-right: 0.8rem;
 }
 
