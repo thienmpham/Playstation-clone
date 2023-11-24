@@ -1,20 +1,25 @@
 let topNavCategoryItem = document.querySelector('.top-nav-category-item');
 let topNavCategoryContainer = document.querySelector('.top-nav-category-container');
-console.log(topNavCategoryContainer.length)
 
+console.log(topNavCategoryContainer.childElementCount)
+
+
+for( let i = 0; i < topNavCategoryContainer.childElementCount; i++) {
 topNavCategoryContainer.addEventListener('click', (event) => {
-    if (!topNavCategoryItem.classList.contains('category-container-open')) {  // Added to hide dropdown if clicking on the one already open
-        for ( let i = 0; i < topNavCategoryContainer.length; i++ ) {
-          topNavCategoryItem[i].classList.remove('category-container-open');
-        }
-      }
-
-    let btnImage = event.target.closest('button').querySelector('.category-image');
-    btnImage.classList.toggle('category-image-open'); 
     
-    // let sonyIcon = event.target.closest('button').querySelector('.top-nav-sony-icon'); 
-    // sonyIcon.classList.toggle('top-nav-sony-icon-open');
+    let btnImage = event.target.closest('button').querySelector('.category-image');
+
+    if (btnImage.classList.contains('category-image-open')) {
+        btnImage.classList.remove('category-image-open');
+        console.log('works!');
+    }
+    else {
+        btnImage.classList.add('category-image-open'); 
+    }
 })
+}
+
+
 
 let moveSonyIcon = () => {
     let button = document.querySelector('.top-nav-category-container');
