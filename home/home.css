@@ -1,3 +1,17 @@
+/* Global  */
+
+body { 
+    margin: 0;
+    font-family: ui-sans-serif, Arial, Helvetica;
+}
+
+button {
+    all: unset;
+}
+
+button:focus {
+    outline: revert;
+  }
 
 /* Black navigation bar */
 .black-nav { 
@@ -142,21 +156,17 @@
 
 .top-nav-category-item {
     margin-right: 0.5rem;
-}
-/* Global  */
-
-body { 
-    margin: 0;
-    font-family: ui-sans-serif, Arial, Helvetica;
+  
 }
 
-button {
-    all: unset;
+.media-images {
+    max-height: 34rem;
+    overflow: hidden;
 }
 
-button:focus {
-    outline: revert;
-  }
-
-
+.media-images img {
+   width: 100%;
+   height: 100%;
+ 
+}
   

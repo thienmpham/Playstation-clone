@@ -30,41 +30,28 @@ topNavCategoryContainer.addEventListener('click', (event) => {
 
 
 for( let i = 0; i <= topNavCategoryContainer.childElementCount; i++) {
-let iconEffect = () => {
-    let button = document.querySelector('.top-nav-category-container');
-    let item = document.querySelector('.top-nav-category-item');
-    let open = false;
-    let sonyIcon = document.querySelector('.top-nav-sony-icon');
+    let iconEffect = () => {
+        let button = document.querySelector('.top-nav-category-container');
+        let item = document.querySelector('.top-nav-category-item');
+        let open = false;
+        let sonyIcon = document.querySelector('.top-nav-sony-icon');
 
-    
-
-    button.addEventListener('click', (event) => {
-        let btnImage = event.target.closest('button').querySelector('.category-image');
         
-        if(btnImage.classList.contains('category-image-open')) {
-            console.log('contains!');
-            sonyIcon.className = 'top-nav-sony-icon open';
-            button.classList.add('top-nav-category-fontsize');
 
-        } else {
-            sonyIcon.className = 'top-nav-sony-icon';
-            button.classList.remove('top-nav-category-fontsize');
-        }
-   
+        button.addEventListener('click', (event) => {
+            let btnImage = event.target.closest('button').querySelector('.category-image');
 
-        // open = !open;
+            if(btnImage.classList.contains('category-image-open')) {
+                sonyIcon.className = 'top-nav-sony-icon open';
+                button.classList.add('top-nav-category-fontsize');
 
-        // if (button.classList.contains('top-nav-category-item')) {
-        //     button.classList.add('top-nav-category-fontsize');
-        //     sonyIcon.className = 'top-nav-sony-icon open';
-        // }
-        // else {
-        //     button.classList.remove('top-nav-category-fontsize');
-        //     sonyIcon.className = 'top-nav-sony-icon';
-        // }
-    })
+            } else {
+                sonyIcon.className = 'top-nav-sony-icon';
+                button.classList.remove('top-nav-category-fontsize');
+            }
+        })
 
-}
+    }
 iconEffect();
 }
 
