@@ -169,4 +169,31 @@ button:focus {
    height: 100%;
  
 }
+.top-nav-dropdown {
+    padding: 2.5rem 0;
+}
+
+.top-nav-dropdown-items-container {
+    display: flex;
+    height: 5rem;
+    padding: 0 30rem;
+    justify-content: space-evenly;
+}
+
+.top-nav-dropdown-items {
+    display: flex;
+    flex-direction: column;
+    height: 80%;
+    align-items: center;
   
+  
+}
+
+.top-nav-dropdown-items span {
+    
+}
+
+.top-nav-dropdown-items img {
+    margin: 0 0 0.4rem 0;
+    height: 100%;
+}
