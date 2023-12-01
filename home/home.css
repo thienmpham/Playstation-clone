@@ -170,30 +170,36 @@ button:focus {
  
 }
 .top-nav-dropdown {
-    padding: 2.5rem 0;
+ 
+    height: 12rem;
+  
 }
 
 .top-nav-dropdown-items-container {
     display: flex;
     height: 5rem;
-    padding: 0 30rem;
-    justify-content: space-evenly;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem 0;
 }
 
 .top-nav-dropdown-items {
     display: flex;
     flex-direction: column;
-    height: 80%;
+    height: 3rem;
     align-items: center;
-  
-  
-}
-
-.top-nav-dropdown-items span {
+    padding: 2rem;
     
+  
+  
 }
 
 .top-nav-dropdown-items img {
     margin: 0 0 0.4rem 0;
+    height: 100%;
+}
+
+.top-nav-dropdown-items span { 
+    display: inline-block;
     height: 100%;
 }
