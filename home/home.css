@@ -5,6 +5,9 @@ body {
     font-family: ui-sans-serif, Arial, Helvetica;
 }
 
+a {
+    text-decoration: none;
+}
 button {
     all: unset;
 }
@@ -13,6 +16,22 @@ button:focus {
     outline: revert;
   }
 
+  hr {
+    display: block;
+    height: 1px;
+    border: 0;
+    border-top: 1px solid #ccc;
+    margin: 1em 0;
+    padding: 0;
+}
+
+ul {
+    margin: 0; 
+}
+
+a {
+    color: inherit;
+}
 /* Black navigation bar */
 .black-nav { 
     display: flex;
@@ -169,27 +188,20 @@ button:focus {
    height: 100%;
  
 }
-.top-nav-dropdown {
- 
-    height: 12rem;
-  
-}
 
 .top-nav-dropdown-items-container {
     display: flex;
-    height: 5rem;
     justify-content: center;
     align-items: center;
-    padding: 2rem 0;
+    padding: 0.5rem 0;
 }
 
 .top-nav-dropdown-items {
     display: flex;
     flex-direction: column;
-    height: 3rem;
     align-items: center;
-    padding: 2rem;
-    
+    padding: 1rem 2.2rem;
+    margin: 0 1rem;
   
   
 }
@@ -197,9 +209,36 @@ button:focus {
 .top-nav-dropdown-items img {
     margin: 0 0 0.4rem 0;
     height: 100%;
+    height: 4.2rem;
+    width: 4.2rem;
 }
 
 .top-nav-dropdown-items span { 
     display: inline-block;
     height: 100%;
+}
+
+.top-nav-dropdown {
+    margin-bottom: 1rem;
+}
+.top-nav-dropdown-items:hover {
+    box-shadow: 0.1rem 0.1rem 0.4rem rgb(176, 176, 176);
+}
+
+/* Linked list css */
+
+.linked-list {
+    display: flex;
+    justify-content: center;
+    
+}
+
+.linked-list li {
+    font-size: 10 rem; 
+    
+}
+
+.linked-list li span {
+    font-size: 1rem;
+    
 }
