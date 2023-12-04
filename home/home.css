@@ -225,20 +225,28 @@ a {
     box-shadow: 0.1rem 0.1rem 0.4rem rgb(176, 176, 176);
 }
 
+.top-nav-category-blue {
+    color: #0070d1;
+}
 /* Linked list css */
 
 .linked-list {
     display: flex;
     justify-content: center;
-    
 }
 
-.linked-list li {
-    font-size: 10 rem; 
-    
+.linked-list-item {
+    margin: 0 1rem 0 1rem;
+    display: flex; 
+    align-items: center;
 }
 
-.linked-list li span {
-    font-size: 1rem;
-    
+.linked-list-item svg {
+    height: 0.5rem;
+    filter: invert(31%) sepia(19%) saturate(6227%) hue-rotate(189deg) brightness(98%) contrast(105%);
+    margin: 0 0.5rem 0 0;
+}
+
+.linked-list-item:hover {
+    color: #0070d1;
 }

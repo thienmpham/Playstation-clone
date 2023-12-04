@@ -36,18 +36,20 @@ for( let i = 0; i <= topNavCategoryContainer.childElementCount; i++) {
         let open = false;
         let sonyIcon = document.querySelector('.top-nav-sony-icon');
 
-        
-
         button.addEventListener('click', (event) => {
             let btnImage = event.target.closest('button').querySelector('.category-image');
+            let btnText = event.target.closest('button').querySelector('.category-name');
 
             if(btnImage.classList.contains('category-image-open')) {
                 sonyIcon.className = 'top-nav-sony-icon open';
                 button.classList.add('top-nav-category-fontsize');
+                btnText.classList.add('top-nav-category-blue')
 
             } else {
                 sonyIcon.className = 'top-nav-sony-icon';
                 button.classList.remove('top-nav-category-fontsize');
+                btnText.classList.remove('top-nav-category-blue')
+                
             }
         })
 
