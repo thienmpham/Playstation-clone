@@ -96,6 +96,7 @@ a {
     background-color: red;
     padding: 0 1rem 0 1rem;
     color: lightgray;
+ 
     
 }
 
@@ -177,7 +178,9 @@ a {
     margin-right: 0.5rem;
   
 }
-
+.top-nav-category-item:hover {
+    color: #0070d1;
+}
 .media-images {
     max-height: 34rem;
     overflow: hidden;
@@ -220,7 +223,19 @@ a {
 
 .top-nav-dropdown {
     margin-bottom: 1rem;
+    position: relative;
+
 }
+
+.top-nav-dropdown-menu {
+    position: absolute;
+    background-color: white;
+    left: 0;
+    top: 100%;
+    width: 100%;
+    padding: 0 0 1% 0;
+}
+
 .top-nav-dropdown-items:hover {
     box-shadow: 0.1rem 0.1rem 0.4rem rgb(176, 176, 176);
 }
