@@ -176,7 +176,7 @@ a {
 
 .top-nav-category-item {
     margin-right: 0.5rem;
-  
+    position: relative;
 }
 .top-nav-category-item:hover {
     color: #0070d1;
@@ -245,8 +245,6 @@ a {
     transform: translateY(0);
     pointer-events: auto;
 }
-
-.top-nav-dropdown-items
 
 .top-nav-dropdown-items:hover {
     box-shadow: 0.1rem 0.1rem 0.4rem rgb(176, 176, 176);

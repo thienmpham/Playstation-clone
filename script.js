@@ -65,7 +65,7 @@ iconEffect();
 document.addEventListener('click', e => {
     const isDropdownButton = e.target.matches('[data-dropdown-button]')
 
-    let currentDropdown = e.target.matches('[data-dropdown]')
+    let currentDropdown = e.target.closest('[data-dropdown]')
     if(isDropdownButton) {
        currentDropdown.classList.toggle('active');
     //    console.log('click!');
