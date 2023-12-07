@@ -157,11 +157,6 @@ a {
     
 
 }
-/* 
-.category-image { 
-    transform: rotate(180deg);
-    transition: transform 0.1s linear;
-} */
 
 .category-image-open  {
     transform: rotate(180deg);
@@ -222,22 +217,22 @@ a {
 }
 
 .top-nav-dropdown {
-    margin-bottom: 1rem;
     position: relative;
+    
 
 }
 
 .top-nav-dropdown-menu {
     position: absolute;
     background-color: white;
-    left: 0;
+    left: -5rem;
     top: 100%;
-    width: 100%;
-    padding: 0 0 1% 0;
-    opacity: 0;
+    width: 100vw;
+    padding: 0 1rem 1rem 0;
+    /* opacity: 0;
     transition: opacity 150ms ease-in-out, transform 150ms ease-in-out;
     transform: translateY(-2rem);
-    pointer-events: none;
+    pointer-events: none; */
 }
 
 .top-nav-dropdown-menu.active {
