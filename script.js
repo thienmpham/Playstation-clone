@@ -5,7 +5,7 @@ console.log(topNavCategoryContainer.childElementCount)
 
 
 for( let i = 0; i <= topNavCategoryContainer.childElementCount; i++) {
-topNavCategoryContainer.addEventListener('click', (event) => {
+document.addEventListener('click', (event) => {
     
     let btnImage = event.target.closest('button').querySelector('.category-image');
     let openImage = document.querySelector('.category-image-open');
@@ -34,13 +34,15 @@ topNavCategoryContainer.addEventListener('click', (event) => {
 }
 
 
-for( let i = 0; i <= topNavCategoryContainer.childElementCount; i++) {
+for ( let i = 0; i <= topNavCategoryContainer.childElementCount; i++) {
     let iconEffect = () => {
-        let button = document.querySelector('.top-nav-category-container');
+        // let button = document.querySelector('.top-nav-category-button');
+        
         let sonyIcon = document.querySelector('.top-nav-sony-icon');
 
-        button.addEventListener('click', (event) => {
+        document.addEventListener('click', (event) => {
             let btnImage = event.target.closest('button').querySelector('.category-image');
+            let button = event.target.matches('top-nav-category-button');
         
 
             if(btnImage.classList.contains('category-image-open')) {
@@ -63,14 +65,21 @@ iconEffect();
 
 
 document.addEventListener('click', e => {
-    const isDropdownButton = e.target.matches('[data-dropdown-button]')
+    const isDropdownButton = e.target.matches('[data-dropdown-button]');
+    
+    // If the click is not a dropdown button and is inside a dropdown menu then do nothing 
+    if (!isDropdownButton && e.target.closest('[]') !=null) return
 
-    let currentDropdown = e.target.closest('[data-dropdown]')
+    let currentDropdown;
     if(isDropdownButton) {
+       currentDropdown = e.target.closest('[data-dropdown]');
        currentDropdown.classList.toggle('active');
        console.log('click!');
     }
     
-    console.log(currentDropdown);
+    document.querySelectorAll('[data-dropdown].active').forEach(dropdown => {
+        if (dropdown === currentDropdown) return
+        dropdown.classList.remove('active');
+    })
 
 })
