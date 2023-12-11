@@ -108,7 +108,7 @@ a {
     
 }
 
-.top-nav-sony-icon.open {
+.top-nav-sony-icon.active {
     transform: scale(0.8);
     transition: transform 0.6s ease;
 }
@@ -126,13 +126,13 @@ a {
     background-color: blue; 
     font-size: 0.8rem;
     margin: 0 0.3rem;
-    transition: transform 0.6s ease;
+    transition: transform 0.6s ease-in-out;
 }
 
 .top-nav-category-fontsize {
     /* font-size: 0.6rem; */
     transform: scale(0.95);
-    transition: transform 0.6s ease;
+    transition: transform 0.6s ease-in-out;
 }
 .top-nav-category-button:hover {
     cursor: pointer;
@@ -161,10 +161,15 @@ a {
 
 }
 
-.category-image-open  {
+/* .category-image-open  {
     transform: rotate(180deg);
     transition: transform 0.1s linear;
 
+} */
+
+.top-nav-category-item.active > .top-nav-category-button > img { 
+    transform: rotate(180deg);
+    transition: transform 0.1s linear;
 }
 
 .top-nav-category-button span {
@@ -253,7 +258,7 @@ a {
     box-shadow: 0.1rem 0.1rem 0.4rem rgb(176, 176, 176);
 }
 
-.top-nav-category-blue {
+.top-nav-category-item.active > .top-nav-category-button > span {
     color: #0070d1;
 }
 
