@@ -40,31 +40,27 @@ document.addEventListener('click', e => {
 
     let currentDropdown;
     let sonyIcon = document.querySelector('.top-nav-sony-icon');
-
     if(isDropdownButton) {
        // Closes dropdown menu and also toggle adds active class to any children of data-dropdown
        currentDropdown = e.target.closest('[data-dropdown]');
        currentDropdown.classList.toggle('active');
 
-       // Toggle size of sony Icon 
+    
+       sonyIcon.classList.add('active');
        
-    }
 
-    if (isDropdownButton && !sonyIcon.classList.contains('active')) {
-        sonyIcon.classList.add('active');
-    }
-    else if (sonyIcon.classList.contains('active')){ 
-        sonyIcon.classList.remove('active');
     }
     
-  
     
     // Closes all of dropdowns except current one 
     document.querySelectorAll('[data-dropdown].active').forEach(dropdown => {
         if (dropdown === currentDropdown) return
         dropdown.classList.remove('active');
         
+        if(!dropdown.classList.contains('active')) {
+            sonyIcon.classList.remove('active');
+        }
         
     })
-
 })
+
