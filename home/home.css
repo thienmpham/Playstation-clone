@@ -34,6 +34,7 @@ ul {
 a {
     color: inherit;
 }
+
 /* Black navigation bar */
 .black-nav { 
     display: flex;
@@ -88,6 +89,7 @@ a {
 
 .sign-in span 
     {
+        color: rgb(242, 242, 242);
         white-space: nowrap;
         letter-spacing: 0.05rem;
     }
@@ -95,7 +97,6 @@ a {
     display: flex;
     justify-content: space-between;
     height: 4rem;
-    background-color: red;
     padding: 0 1rem 0 1rem;
     color: lightgray;
  
@@ -105,12 +106,14 @@ a {
 .top-nav-sony-icon {
     display: flex;
     transition: transform 0.6s ease;
+
     
 }
 
 .top-nav-sony-icon.active {
     transform: scale(0.8);
     transition: transform 0.6s ease;
+ 
 }
 
 .top-nav-sony-icon img { 
@@ -123,17 +126,31 @@ a {
     display: flex;
     
     align-items: center;
-    background-color: blue; 
     font-size: 0.8rem;
     margin: 0 0.3rem;
-    transition: transform 0.6s ease-in-out;
 }
 
-.top-nav-category-fontsize {
-    /* font-size: 0.6rem; */
-    transform: scale(0.95);
-    transition: transform 0.6s ease-in-out;
+.category-name {
+    color: #201e1e;
 }
+
+.category-name.active {
+    /* font-size: 0.6rem; */
+    transform: scale(0.90);
+    transition: transform 0.5s ease-in-out;
+}
+
+.category-image {
+    filter: invert(44%) sepia(0%) saturate(0%) hue-rotate(23deg) brightness(96%) contrast(93%);
+    color: #6c6c6c;
+    
+}
+.category-image.resize {
+    width: 0.7rem;
+    transform: scale(0.90);
+    transition: transform 0.1s ease-in-out;
+}
+
 .top-nav-category-button:hover {
     cursor: pointer;
 }
@@ -155,17 +172,13 @@ a {
     padding-top: 0.1rem;
     align-items: center;
     width: 0.7rem;
-    filter: brightness(0) saturate(100%) invert(100%) sepia(0%) saturate(1438%) hue-rotate(303deg) brightness(89%) contrast(85%);
     
     
 
 }
 
-/* .category-image-open  {
-    transform: rotate(180deg);
-    transition: transform 0.1s linear;
 
-} */
+
 
 .top-nav-category-item.active > .top-nav-category-button > img { 
     transform: rotate(180deg);
@@ -175,7 +188,7 @@ a {
 .top-nav-category-button span {
     margin: 1.5rem 0.3rem 1.5rem 0.3rem ;
     letter-spacing: 0.02rem;
-    /* color: rgb(39, 36, 36);    */
+
   
 }
 
@@ -185,6 +198,10 @@ a {
 }
 .top-nav-category-button:hover {
     color: #0070d1;
+    filter: invert(57%) sepia(99%) saturate(7482%) hue-rotate(195deg) brightness(99%) contrast(101%);
+
+
+    
 }
 .media-images {
     max-height: 34rem;
@@ -201,7 +218,7 @@ a {
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 0.5rem 0;
+    
 }
 
 .top-nav-dropdown-items {
@@ -210,20 +227,30 @@ a {
     align-items: center;
     padding: 1rem 2.2rem;
     margin: 0 1rem;
+    
   
   
 }
 
-.top-nav-dropdown-items img {
+.dropdown-images {
     margin: 0 0 0.4rem 0;
     height: 100%;
     height: 4.2rem;
     width: 4.2rem;
+    opacity: 0;
+
+}
+.dropdown-images.active {
+    opacity: 1;
+    transition: opacity 200ms ease-out
+
 }
 
 .top-nav-dropdown-items span { 
     display: inline-block;
     height: 100%;
+    color: black;
+    font-size: 0.9rem;
 }
 
 .top-nav-dropdown {
@@ -258,8 +285,11 @@ a {
     box-shadow: 0.1rem 0.1rem 0.4rem rgb(176, 176, 176);
 }
 
-.top-nav-category-item.active > .top-nav-category-button > span {
+.top-nav-category-item.active > .top-nav-category-button > * {
     color: #0070d1;
+    filter: invert(57%) sepia(99%) saturate(7482%) hue-rotate(195deg) brightness(99%) contrast(101%);
+
+
 }
 
 
@@ -271,7 +301,7 @@ a {
 }
 
 .linked-list-item {
-    margin: 0 1rem 0 1rem;
+    margin: 0.5rem 1rem 1rem 1rem;
     display: flex; 
     align-items: center;
 }
@@ -282,6 +312,11 @@ a {
     margin: 0 0.5rem 0 0;
 }
 
-.linked-list-item:hover {
+.linked-name:hover {
     color: #0070d1;
+}
+
+.linked-name {
+    color: black;
+    font-size: 1rem
 }
