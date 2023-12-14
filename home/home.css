@@ -194,7 +194,7 @@ a {
 
 .top-nav-category-item {
     margin-right: 0.5rem;
-    position: relative;
+
 }
 .top-nav-category-button:hover {
     color: #0070d1;
@@ -240,10 +240,11 @@ a {
     opacity: 0;
 
 }
-.dropdown-images.active {
+.top-nav-category-item.active > .top-nav-category-button + .top-nav-dropdown-menu 
+> .top-nav-dropdown-items-container > a > .top-nav-dropdown-items > img {
     opacity: 1;
-    transition: opacity 200ms ease-out
-
+    transition: opacity 800ms ease-out;
+   
 }
 
 .top-nav-dropdown-items span { 
@@ -251,25 +252,25 @@ a {
     height: 100%;
     color: black;
     font-size: 0.9rem;
-}
-
-.top-nav-dropdown {
-    position: relative;
-    
 
 }
+
+
 
 .top-nav-dropdown-menu {
     position: absolute;
     background-color: white;
-    left: -5rem;
-    top: 100%;
+    left: 0;
+    right: 0;
+    top: auto;
     width: 100vw;
     overflow: hidden;
     transition: max-height 150ms ease-out;
     max-height: 0;
     pointer-events: none;
+    box-shadow: 0 1rem 0.3rem rgba(0, 0, 0, 0.2);
 }
+
 
 .top-nav-category-item.active > .top-nav-category-button + .top-nav-dropdown-menu {
     transition: max-height 400ms linear;
@@ -291,6 +292,8 @@ a {
 
 
 }
+
+
 
 
 /* Linked list css */
