@@ -4,10 +4,14 @@ let topNavCategoryContainer = document.querySelector('.top-nav-category-containe
 
 document.addEventListener('click', e => {
     const isDropdownButton = e.target.matches('[data-dropdown-button]');
-    
+    const isTopNav = e.target.matches('.top-nav');
     // If the click is not a dropdown button and is inside a dropdown menu then do nothing 
-    if (!isDropdownButton && e.target.closest('[data-dropdown]') !=null) return
-
+ 
+    if (!isDropdownButton && e.target.closest('[data-dropdown]') && isTopNav !=null) return
+    
+    // Return nothing/ do not close dropdown menu  if top nav is clicked 
+    if(isTopNav)return 
+    
     let currentDropdown;
     if(isDropdownButton) {
        // Closes dropdown menu and also toggle adds active class to any children of data-dropdown
