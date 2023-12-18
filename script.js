@@ -35,7 +35,7 @@ document.addEventListener('click', e => {
     let isButton = e.target.closest('.top-nav-category-item');
     let name = document.querySelectorAll('.category-name');
     let image = document.querySelectorAll('.category-image')
-    let dropdownImages = e.target.closest('.dropdown-images');
+    let dropdown = document.querySelectorAll('.top-nav-dropdown-menu');
 
         if (isButton.classList.contains('active')){
             sonyIcon.classList.add('active');
@@ -46,10 +46,15 @@ document.addEventListener('click', e => {
             image.forEach(images => {
                 images.classList.add('resize');
             })
+            
+            dropdown.forEach(dropdowns => {
+                dropdowns.classList.remove('transition');
+            })
 
-            // dropdownImages.forEach(dropImages => {
-            // dropImages.classList.add('active');
-            // })
+            // isButton.classList.add('drop-transition');
+            
+            
+           
         
         }  
         else {
@@ -61,5 +66,11 @@ document.addEventListener('click', e => {
             image.forEach (images => {
                 images.classList.remove('resize');
             })
+            
+            dropdown.forEach(dropdowns => {
+                dropdowns.classList.add('transition'); 
+            })
+
+            isButton.classList.add('drop-transition');
         }
 })
