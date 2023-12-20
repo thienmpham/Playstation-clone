@@ -33,11 +33,13 @@ document.addEventListener('click', e => {
 document.addEventListener('click', e => {
     let sonyIcon = document.querySelector('.top-nav-sony-icon');
     let isButton = e.target.closest('.top-nav-category-item');
+    let allButton = document.querySelectorAll('.top-nav-category-item')
     let name = document.querySelectorAll('.category-name');
     let image = document.querySelectorAll('.category-image')
     let dropdown = document.querySelectorAll('.top-nav-dropdown-menu');
 
         if (isButton.classList.contains('active')){
+
             sonyIcon.classList.add('active');
             name.forEach(names => {
                 names.classList.add('active');
@@ -51,11 +53,6 @@ document.addEventListener('click', e => {
                 dropdowns.classList.remove('transition');
             })
 
-            // isButton.classList.add('drop-transition');
-            
-            
-           
-        
         }  
         else {
             sonyIcon.classList.remove('active');
@@ -71,6 +68,8 @@ document.addEventListener('click', e => {
                 dropdowns.classList.add('transition'); 
             })
 
-            isButton.classList.add('drop-transition');
+            
         }
+
+        
 })
