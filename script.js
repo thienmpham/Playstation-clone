@@ -9,7 +9,7 @@ document.addEventListener('click', e => {
  
     if (!isDropdownButton && e.target.closest('[data-dropdown]') && isTopNav !=null) return
     
-    // Return nothing/ do not close dropdown menu  if top nav is clicked 
+    // Return nothing / do not close dropdown menu  if top nav is clicked 
     if(isTopNav)return 
     
     let currentDropdown;
