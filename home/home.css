@@ -350,10 +350,17 @@ a {
     position: absolute;
     left: -26rem;
     opacity: 0;
+    pointer-events: none;
+    transform: scale(0);
 }
 
-.dropdown-menu-search .active {
+.dropdown-menu-search.active {
     opacity: 1;
+    pointer-events: auto;
+    transform: scale(1);
+    transition: transform 0.2s ease;
+    transform-origin: top right;
+
 }
 #input-box {
     padding: 1.2rem 10rem 1.2rem 0.7rem;

@@ -73,3 +73,21 @@ document.addEventListener('click', e => {
 
         
 })
+
+document.addEventListener('click', e => {
+    const isSearch = e.target.matches('#search-img');
+    
+    // If click is not search button and is inside of dropdown menu then do not do anything
+    if(!isSearch && e.target.closest('.dropdown-menu-search')!=null)return
+
+    let dropDown = document.querySelector('.dropdown-menu-search');
+    if(isSearch){ 
+        dropDown.classList.toggle('active');
+    }
+    
+    // Close dropdown menu if clicked outside 
+    if(!isSearch){
+        dropDown.classList.remove('active');
+    }
+
+})
