@@ -81,13 +81,16 @@ document.addEventListener('click', e => {
     if(!isSearch && e.target.closest('.dropdown-menu-search')!=null)return
 
     let dropDown = document.querySelector('.dropdown-menu-search');
+    let overlay = document.querySelector('.overlay');
     if(isSearch){ 
         dropDown.classList.toggle('active');
+        overlay.classList.add('active');
     }
     
     // Close dropdown menu if clicked outside 
     if(!isSearch){
         dropDown.classList.remove('active');
+        overlay.classList.remove('active');
     }
 
 })
