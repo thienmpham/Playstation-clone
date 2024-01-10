@@ -94,3 +94,16 @@ document.addEventListener('click', e => {
     }
 
 })
+
+// Changes top nav bar fixed position based on 
+// position of scrollbar
+addEventListener('scroll', e => {
+    let topNav = document.querySelector('.top-nav');
+    let scroll = window.scrollY;
+    if (scroll > 40) {
+        topNav.classList.add('fixed');
+    }
+    else {
+        topNav.classList.remove('fixed');
+    }
+})

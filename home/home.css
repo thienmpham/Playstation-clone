@@ -62,11 +62,13 @@ a {
 
 .top-nav-left {
     display: flex;
+    margin-left: 1rem;
 }
 
 
 .top-nav-right { 
     display: flex;
+    margin-right: 1rem;
     align-items: center;
 }
 
@@ -77,6 +79,9 @@ a {
     border-radius: 1rem;
     margin-right: 2rem;
     
+}
+.sign-in:hover {
+    background-color: #002e54;
 }
 
 .sign-in span 
@@ -89,15 +94,20 @@ a {
     display: flex;
     justify-content: space-between;
     height: 4rem;
-    padding: 0 1rem 0 1rem;
     color: lightgray;
- 
-    
+    background-color: white;
+    width: 100vw;
+}
+
+.top-nav.fixed {
+    position: fixed; 
+    top: 0;
 }
 
 .top-nav-sony-icon {
     display: flex;
     transition: transform 0.6s ease;
+
 
     
 }
