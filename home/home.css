@@ -97,6 +97,7 @@ a {
     color: lightgray;
     background-color: white;
     width: 100vw;
+    z-index: 999;
 }
 
 .top-nav.fixed {
@@ -201,9 +202,10 @@ a {
 .top-nav-category-button:hover {
     color: #0070d1;
     filter: invert(57%) sepia(99%) saturate(7482%) hue-rotate(195deg) brightness(99%) contrast(101%);
+}
 
-
-    
+.media-showcase {
+    position: relative;
 }
 .media-images {
     max-height: 34rem;
@@ -214,6 +216,12 @@ a {
    width: 100%;
    height: 100%;
  
+}
+
+.media-words {
+    padding: 2rem;
+    position: absolute;
+    color: white;
 }
 
 .top-nav-dropdown-items-container {
