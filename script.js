@@ -2,6 +2,15 @@ let topNavCategoryItem = document.querySelector('.top-nav-category-item');
 let topNavCategoryContainer = document.querySelector('.top-nav-category-container');
 
 
+// Image gallery 
+document.addEventListener('click', e => {
+    const isImage = e.target.matches('.image-gallery-items');
+    if(isImage) {
+        console.log('works')
+    }
+})
+
+// Top Nav 
 document.addEventListener('click', e => {
     const isDropdownButton = e.target.matches('[data-dropdown-button]');
     const isTopNav = e.target.matches('.top-nav');
