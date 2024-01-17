@@ -4,10 +4,18 @@ let topNavCategoryContainer = document.querySelector('.top-nav-category-containe
 
 // Image gallery 
 document.addEventListener('click', e => {
-    const isImage = e.target.matches('.image-gallery-items');
+    const imageGallery = e.target.closest('.image-gallery-items')
+    const isImage = e.target.matches('.images');
+    const currentImage = e.target.closest('.image-gallery-items');
+    
     if(isImage) {
-        console.log('works')
+        imageGallery.classList.add('outline');
     }
+
+    document.querySelectorAll('.image-gallery-items').forEach(image => {
+        if( image === currentImage) return
+        image.classList.remove('outline');
+    })
 })
 
 // Top Nav 

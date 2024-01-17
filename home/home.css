@@ -93,11 +93,11 @@ a {
 .top-nav {
     display: flex;
     justify-content: space-between;
-    height: 4rem;
     color: lightgray;
     background-color: white;
     width: 100vw;
     z-index: 999;
+    
 }
 
 .top-nav.fixed {
@@ -205,12 +205,19 @@ a {
 }
 
 .media-showcase {
-    position: relative;
     
+    
+}
+
+.media-div {
+    height: 38rem;
 }
 .media-images {
     max-height: 34rem;
     overflow: hidden;
+    position: absolute;
+    top: 6.2rem;
+    left: 0;
 }
 
 .media-images img {
@@ -226,6 +233,8 @@ a {
     color: white;
     font-weight: 100;
     width: 35%;
+    z-index: 9;
+    top: 5rem;
 }
 
 .media-text-header {
@@ -255,7 +264,12 @@ a {
     outline: 0.2rem solid white;
     
 }
+.image-gallery-items.outline > .images {
+    outline: 0.2rem solid blue;
+    outline-offset: .3rem;
+    opacity: 1;
 
+}
 .image-gallery {
     padding: 2.5rem 4rem 2.5rem 4rem;
     display: flex;
@@ -265,29 +279,29 @@ a {
 .image-gallery-items {
     max-width: 100%;
     height: 100%;
-    opacity: 0.7;
-    border-radius: 1rem;
-    transform: translateY(0.5); 
-    transition: transform 0.2s ease-in-out;
+    
   
 }
 
-.image-gallery-items:hover {
+
+.image-gallery-items .images:hover {
+    box-shadow: 1px 10px 5px  rgba(0, 0, 0, 0.2);
     opacity: 1;
     cursor: pointer;
     transform: translateY(-0.5rem); 
     transition: transform 0.2s ease-in-out;
-    
-}
-.image-gallery-items img:hover {
-    box-shadow: 1px 10px 5px  rgba(0, 0, 0, 0.2);
 
 }
-.image-gallery-items img {
+.image-gallery-items .images {
     width: 11rem;
     height: 7rem;
     object-fit: cover;
     border-radius: 1rem;
+    opacity: 0.7;
+    border-radius: 1rem;
+    transform: translateY(0.5); 
+    transition: transform 0.2s ease-in-out;
+    z-index: 999;
 }
 
 .top-nav-dropdown-items-container {
@@ -356,7 +370,6 @@ a {
     transition: max-height 400ms linear;
 }
 .top-nav-category-item.active > .top-nav-category-button + .top-nav-dropdown-menu {
-    /* transition: max-height 400ms linear; */
     pointer-events: auto;
     display: inline-block;
     max-height: 11rem;
@@ -371,8 +384,6 @@ a {
 .top-nav-category-item.active > .top-nav-category-button > * {
     color: #0070d1;
     filter: invert(57%) sepia(99%) saturate(7482%) hue-rotate(195deg) brightness(99%) contrast(101%);
-
-
 }
 
 
