@@ -10,11 +10,13 @@ document.addEventListener('click', e => {
     
     if(isImage) {
         imageGallery.classList.add('outline');
+        imageGallery.classList.add('active');
     }
 
     document.querySelectorAll('.image-gallery-items').forEach(image => {
         if( image === currentImage) return
         image.classList.remove('outline');
+        image.classList.remove('active');
     })
 })
 
