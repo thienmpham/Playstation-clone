@@ -495,11 +495,11 @@ a {
     opacity: 1;
     pointer-events: auto;
     transform: scale(1);
-    z-index: 10;
+    z-index: 999;
 }
 
 .overlay {
-    z-index: 9;
+    z-index: 998;
     opacity: 0.8;
     background-color: black;
     width: 100%;
