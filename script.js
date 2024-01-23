@@ -7,8 +7,6 @@ document.addEventListener('click', e => {
     const imageGallery = e.target.closest('.image-gallery-items')
     const isImage = e.target.matches('.images');
     const currentImage = e.target.closest('.image-gallery-items');
-    const isTopNav = e.target.matches('.top-nav')
-    const isTopNavButton = e.target.matches('.top-nav-category-button');
     if(!isImage) return;
     if(isImage) {
         imageGallery.classList.add('outline');
@@ -21,18 +19,28 @@ document.addEventListener('click', e => {
         image.classList.remove('active');
     })
 
-    let itemGallery = document.querySelector('.image-gallery');
-    for(let i = 0; i < itemGallery.length; i++){
-        console.log('Works')
-        setTimeout(function(){
-            itemGallery.classList.add('outline');
-            itemGallery.classList.add('active');
-        },i * 1000)
-    }
     
     
 })
+window.addEventListener('load', () => {
 
+    let allItems = document.querySelectorAll('.image-gallery-items');
+        allItems.forEach((obj, index) => {
+            setTimeout(() => {
+                obj.classList.toggle('outline');
+                obj.classList.toggle('active');
+                console.log(index)
+            }, 2000 * (index + 1));
+
+            // setTimeout(() => {
+            //     obj.classList.remove('active');
+            //     obj.classList.remove('outline')
+            //     console.log('removed')
+            // }, 2000 * (index + 1));
+
+    });
+    allItems.classList.remove('active')
+})
 // Top Nav 
 document.addEventListener('click', e => {
     const isDropdownButton = e.target.matches('[data-dropdown-button]');
