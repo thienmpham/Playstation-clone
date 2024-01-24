@@ -24,22 +24,36 @@ document.addEventListener('click', e => {
 })
 window.addEventListener('load', () => {
 
-    let allItems = document.querySelectorAll('.image-gallery-items');
-        allItems.forEach((obj, index) => {
-            setTimeout(() => {
-                obj.classList.toggle('outline');
-                obj.classList.toggle('active');
-                console.log(index)
-            }, 2000 * (index + 1));
+let allItems = document.querySelectorAll('.image-gallery-items');
+let stop = false;
 
-            // setTimeout(() => {
-            //     obj.classList.remove('active');
-            //     obj.classList.remove('outline')
-            //     console.log('removed')
-            // }, 2000 * (index + 1));
+for( let iteration = 0; iteration < 20; iteration++ ) {
+    
+    for (let i = 0; i < allItems.length; i++) {
+        let obj = allItems[i];
+        if( stop === false) {
+        setTimeout(() => {
+            obj.classList.add('outline');
+            obj.classList.add('active');
+        }, 1000 * (i + 1 + (iteration * allItems.length)));
+        setTimeout(() => { 
+            obj.classList.remove('outline');
+            obj.classList.remove('active');
+        }, 1000 * (i + 2 + (iteration * allItems.length)));
 
-    });
-    allItems.classList.remove('active')
+        }
+    }
+
+}
+
+window.addEventListener("click", (e) => {
+    const isImage = e.target.matches('.images');
+    if(isImage){
+        stop = true;
+        console.log('click');
+    } 
+    
+  });
 })
 // Top Nav 
 document.addEventListener('click', e => {
