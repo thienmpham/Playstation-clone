@@ -22,15 +22,29 @@ document.addEventListener('click', e => {
     
     
 })
+
+
 window.addEventListener('load', () => {
-
-let allItems = document.querySelectorAll('.image-gallery-items');
 let stop = false;
+let allItems = document.querySelectorAll('.image-gallery-items');
 
+
+window.addEventListener("click", e => {
+    const isImage = e.target.matches('.images');
+    if(isImage){
+        stop = true;
+        console.log('click');
+        console.log(stop)
+    } 
+    
+  });
+
+function iterateAnimation (){
 for( let iteration = 0; iteration < 20; iteration++ ) {
     
     for (let i = 0; i < allItems.length; i++) {
         let obj = allItems[i];
+        
         if( stop === false) {
         setTimeout(() => {
             obj.classList.add('outline');
@@ -45,16 +59,10 @@ for( let iteration = 0; iteration < 20; iteration++ ) {
     }
 
 }
+}
 
-window.addEventListener("click", (e) => {
-    const isImage = e.target.matches('.images');
-    if(isImage){
-        stop = true;
-        console.log('click');
-    } 
-    
-  });
 })
+
 // Top Nav 
 document.addEventListener('click', e => {
     const isDropdownButton = e.target.matches('[data-dropdown-button]');
