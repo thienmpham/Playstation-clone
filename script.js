@@ -25,41 +25,71 @@ document.addEventListener('click', e => {
 
 
 window.addEventListener('load', () => {
-let stop = false;
+
 let allItems = document.querySelectorAll('.image-gallery-items');
 
 
-window.addEventListener("click", e => {
-    const isImage = e.target.matches('.images');
-    if(isImage){
-        stop = true;
-        console.log('click');
-        console.log(stop)
-    } 
-    
-  });
 
-function iterateAnimation (){
-for( let iteration = 0; iteration < 20; iteration++ ) {
-    
-    for (let i = 0; i < allItems.length; i++) {
-        let obj = allItems[i];
+let stop = false;
+async function getStop() {
+    try {
+        // return new Promise((resolve) => {
+            
+        //     window.addEventListener("click", (e) => {
+        //         const isImage = e.target.matches('.images');
+        //         if (isImage) {
+        //             stop = true;
+        //             console.log(stop);
+        //             resolve(stop);
+        //         }
+        //     });
+        // });
+        window.addEventListener("click", e => {
+            const isImage = e.target.matches('.images');
+            if(isImage){
+                stop = true;
+                console.log(stop)
+                return stop;
+            }
+          });
         
-        if( stop === false) {
-        setTimeout(() => {
-            obj.classList.add('outline');
-            obj.classList.add('active');
-        }, 1000 * (i + 1 + (iteration * allItems.length)));
-        setTimeout(() => { 
-            obj.classList.remove('outline');
-            obj.classList.remove('active');
-        }, 1000 * (i + 2 + (iteration * allItems.length)));
+    }
+    catch (error){
+        console.error(error.message);
+    }
+}
 
+async function processStop(){
+    try {
+        await getStop();
+        console.log(getStop)
+        if( stop === false) {
+            for( let iteration = 0; iteration < 20; iteration++ ) {
+
+                for (let i = 0; i < allItems.length; i++) {
+                    let obj = allItems[i];
+                
+                        setTimeout(() => {
+                            obj.classList.add('outline');
+                            obj.classList.add('active');
+                        }, 1000 * (i + 1 + (iteration * allItems.length)));
+                        setTimeout(() => { 
+                            obj.classList.remove('outline');
+                            obj.classList.remove('active');
+                        }, 1000 * (i + 2 + (iteration * allItems.length)));
+                    }
+            }
         }
+
+    }
+    catch {
+        console.error(error.message);
+
     }
 
 }
-}
+processStop();
+
 
 })
 
