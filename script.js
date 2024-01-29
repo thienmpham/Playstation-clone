@@ -33,17 +33,6 @@ let allItems = document.querySelectorAll('.image-gallery-items');
 let stop = false;
 async function getStop() {
     try {
-        // return new Promise((resolve) => {
-            
-        //     window.addEventListener("click", (e) => {
-        //         const isImage = e.target.matches('.images');
-        //         if (isImage) {
-        //             stop = true;
-        //             console.log(stop);
-        //             resolve(stop);
-        //         }
-        //     });
-        // });
         window.addEventListener("click", e => {
             const isImage = e.target.matches('.images');
             if(isImage){
@@ -59,16 +48,23 @@ async function getStop() {
     }
 }
 
+function delay(ms) {
+    return new Promise(resolve => setTimeout(resolve, ms));
+  }
 async function processStop(){
     try {
-        await getStop();
-        console.log(getStop)
-        if( stop === false) {
-            for( let iteration = 0; iteration < 20; iteration++ ) {
-
-                for (let i = 0; i < allItems.length; i++) {
-                    let obj = allItems[i];
+        
+        
+            loop: for( let iteration = 0; iteration < 20; iteration++ ) {
+                await delay(1000);
+                await getStop();
+                if (stop === true) {
+                    console.log('Click is True!');
+                    break;  
+                }
                 
+                loop2: for (let i = 0; i < allItems.length; i++) {
+                    let obj = allItems[i];
                         setTimeout(() => {
                             obj.classList.add('outline');
                             obj.classList.add('active');
@@ -77,9 +73,11 @@ async function processStop(){
                             obj.classList.remove('outline');
                             obj.classList.remove('active');
                         }, 1000 * (i + 2 + (iteration * allItems.length)));
+                        
                     }
+                    
             }
-        }
+        
 
     }
     catch {
