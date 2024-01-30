@@ -31,38 +31,48 @@ let allItems = document.querySelectorAll('.image-gallery-items');
 
 
 let stop = false;
-async function getStop() {
-    try {
-        window.addEventListener("click", e => {
-            const isImage = e.target.matches('.images');
-            if(isImage){
-                stop = true;
-                console.log(stop)
-                return stop;
-            }
-          });
+// async function getStop() {
+//     try {
+//          window.addEventListener("click", e => {
+//             const isImage = e.target.matches('.images');
+//             if(isImage){
+//                 stop = true;
+//                 console.log(stop);
+//                 removeEventListener
+//                 return stop;
+//             }
+//           });
         
-    }
-    catch (error){
-        console.error(error.message);
-    }
-}
+//         }
+//     catch (error){
+//         console.error(error.message);
+//     }
+// }
 
-function delay(ms) {
-    return new Promise(resolve => setTimeout(resolve, ms));
-  }
-async function processStop(){
+// function delay(ms) {
+//     return new Promise(resolve => setTimeout(resolve, ms));
+//   }
+ function processStop(){
     try {
-        
-        
             loop: for( let iteration = 0; iteration < 20; iteration++ ) {
-                await delay(1000);
-                await getStop();
-                if (stop === true) {
+                window.addEventListener("click", e => {
+                    const isImage = e.target.matches('.images');
+                    if(isImage){
+                        setTimeout(() => {
+                        stop = true;
+                        console.log(stop);
+                        
+                        
+                    }, 1000 * iteration);
+                    }
+                  })
+
+                  console.log(stop)
+                if (stop) {
                     console.log('Click is True!');
                     break;  
                 }
-                
+            if (!stop){
                 loop2: for (let i = 0; i < allItems.length; i++) {
                     let obj = allItems[i];
                         setTimeout(() => {
@@ -76,6 +86,7 @@ async function processStop(){
                         
                     }
                     
+                }
             }
         
 
