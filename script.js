@@ -24,13 +24,27 @@ document.addEventListener('click', e => {
 })
 
 
-window.addEventListener('load', () => {
+
 
 let allItems = document.querySelectorAll('.image-gallery-items');
 
+let stopLoop;
+async function getStop() {
+    
+    
+    window.addEventListener("click", e => {
+    
+    const isImage = e.target.matches('.images');
+    if(isImage){
+            stopLoop = true;
+            console.log(stopLoop);
 
+    }
+  })
+  return stopLoop;
+  
+}
 
-let stop = false;
 // async function getStop() {
 //     try {
 //          window.addEventListener("click", e => {
@@ -49,32 +63,27 @@ let stop = false;
 //     }
 // }
 
-// function delay(ms) {
-//     return new Promise(resolve => setTimeout(resolve, ms));
-//   }
- function processStop(){
+function delay(ms) {
+    return new Promise(resolve => setTimeout(resolve, ms));
+  }
+async function processStop(){
     try {
             loop: for( let iteration = 0; iteration < 20; iteration++ ) {
-                window.addEventListener("click", e => {
-                    const isImage = e.target.matches('.images');
-                    if(isImage){
-                        setTimeout(() => {
-                        stop = true;
-                        console.log(stop);
-                        
-                        
-                    }, 1000 * iteration);
-                    }
-                  })
-
-                  console.log(stop)
-                if (stop) {
-                    console.log('Click is True!');
-                    break;  
-                }
-            if (!stop){
+                
+                
                 loop2: for (let i = 0; i < allItems.length; i++) {
+                     setTimeout(() => {
+                        getStop;
+                     }), 1000 * (i + 1 + (iteration * allItems.length));
+                      
+    
+                    if (stopLoop) {
+                        console.log('Click is True!');
+                        console.log(stopLoop)
+                        break;  
+                    }
                     let obj = allItems[i];
+                    
                         setTimeout(() => {
                             obj.classList.add('outline');
                             obj.classList.add('active');
@@ -86,7 +95,6 @@ let stop = false;
                         
                     }
                     
-                }
             }
         
 
@@ -100,7 +108,7 @@ let stop = false;
 processStop();
 
 
-})
+
 
 // Top Nav 
 document.addEventListener('click', e => {
