@@ -29,8 +29,7 @@ document.addEventListener('click', e => {
 let allItems = document.querySelectorAll('.image-gallery-items');
 
 let stopLoop;
-async function getStop() {
-    
+function getStop() {
     
     window.addEventListener("click", e => {
     
@@ -44,68 +43,65 @@ async function getStop() {
   return stopLoop;
   
 }
+// How to stop a loop on click 
+// 1. Create loop with setInterval 
+//// a. Create function that adds outline and active 
+let i = 0;
 
-// async function getStop() {
-//     try {
-//          window.addEventListener("click", e => {
-//             const isImage = e.target.matches('.images');
-//             if(isImage){
-//                 stop = true;
-//                 console.log(stop);
-//                 removeEventListener
-//                 return stop;
-//             }
-//           });
+function setLoop() {
+    setActive = setInterval(function (){
         
-//         }
-//     catch (error){
-//         console.error(error.message);
-//     }
-// }
+        addActive();
+    }, 1);
+}
+setLoop();
+function addActive() {
+    allItems[i].classList.add('outline');
+    allItems[i].classList.add('active');
+}
+// 2. Create a function with clearInterval to stop the loop 
 
-function delay(ms) {
-    return new Promise(resolve => setTimeout(resolve, ms));
-  }
-async function processStop(){
-    try {
-            loop: for( let iteration = 0; iteration < 20; iteration++ ) {
+
+// async function processStop(){
+//     try {
+//             loop: for( let iteration = 0; iteration < 20; iteration++ ) {
                 
                 
-                loop2: for (let i = 0; i < allItems.length; i++) {
-                     setTimeout(() => {
-                        getStop;
-                     }), 1000 * (i + 1 + (iteration * allItems.length));
+//                 loop2: for (let i = 0; i < allItems.length; i++) {
+//                      setTimeout(() => {
+//                         getStop();
+//                      }), 5000 * (i + 1 + (iteration * allItems.length));
                       
     
-                    if (stopLoop) {
-                        console.log('Click is True!');
-                        console.log(stopLoop)
-                        break;  
-                    }
-                    let obj = allItems[i];
+//                     if (stopLoop) {
+//                         console.log('Click is True!');
+//                         console.log(stopLoop)
+//                         break;  
+//                     }
+//                     let obj = allItems[i];
                     
-                        setTimeout(() => {
-                            obj.classList.add('outline');
-                            obj.classList.add('active');
-                        }, 1000 * (i + 1 + (iteration * allItems.length)));
-                        setTimeout(() => { 
-                            obj.classList.remove('outline');
-                            obj.classList.remove('active');
-                        }, 1000 * (i + 2 + (iteration * allItems.length)));
+//                         setTimeout(() => {
+//                             obj.classList.add('outline');
+//                             obj.classList.add('active');
+//                         }, 1000 * (i + 1 + (iteration * allItems.length)));
+//                         setTimeout(() => { 
+//                             obj.classList.remove('outline');
+//                             obj.classList.remove('active');
+//                         }, 1000 * (i + 2 + (iteration * allItems.length)));
                         
-                    }
+//                     }
                     
-            }
+//             }
         
 
-    }
-    catch {
-        console.error(error.message);
+//     }
+//     catch {
+//         console.error(error.message);
 
-    }
+//     }
 
-}
-processStop();
+// }
+// processStop();
 
 
 
