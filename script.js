@@ -46,19 +46,27 @@ function getStop() {
 // How to stop a loop on click 
 // 1. Create loop with setInterval 
 //// a. Create function that adds outline and active 
-let i = 0;
 
-function setLoop() {
-    setActive = setInterval(function (){
-        
-        addActive();
-    }, 1);
+
+function setActive() {
+    let i = 0;
+    setInterval(function (){
+        // Creates a local refrence of i 
+        let currentItem = allItems[i];
+        currentItem.classList.add('outline', 'active');
+            // Set a timeout to remove outline and active after 
+            setTimeout(function(){
+                currentItem.classList.remove('outline', 'active');
+            }, 5000)
+        // increments i 
+        i++;
+        if (i === allItems.length){
+            i = 0;
+        }
+    }, 5000)
 }
-setLoop();
-function addActive() {
-    allItems[i].classList.add('outline');
-    allItems[i].classList.add('active');
-}
+setActive();
+
 // 2. Create a function with clearInterval to stop the loop 
 
 
