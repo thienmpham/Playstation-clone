@@ -28,29 +28,14 @@ document.addEventListener('click', e => {
 
 let allItems = document.querySelectorAll('.image-gallery-items');
 
-let stopLoop;
-function getStop() {
-    
-    window.addEventListener("click", e => {
-    
-    const isImage = e.target.matches('.images');
-    if(isImage){
-            stopLoop = true;
-            console.log(stopLoop);
-
-    }
-  })
-  return stopLoop;
-  
-}
 // How to stop a loop on click 
 // 1. Create loop with setInterval 
 //// a. Create function that adds outline and active 
 
-
+let setLoop;
 function setActive() {
     let i = 0;
-    setInterval(function (){
+     setLoop = setInterval(function (){
         // Creates a local refrence of i 
         let currentItem = allItems[i];
         currentItem.classList.add('outline', 'active');
@@ -63,9 +48,30 @@ function setActive() {
         if (i === allItems.length){
             i = 0;
         }
+        
     }, 5000)
 }
 setActive();
+
+function stopLoop() {
+    window.addEventListener("click", e => {
+    const isImage = e.target.matches('.images');
+    if(isImage){
+            console.log('Stop loop!');
+            clearInterval(setLoop);
+    }
+  })
+}
+function stopLoop() {
+    window.addEventListener("click", e => {
+    const isImage = e.target.matches('.images');
+    if(isImage){
+            console.log('Stop loop!');
+            clearInterval(setLoop);
+    }
+  })
+}
+stopLoop();
 
 // 2. Create a function with clearInterval to stop the loop 
 
