@@ -523,3 +523,98 @@ a {
     outline: none;
     
 }
+
+/* slider css */
+.slider-wrapper {
+    height: 51rem;
+    margin: 2rem 0 0 0;
+}
+
+.slider-main {
+    height: 29rem;
+    background-color: rgb(251, 166, 166)
+}
+
+.slider-text {
+    display: flex;
+    flex-direction: column;
+    background-color: lightblue;
+    position: absolute;
+    top: 59rem;
+    left: 0;
+    margin: 0 5rem;
+    width: 26rem;
+    font-family: sans-serif;
+    font-weight: 100;
+    
+}
+.slider-text-header {
+    font-size: 3rem;
+    margin: 0 0 3rem 0;
+}
+.slider-text-subheader {
+    color: #0070CB;
+    font-size: 1.5rem;
+    margin: 0 0 0.5rem 0;
+}
+.slider-text-body {
+    color: rgb(63, 63, 63);
+    font-size: 0.9rem;
+    line-height: 1.2rem;
+    margin: 0 0 1.2rem 0;
+
+}
+.slider-buttons {
+    color: white;
+    font-weight: 500;
+    cursor: pointer;
+}
+#slider-btn-blue {
+    border-radius: 2rem;
+    padding: 0.7rem 1rem 0.7rem 1rem;
+    background-color: #0070CB;
+    margin: 0 0.5rem 0 0;
+    
+    
+}
+#slider-btn-blue:hover {
+    outline: 0.15rem solid #0070CB;
+    outline-offset: 0.15rem;
+
+    
+}
+#slider-btn-red {
+    border-radius: 2rem;
+    padding: 0.7rem 1rem 0.7rem 1rem;
+    background-color: #C03400;
+    
+}
+#slider-btn-red:hover {
+    outline: 0.15rem solid #C03400;
+    outline-offset: 0.15rem;
+}
+.slider-gallery {
+    display: flex;
+    flex-direction: row;
+}
+.slider-items-images {
+    
+    width: 13rem;
+    height: 7rem;
+    border-radius: 1rem;
+    box-shadow: 0 0 0.6rem rgba(0, 0, 0, 0.4);
+    cursor: pointer; 
+    transform: scale(1); 
+    transition: transform 0.2s ease-in-out;
+    
+    
+}
+.slider-items-images:hover {
+    transform: scale(1.02); 
+    transition: transform 0.2s ease-in-out;
+    box-shadow: 0 0 0.9rem rgba(0, 0, 0, 0.5);
+    
+}
+.slider-gallery {
+    margin: 2rem 5rem;
+}

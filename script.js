@@ -62,6 +62,7 @@ function stopLoop() {
     }
   })
 }
+// 2. Create a function with clearInterval to stop the loop 
 function stopLoop() {
     window.addEventListener("click", e => {
     const isImage = e.target.matches('.images');
@@ -73,49 +74,6 @@ function stopLoop() {
 }
 stopLoop();
 
-// 2. Create a function with clearInterval to stop the loop 
-
-
-// async function processStop(){
-//     try {
-//             loop: for( let iteration = 0; iteration < 20; iteration++ ) {
-                
-                
-//                 loop2: for (let i = 0; i < allItems.length; i++) {
-//                      setTimeout(() => {
-//                         getStop();
-//                      }), 5000 * (i + 1 + (iteration * allItems.length));
-                      
-    
-//                     if (stopLoop) {
-//                         console.log('Click is True!');
-//                         console.log(stopLoop)
-//                         break;  
-//                     }
-//                     let obj = allItems[i];
-                    
-//                         setTimeout(() => {
-//                             obj.classList.add('outline');
-//                             obj.classList.add('active');
-//                         }, 1000 * (i + 1 + (iteration * allItems.length)));
-//                         setTimeout(() => { 
-//                             obj.classList.remove('outline');
-//                             obj.classList.remove('active');
-//                         }, 1000 * (i + 2 + (iteration * allItems.length)));
-                        
-//                     }
-                    
-//             }
-        
-
-//     }
-//     catch {
-//         console.error(error.message);
-
-//     }
-
-// }
-// processStop();
 
 
 
