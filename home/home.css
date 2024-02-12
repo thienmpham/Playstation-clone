@@ -649,9 +649,13 @@ a {
     height: 100%;
     
     
-    
-    
-    
 }
 
+.slider-main-content {
+    opacity: 0;
+}
+
+.slider-items.active > .slider-items-images-container + .slider-main-content {
+    opacity: 1;
+}
 
