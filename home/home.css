@@ -596,7 +596,7 @@ a {
 .slider-gallery {
     display: flex;
     flex-direction: row;
-    margin: 2rem 5rem;
+    margin: 4rem 5rem;
     
 }
 .slider-items-images-container {
@@ -630,7 +630,7 @@ a {
 }
 
 .slider-items {
-    padding: 0 0.4rem 0 0.4rem;
+    padding: 0 0.6rem 0 0.6rem;
     
 }
 .slider-main-images-container {
@@ -657,5 +657,12 @@ a {
 
 .slider-items.active > .slider-items-images-container + .slider-main-content {
     opacity: 1;
+    transition: 0.5s ease-in;
+}
+
+.slider-items.outline > .slider-items-images-container {
+    outline: 0.2rem solid blue;
+    outline-offset: 0.3rem;
+    
 }
 

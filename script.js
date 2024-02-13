@@ -192,24 +192,21 @@ function addEventListenerList() {
 
     for(i=0; i < sliderItems.length; i++){
         sliderItems[i].addEventListener('click', e=> {
-            let sliderItemsEvent = e.target.matches('.slider-items');
             let currentSliderItem = e.target.closest('.slider-items')
             if(sliderItems){
                 currentSliderItem.classList.add('active');
+                currentSliderItem.classList.add('outline');
+
                 console.log('click click')
             }
             // Closes every gallery except current one 
         document.querySelectorAll('.slider-items.active').forEach(click => {
             if (click === currentSliderItem) return
             click.classList.remove('active');
+            click.classList.remove('outline');
+
         })
         })
     }
 }
 addEventListenerList();
-// sliderItems.addEventListener('click', e => {
-//     let sliderItemsEvent = e.target.closest('.slider-items')
-//     if(sliderItemsEvent){
-//         sliderItemsEvent.classList.add('active');
-//     }
-// })
