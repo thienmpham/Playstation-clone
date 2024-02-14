@@ -518,7 +518,7 @@ a {
 #input-box {
     padding: 1.2rem 10rem 1.2rem 0.7rem;
     font-size: 1.2rem;
-    font-weight: 100;
+    font-weight: 50;
     border: none;
     outline: none;
     
@@ -653,11 +653,14 @@ a {
 
 .slider-main-content {
     opacity: 0;
+    pointer-events: none;
+
 }
 
 .slider-items.active > .slider-items-images-container + .slider-main-content {
     opacity: 1;
     transition: 0.5s ease-in;
+    pointer-events: auto;
 }
 
 .slider-items.outline > .slider-items-images-container {
@@ -665,4 +668,84 @@ a {
     outline-offset: 0.3rem;
     
 }
+.slider-item-description {
+    display: flex;
+    justify-content: center;
+    padding: 1rem 0 0 0;
+}
+.slider-item-description span {
+    font-weight: 100;
+    font-size: 0.9rem;
+    text-align: center;
+    line-height: 1.2rem;
+    color: gray;
+}
+.slider-items.active > .slider-items-images-container + .slider-main-content + .slider-item-description span {
+    color: #0070CB;
+}
 
+/* main buttons */
+.slider-main-buttons {
+    display: flex;
+    
+}
+.slider-main-button-1 {
+    display: flex;
+    width: 3rem;
+    height: 3rem;
+    background-color: #0070CB;
+    border-radius: 100%;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    left: 0;
+    top: 89.5rem;
+    margin: 0 0 0 4.5rem;
+}
+.slider-main-button-2 {
+    display: flex;
+    width: 3rem;
+    height: 3rem;
+    border-radius: 100%;
+    align-items: center;
+    justify-content: center;
+    background-color: #0070CB;
+    margin: 0 4.5rem 0 0;
+    position: absolute;
+    right: 0;
+    top: 89.5rem;
+
+
+}
+.slider-main-buttons img {
+    filter: invert(100%) sepia(0%) saturate(0%) hue-rotate(123deg) brightness(103%) contrast(108%);
+}
+.slider-main-buttons #arrow-1 {
+    transform: rotate(90deg);
+    width: 1.3rem;
+    
+}
+.slider-main-buttons #arrow-2 {
+    transform: rotate(-90deg);
+    width: 1.3rem;
+    
+}
+.slider-mini-buttons {
+    display: flex;
+    justify-content: center;
+    
+}
+.slider-mini-buttons button {
+    width: 1rem;
+    height: 0.15rem;
+    background-color: lightgray;
+    margin: 0 0.2rem;
+    border-radius: 2rem;
+    
+}
+
+.slider-mini-buttons button:hover {
+    background-color: #0070CB;
+    cursor: pointer;
+    
+}
