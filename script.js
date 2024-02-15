@@ -189,16 +189,26 @@ addEventListener('scroll', e => {
 // slider gallery 
 let sliderItems = document.querySelectorAll('.slider-items');
 function addEventListenerList() {
+    let allBtn = document.querySelectorAll('.slider-main-button-items');
 
     for(i=0; i < sliderItems.length; i++){
         sliderItems[i].addEventListener('click', e=> {
             let currentSliderItem = e.target.closest('.slider-items')
+            let button1 = document.querySelector('#slider-main-button-1');
+            let button2 = document.querySelector('#slider-main-button-2');
             if(sliderItems){
                 currentSliderItem.classList.add('active');
                 currentSliderItem.classList.add('outline');
-
-                console.log('click click')
             }
+            if(sliderItems && button1.classList.contains('outline')){
+                button1.classList.remove('outline');
+            }
+            if(sliderItems && button2.classList.contains('outline')){
+                button2.classList.remove('outline');
+            }
+
+
+
             // Closes every gallery except current one 
         document.querySelectorAll('.slider-items.active').forEach(click => {
             if (click === currentSliderItem) return
@@ -210,3 +220,26 @@ function addEventListenerList() {
     }
 }
 addEventListenerList();
+
+
+function buttonClick() {
+    let button1 = document.querySelector('.slider-main-button-1');
+    let button2 = document.querySelector('.slider-main-button-2');
+    let allBtn = document.querySelectorAll('.slider-main-button-items');
+    console.log(allBtn);
+    for ( i=0; i < allBtn.length; i++){
+        allBtn[i].addEventListener('click', e=> {
+            let currentButton = e.target.closest('.slider-main-button-items');
+            if(currentButton){
+                currentButton.classList.add('outline');
+                console.log('outline')
+            }
+            allBtn.forEach(click => {
+                if (click === currentButton) return
+                click.classList.remove('outline');
+    
+            })
+        })
+    }
+}
+buttonClick();

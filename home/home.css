@@ -689,7 +689,7 @@ a {
     display: flex;
     
 }
-.slider-main-button-1 {
+#slider-main-button-1 {
     display: flex;
     width: 3rem;
     height: 3rem;
@@ -702,7 +702,11 @@ a {
     top: 89.5rem;
     margin: 0 0 0 4.5rem;
 }
-.slider-main-button-2 {
+#slider-main-button-1:hover {
+    outline: 0.15rem solid #0070CB;
+    outline-offset: 0.1rem;
+}
+#slider-main-button-2 {
     display: flex;
     width: 3rem;
     height: 3rem;
@@ -714,8 +718,15 @@ a {
     position: absolute;
     right: 0;
     top: 89.5rem;
+}
+#slider-main-button-2:hover {
+    outline: 0.15rem solid #0070CB;
+    outline-offset: 0.1rem;
+}
 
-
+.slider-main-button-items.outline {
+    outline: 0.15rem solid #0070CB;
+    outline-offset: 0.1rem;
 }
 .slider-main-buttons img {
     filter: invert(100%) sepia(0%) saturate(0%) hue-rotate(123deg) brightness(103%) contrast(108%);
