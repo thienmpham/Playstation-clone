@@ -619,6 +619,7 @@ a {
 .slider-items-images {
     width: 80%;
     height: 80%;
+    pointer-events: none;
 }
 
 .slider-items-images-container:hover {

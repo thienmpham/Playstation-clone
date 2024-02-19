@@ -53,15 +53,7 @@ function setActive() {
 }
 setActive();
 
-function stopLoop() {
-    window.addEventListener("click", e => {
-    const isImage = e.target.matches('.images');
-    if(isImage){
-            console.log('Stop loop!');
-            clearInterval(setLoop);
-    }
-  })
-}
+
 // 2. Create a function with clearInterval to stop the loop 
 function stopLoop() {
     window.addEventListener("click", e => {
@@ -188,18 +180,29 @@ addEventListener('scroll', e => {
 
 // slider gallery 
 let sliderItems = document.querySelectorAll('.slider-items');
-function addEventListenerList() {
-    let allBtn = document.querySelectorAll('.slider-main-button-items');
+const sliderArrayItems = Array.from(document.querySelectorAll(".slider-items"));
 
+function addEventListenerList() {
+    let button1 = document.querySelector('#slider-main-button-1');
+   
     for(i=0; i < sliderItems.length; i++){
         sliderItems[i].addEventListener('click', e=> {
             let currentSliderItem = e.target.closest('.slider-items')
-            let button1 = document.querySelector('#slider-main-button-1');
+            
             let button2 = document.querySelector('#slider-main-button-2');
             if(sliderItems){
                 currentSliderItem.classList.add('active');
                 currentSliderItem.classList.add('outline');
+                index = sliderArrayItems.indexOf(currentSliderItem);
+                console.log(index);  
+                
+
+                
             }
+            button1.addEventListener('click', e=> {
+                index = index + 1;
+                sliderArrayItems[index].classList.add('outline')
+            })
             if(sliderItems && button1.classList.contains('outline')){
                 button1.classList.remove('outline');
             }
@@ -216,23 +219,26 @@ function addEventListenerList() {
             click.classList.remove('outline');
 
         })
+        
         })
     }
 }
 addEventListenerList();
+let sliderIndex = addEventListenerList();
+console.log(sliderIndex);
 
-
+// Next buttons in slide gallery
 function buttonClick() {
     let button1 = document.querySelector('.slider-main-button-1');
     let button2 = document.querySelector('.slider-main-button-2');
     let allBtn = document.querySelectorAll('.slider-main-button-items');
-    console.log(allBtn);
+    
     for ( i=0; i < allBtn.length; i++){
         allBtn[i].addEventListener('click', e=> {
             let currentButton = e.target.closest('.slider-main-button-items');
             if(currentButton){
                 currentButton.classList.add('outline');
-                console.log('outline')
+                
             }
             allBtn.forEach(click => {
                 if (click === currentButton) return
