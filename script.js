@@ -180,29 +180,31 @@ addEventListener('scroll', e => {
 
 // slider gallery 
 let sliderItems = document.querySelectorAll('.slider-items');
-const sliderArrayItems = Array.from(document.querySelectorAll(".slider-items"));
+let sliderArrayItems = Array.from(document.querySelectorAll(".slider-items"));
 
 function addEventListenerList() {
-    let button1 = document.querySelector('#slider-main-button-1');
+    
    
     for(i=0; i < sliderItems.length; i++){
         sliderItems[i].addEventListener('click', e=> {
+            let button1 = document.querySelector('#slider-main-button-1');
+            let isButton1 = e.target.closest('#slider-main-button-1');
             let currentSliderItem = e.target.closest('.slider-items')
-            
+            let index = sliderArrayItems.indexOf(currentSliderItem);
             let button2 = document.querySelector('#slider-main-button-2');
             if(sliderItems){
                 currentSliderItem.classList.add('active');
                 currentSliderItem.classList.add('outline');
-                index = sliderArrayItems.indexOf(currentSliderItem);
-                console.log(index);  
                 
-
-                
+                console.log(index);   
             }
-            button1.addEventListener('click', e=> {
+            if(isButton1) {
                 index = index + 1;
-                sliderArrayItems[index].classList.add('outline')
-            })
+                sliderArrayItems[index].classList.add('outline');
+                console.log(sliderArrayItems[index]);
+                console.log(button1);
+            }
+            
             if(sliderItems && button1.classList.contains('outline')){
                 button1.classList.remove('outline');
             }
@@ -224,8 +226,7 @@ function addEventListenerList() {
     }
 }
 addEventListenerList();
-let sliderIndex = addEventListenerList();
-console.log(sliderIndex);
+
 
 // Next buttons in slide gallery
 function buttonClick() {
