@@ -98,50 +98,53 @@ document.addEventListener('click', e => {
         
     })
 })
+ let topNavItems = document.querySelectorAll('.top-nav-category-item');
 
-document.addEventListener('click', e => {
-    let sonyIcon = document.querySelector('.top-nav-sony-icon');
-    let isButton = e.target.closest('.top-nav-category-item');
-    let allButton = document.querySelectorAll('.top-nav-category-item')
-    let name = document.querySelectorAll('.category-name');
-    let image = document.querySelectorAll('.category-image')
-    let dropdown = document.querySelectorAll('.top-nav-dropdown-menu');
+ for( i=0; i < topNavItems.length; i++) {
+    topNavItems[i].addEventListener('click', e => {
+        let sonyIcon = document.querySelector('.top-nav-sony-icon');
+        let isButton = e.target.closest('.top-nav-category-item');
+        let allButton = document.querySelectorAll('.top-nav-category-item')
+        let name = document.querySelectorAll('.category-name');
+        let image = document.querySelectorAll('.category-image')
+        let dropdown = document.querySelectorAll('.top-nav-dropdown-menu');
 
-        if (isButton.classList.contains('active')){
+            if (isButton.classList.contains('active')){
 
-            sonyIcon.classList.add('active');
-            name.forEach(names => {
-                names.classList.add('active');
-            })
+                sonyIcon.classList.add('active');
+                name.forEach(names => {
+                    names.classList.add('active');
+                })
 
-            image.forEach(images => {
-                images.classList.add('resize');
-            })
+                image.forEach(images => {
+                    images.classList.add('resize');
+                })
+                
+                dropdown.forEach(dropdowns => {
+                    dropdowns.classList.remove('transition');
+                })
+
+            }  
+            else {
+                sonyIcon.classList.remove('active');
+                name.forEach( names => {
+                    names.classList.remove('active');
+                })
+
+                image.forEach (images => {
+                    images.classList.remove('resize');
+                })
+                
+                dropdown.forEach(dropdowns => {
+                    dropdowns.classList.add('transition'); 
+                })
+
+                
+            }
+
             
-            dropdown.forEach(dropdowns => {
-                dropdowns.classList.remove('transition');
-            })
-
-        }  
-        else {
-            sonyIcon.classList.remove('active');
-            name.forEach( names => {
-                names.classList.remove('active');
-            })
-
-            image.forEach (images => {
-                images.classList.remove('resize');
-            })
-            
-            dropdown.forEach(dropdowns => {
-                dropdowns.classList.add('transition'); 
-            })
-
-            
-        }
-
-        
-})
+    })
+}
 
 document.addEventListener('click', e => {
     const isSearch = e.target.matches('#search-img');
@@ -179,31 +182,34 @@ addEventListener('scroll', e => {
 
 
 // slider gallery 
-let sliderItems = document.querySelectorAll('.slider-items');
-let sliderArrayItems = Array.from(document.querySelectorAll(".slider-items"));
 
- function addEventListenerList() {
-    
+function addEventListenerList() {
+    let sliderItems = document.querySelectorAll('.slider-items');
+    let sliderArrayItems = Array.from(document.querySelectorAll(".slider-items"));
     let index = 0;
-    for(i=0; i < sliderItems.length; i++){
-        sliderItems[i].addEventListener('click', e=> {
+    
+        document.addEventListener('click', e=> {
+            let sliderImage = e.target.closest('.slider-items-images-container')
             let button1 = document.querySelector('#slider-main-button-1');
             let isButton1 = e.target.closest('#slider-main-button-1');
-            let currentSliderItem = e.target.closest('.slider-items')
+            let currentSliderItem = e.target.closest('.slider-items');
             
             let button2 = document.querySelector('#slider-main-button-2');
-            if(sliderItems){
+            if(sliderImage){
                 currentSliderItem.classList.add('active');
                 currentSliderItem.classList.add('outline');
                 index = sliderArrayItems.indexOf(currentSliderItem);
                 console.log(index);   
+                
             }
-            // if(isButton1) {
-            //     index = index + 1;
-            //     sliderArrayItems[index].classList.add('outline');
-            //     console.log(sliderArrayItems[index]);
-            //     console.log(button1);
-            // }
+            if(button1) {
+                index = index + 1;
+                sliderArrayItems[index].classList.add('outline');
+                sliderArrayItems[index - 1].classList.remove('outline');
+                console.log(sliderArrayItems[index]);
+                console.log(button1);
+            }
+          
             
             if(sliderItems && button1.classList.contains('outline')){
                 button1.classList.remove('outline');
@@ -224,12 +230,9 @@ let sliderArrayItems = Array.from(document.querySelectorAll(".slider-items"));
         return index;
         })
         
-    }
 }
 addEventListenerList();
 
-let indexNumber =  addEventListenerList();
-console.log(indexNumber);
 // Next buttons in slide gallery
 function buttonClick() {
     let button1 = document.querySelector('.slider-main-button-1');
