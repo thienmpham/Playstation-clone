@@ -188,29 +188,46 @@ function addEventListenerList() {
     let sliderArrayItems = Array.from(document.querySelectorAll(".slider-items"));
     let index = 0;
     
-        document.addEventListener('click', e=> {
+        document.addEventListener('click', e => {
             let sliderImage = e.target.closest('.slider-items-images-container')
             let button1 = document.querySelector('#slider-main-button-1');
-            let isButton1 = e.target.closest('#slider-main-button-1');
+            let nextImage1 = document.querySelector('#arrow-1')
             let currentSliderItem = e.target.closest('.slider-items');
-            
             let button2 = document.querySelector('#slider-main-button-2');
+            let nextImage2 = document.querySelector('#arrow-2');
+
             if(sliderImage){
                 currentSliderItem.classList.add('active');
                 currentSliderItem.classList.add('outline');
                 index = sliderArrayItems.indexOf(currentSliderItem);
-                console.log(index);   
+                console.log(index);  
                 
             }
-            if(button1) {
-                index = index + 1;
-                sliderArrayItems[index].classList.add('outline');
-                sliderArrayItems[index - 1].classList.remove('outline');
+            // Weird bug with sliderImage event listener click activating at same time as 
+            // button1 or button2 click so !sliderImage in if statement is needed
+            // 1st next button 
+            if((button1 || nextImage1) && !sliderImage && e.target.id === 'slider-main-button-1'&& index > 0) {
+                index = index - 1;
+                sliderArrayItems[index].classList.add('outline', 'active');
+                sliderArrayItems[index + 1].classList.remove('outline', 'active');
                 console.log(sliderArrayItems[index]);
-                console.log(button1);
+                console.log(nextImage1)
+               
+                
             }
-          
-            
+            // 2nd next button
+            if( button2 && !sliderImage && e.target.id === 'slider-main-button-2' && index < 9) {
+                index = index + 1;
+                sliderArrayItems[index].classList.add('outline', 'active');
+                sliderArrayItems[index - 1].classList.remove('outline', 'active');
+                console.log(sliderArrayItems[index]);
+                console.log(index)
+            }
+           
+                // if(sliderItems && button1){
+                //     currentSliderItem.classList.remove('outline')
+                //     console.log('sameeee')
+                // }
             if(sliderItems && button1.classList.contains('outline')){
                 button1.classList.remove('outline');
             }
@@ -222,12 +239,12 @@ function addEventListenerList() {
 
             // Closes every gallery except current one 
         document.querySelectorAll('.slider-items.active').forEach(click => {
-            if (click === currentSliderItem) return
-            click.classList.remove('active');
-            click.classList.remove('outline');
+            if (click === currentSliderItem || button1 && !sliderImage) return
+            click.classList.remove('active', 'outline');
+            
+
 
         })
-        return index;
         })
         
 }
@@ -235,8 +252,6 @@ addEventListenerList();
 
 // Next buttons in slide gallery
 function buttonClick() {
-    let button1 = document.querySelector('.slider-main-button-1');
-    let button2 = document.querySelector('.slider-main-button-2');
     let allBtn = document.querySelectorAll('.slider-main-button-items');
     
     for ( i=0; i < allBtn.length; i++){
