@@ -214,10 +214,11 @@ function addEventListenerList() {
             let button1 = document.querySelector('#slider-main-button-1');
             let currentSliderItem = e.target.closest('.slider-items');
             let button2 = document.querySelector('#slider-main-button-2');
-            
+    
             let currentButton = e.target.closest('.slider-main-button-items');
             let allBtn = document.querySelectorAll('.slider-main-button-items.outline');
-
+            let amount = 0;
+            let sliderGallery = document.querySelector('.slider-gallery');
 
             if(sliderImage){
                 currentSliderItem.classList.add('active');
@@ -232,9 +233,14 @@ function addEventListenerList() {
             // 1st next button 
             if(button1 && !sliderImage && (e.target.id === 'slider-main-button-1' || e.target.id ==='arrow-1') && index > 0) {
                 index = index - 1;
-                sliderArrayItems[index].classList.add('outline', 'active');
+                sliderArrayItems[index].classList.add('outline', 'active',);
                 sliderArrayItems[index + 1].classList.remove('outline', 'active');
                 console.log('1st')
+                amount = 1 - index * 10;
+                let amount2 = 10;
+                
+                sliderGallery.style.transform = `translateX(${amount}%)`;
+
                 
             }
             // 2nd next button
