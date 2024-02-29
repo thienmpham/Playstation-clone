@@ -217,7 +217,7 @@ function addEventListenerList() {
     
             let currentButton = e.target.closest('.slider-main-button-items');
             let allBtn = document.querySelectorAll('.slider-main-button-items.outline');
-            let amount = 0;
+            let amount =  -index * 10;;
             let sliderGallery = document.querySelector('.slider-gallery');
 
             if(sliderImage){
@@ -227,6 +227,9 @@ function addEventListenerList() {
                 console.log(index);  
                 
             }
+
+
+            
             // Weird bug with sliderImage event listener click activating at same time as 
             // button1 or button2 click so !sliderImage in if statement is needed
     
@@ -236,12 +239,7 @@ function addEventListenerList() {
                 sliderArrayItems[index].classList.add('outline', 'active',);
                 sliderArrayItems[index + 1].classList.remove('outline', 'active');
                 console.log('1st')
-                amount = 1 - index * 10;
-                let amount2 = 10;
-                
                 sliderGallery.style.transform = `translateX(${amount}%)`;
-
-                
             }
             // 2nd next button
             if(button2 && !sliderImage && (e.target.id === 'slider-main-button-2' || e.target.id ==='arrow-2') && index < 9) {
@@ -249,26 +247,40 @@ function addEventListenerList() {
                 sliderArrayItems[index].classList.add('outline', 'active');
                 sliderArrayItems[index - 1].classList.remove('outline', 'active');
                 console.log('2nd')
+
+                sliderGallery.style.transform = `translateX(${amount}%)`;
+
                 
+            }
+            if(sliderImage && (amount > -45) && index !== 0 && index !== 8) {
+            
+                sliderGallery.style.transform = `translateX(${amount}%)`;
+            }
+
+            
+            if (index >= 4 ){
+                sliderGallery.style.transform = 'translateX(-40%)';
             }
 
             // Lower opacity of next buttons
             if(index === 0){
                 button1.classList.add('opacity');
+                sliderGallery.style.transform = 'translateX(0)';
             }
-            if(index === 9){
+            if(index === 8){
                 button2.classList.add('opacity');
             }
            
             if(button1.classList.contains('opacity') && index > 0){
                 button1.classList.remove('opacity');
             }
-            if(button2.classList.contains('opacity') && index < 9){
+            if(button2.classList.contains('opacity') && index < 8){
                 button2.classList.remove('opacity');
             }
             
            if(currentButton){
-            currentButton.classList.add('outline');
+            currentButton.classList.add('outline', 'active');
+            
            }
             allBtn.forEach(click => {
                 if (click === currentButton) return
