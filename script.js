@@ -219,12 +219,17 @@ function addEventListenerList() {
             let allBtn = document.querySelectorAll('.slider-main-button-items.outline');
             let amount =  -index * 10;;
             let sliderGallery = document.querySelector('.slider-gallery');
-
+            let sliderMediaContent = document.querySelectorAll('.slider-main-content');
+            let mediaArray = Array.from(sliderMediaContent);
+          
+            
+          
             if(sliderImage){
                 currentSliderItem.classList.add('active');
                 currentSliderItem.classList.add('outline');
                 index = sliderArrayItems.indexOf(currentSliderItem);
                 console.log(index);  
+               
                 
             }
 
@@ -240,6 +245,9 @@ function addEventListenerList() {
                 sliderArrayItems[index + 1].classList.remove('outline', 'active');
                 console.log('1st')
                 sliderGallery.style.transform = `translateX(${amount}%)`;
+             
+       
+               
             }
             // 2nd next button
             if(button2 && !sliderImage && (e.target.id === 'slider-main-button-2' || e.target.id ==='arrow-2') && index < 9) {
@@ -249,12 +257,17 @@ function addEventListenerList() {
                 console.log('2nd')
 
                 sliderGallery.style.transform = `translateX(${amount}%)`;
-
+               
                 
             }
             if(sliderImage && (amount > -45) && index !== 0 && index !== 8) {
             
                 sliderGallery.style.transform = `translateX(${amount}%)`;
+                for (i=0; i < mediaArray.length; i++){
+                    mediaArray[i].style = `position:absolute; top:-89rem; right:-25rem`;
+                    // mediaArray[i].style.transform = 'translateX(0)'
+                }
+         
             }
 
             
