@@ -219,9 +219,14 @@ function addEventListenerList() {
             let allBtn = document.querySelectorAll('.slider-main-button-items.outline');
             let amount =  -index * 10;;
             let sliderGallery = document.querySelector('.slider-gallery');
-            let sliderMediaContent = document.querySelectorAll('.slider-main-content');
-            let mediaArray = Array.from(sliderMediaContent);
-          
+            let sliderText = document.querySelectorAll('.slider-text');
+            let sliderTextArray = Array.from(sliderText);
+            
+            let sliderMainImage = document.querySelectorAll('.slider-main-images-container');
+            let sliderMainImageArray = Array.from(sliderMainImage);
+
+            let allSlider = document.querySelectorAll('.slider-items-images-container');
+            let allSliderArray = Array.from(allSlider);
             
           
             if(sliderImage){
@@ -229,7 +234,8 @@ function addEventListenerList() {
                 currentSliderItem.classList.add('outline');
                 index = sliderArrayItems.indexOf(currentSliderItem);
                 console.log(index);  
-               
+             
+                
                 
             }
 
@@ -244,8 +250,9 @@ function addEventListenerList() {
                 sliderArrayItems[index].classList.add('outline', 'active',);
                 sliderArrayItems[index + 1].classList.remove('outline', 'active');
                 console.log('1st')
-                sliderGallery.style.transform = `translateX(${amount}%)`;
-             
+                for(i=0; i < allSliderArray.length; i++) {
+                    allSliderArray[i].style = `transform: translateX(${amount}%)`;
+                }
        
                
             }
@@ -254,31 +261,38 @@ function addEventListenerList() {
                 index = index + 1;
                 sliderArrayItems[index].classList.add('outline', 'active');
                 sliderArrayItems[index - 1].classList.remove('outline', 'active');
-                console.log('2nd')
+                console.log('2nd');
 
-                sliderGallery.style.transform = `translateX(${amount}%)`;
+                for(i=0; i < allSliderArray.length; i++) {
+                    allSliderArray[i].style = `transform: translateX(${amount}%)`;
+                }
                
                 
             }
             if(sliderImage && (amount > -45) && index !== 0 && index !== 8) {
             
-                sliderGallery.style.transform = `translateX(${amount}%)`;
-                for (i=0; i < mediaArray.length; i++){
-                    mediaArray[i].style = `position:absolute; top:-89rem; right:-25rem`;
-                    // mediaArray[i].style.transform = 'translateX(0)'
-                }
+                allSliderArray.style = `transform:translateX(${amount}%)`;
+                // for (i=0; i < sliderTextArray.length; i++){
+                //     sliderTextArray[i].style = `position:absolute; top:-30rem; right:0; transform:translateX(${-amount * 4}%); margin:0;` ;
+
+                    
+                //     // mediaArray[i].style.transform = 'translateX(-40%)'
+                // }
+                // for (i=0; i < sliderMainImageArray.length; i++){
+                //     sliderMainImageArray[i].style = `position:absolute; top:-30rem; transform:translateX(${-amount * 4}%); right:0`;
+                // }
          
             }
 
             
             if (index >= 4 ){
-                sliderGallery.style.transform = 'translateX(-40%)';
+                allSliderArray.style =  'transform: translateX(-40%)';
             }
 
             // Lower opacity of next buttons
             if(index === 0){
                 button1.classList.add('opacity');
-                sliderGallery.style.transform = 'translateX(0)';
+                allSliderArray.style = 'transform:translateX(0)';
             }
             if(index === 8){
                 button2.classList.add('opacity');
