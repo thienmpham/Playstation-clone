@@ -217,14 +217,7 @@ function addEventListenerList() {
     
             let currentButton = e.target.closest('.slider-main-button-items');
             let allBtn = document.querySelectorAll('.slider-main-button-items.outline');
-            let amount =  -index * 10;;
-            let sliderGallery = document.querySelector('.slider-gallery');
-            let sliderText = document.querySelectorAll('.slider-text');
-            let sliderTextArray = Array.from(sliderText);
-            
-            let sliderMainImage = document.querySelectorAll('.slider-main-images-container');
-            let sliderMainImageArray = Array.from(sliderMainImage);
-
+            let amount =  -index * 40;
             let allSlider = document.querySelectorAll('.slider-items-images-container');
             let allSliderArray = Array.from(allSlider);
             
@@ -251,7 +244,7 @@ function addEventListenerList() {
                 sliderArrayItems[index + 1].classList.remove('outline', 'active');
                 console.log('1st')
                 for(i=0; i < allSliderArray.length; i++) {
-                    allSliderArray[i].style = `transform: translateX(${amount}%)`;
+                    allSliderArray[i].style = `transform: translateX(${amount}%); transition: transform 0.7s ease;`;
                 }
        
                
@@ -264,23 +257,17 @@ function addEventListenerList() {
                 console.log('2nd');
 
                 for(i=0; i < allSliderArray.length; i++) {
-                    allSliderArray[i].style = `transform: translateX(${amount}%)`;
+                    allSliderArray[i].style = `transform: translateX(${amount}%); transition: transform 0.7s ease;`;
                 }
                
                 
             }
-            if(sliderImage && (amount > -45) && index !== 0 && index !== 8) {
-            
-                allSliderArray.style = `transform:translateX(${amount}%)`;
-                // for (i=0; i < sliderTextArray.length; i++){
-                //     sliderTextArray[i].style = `position:absolute; top:-30rem; right:0; transform:translateX(${-amount * 4}%); margin:0;` ;
-
-                    
-                //     // mediaArray[i].style.transform = 'translateX(-40%)'
-                // }
-                // for (i=0; i < sliderMainImageArray.length; i++){
-                //     sliderMainImageArray[i].style = `position:absolute; top:-30rem; transform:translateX(${-amount * 4}%); right:0`;
-                // }
+            if(sliderImage && (amount > -300) && index !== 0 && index !== 8) {
+                for(i=0; i < allSliderArray.length; i++) {
+                    allSliderArray[i].style = `transform: translateX(${amount}%); transition: transform 0.7s ease;`;
+                }
+                
+             
          
             }
 
@@ -292,10 +279,15 @@ function addEventListenerList() {
             // Lower opacity of next buttons
             if(index === 0){
                 button1.classList.add('opacity');
-                allSliderArray.style = 'transform:translateX(0)';
+                for(i=0; i < allSliderArray.length; i++) {
+                    allSliderArray[i].style = `transform: translateX(0); transition: transform 0.7s ease;`;
+                }
             }
             if(index === 8){
                 button2.classList.add('opacity');
+                for(i=0; i < allSliderArray.length; i++) {
+                    allSliderArray[i].style = `transform: translateX(-310%); transition: transform 0.7s ease;`;
+                }
             }
            
             if(button1.classList.contains('opacity') && index > 0){
