@@ -249,6 +249,7 @@ a {
 .media-text-header {
     font-size: 2.5rem;
     line-height: 3rem;
+    
 }
 
 .media-text-body {
@@ -548,16 +549,7 @@ a {
     font-weight: 100;
     
 }
-/* .slider-items.active > .slider-items-images-container + .slider-main-content > .slider-text {
-    position: absolute;
-    top: -30rem; 
-    right: 0;
-}
-.slider-items.active > .slider-items-images-container + .slider-main-content > .slider-text + .slider-main-images-container {
-    position: absolute;
-    top: -30rem; 
-    right: 0;
-} */
+
 
 .slider-text-header {
     font-size: 3rem;
@@ -788,6 +780,9 @@ a {
     background-color: #0070CB;
     cursor: pointer;
     
+}
+.mini-buttons.highlight {
+    background-color: #0070CB;
 }
 
 /* Slider animation  */

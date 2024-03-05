@@ -191,8 +191,7 @@ addEventListener('scroll', e => {
 
 
 // slider gallery 
-let sliderItems = document.querySelectorAll('.slider-items');
-let nextButton1 = document.querySelector('#slider-main-button-1');
+
 // On page load add class active and outline to first slider item
 document.addEventListener('load', loadFirstSliderItem());
 
@@ -200,9 +199,11 @@ function loadFirstSliderItem() {
     let sliderItems = document.querySelectorAll('.slider-items');
     let nextButton1 = document.querySelector('#slider-main-button-1');
     let firstSliderItem = sliderItems[0];
+    let miniButtons = document.querySelectorAll('.mini-buttons');
     firstSliderItem.classList.add('active', 'outline')
+    miniButtons[0].classList.add('highlight')
     console.log(firstSliderItem);
-    nextButton1.classList.add('opacity')
+    nextButton1.classList.add('opacity');
 }
 function addEventListenerList() {
     
@@ -220,16 +221,43 @@ function addEventListenerList() {
             let amount =  -index * 40;
             let allSlider = document.querySelectorAll('.slider-items-images-container');
             let allSliderArray = Array.from(allSlider);
+
+            let miniButtons = document.querySelectorAll('.mini-buttons');
+            let miniButtonsArray = Array.from(miniButtons);
+            let currentMiniButton = e.target.closest('.mini-buttons')
+            // let miniButtonIndex = 0;
+
+            if(currentMiniButton){
+                // miniButtonIndex = miniButtonsArray.indexOf(currentMiniButton);
+                index = miniButtonsArray.indexOf(currentMiniButton);
+                currentMiniButton.classList.add('highlight')
+                console.log(index)
+                sliderArrayItems[index].classList.add('outline', 'active',);
+
+                document.querySelectorAll('.slider-items.active').forEach(click => {
+                    if (click ===  sliderArrayItems[index]) return
+                    click.classList.remove('active', 'outline');  
+                })        
+            }
+
             
-          
+        
+
+            // Removes all class highlight except for currentMiniButton
+            document.querySelectorAll('.mini-buttons.highlight').forEach(click => {
+                if (click === currentMiniButton) return
+                click.classList.remove('highlight');
+    
+            })
+
+  
+
             if(sliderImage){
                 currentSliderItem.classList.add('active');
                 currentSliderItem.classList.add('outline');
                 index = sliderArrayItems.indexOf(currentSliderItem);
-                console.log(index);  
-             
-                
-                
+                console.log(index); 
+                miniButtonsArray[index].classList.add('highlight'); 
             }
 
 
@@ -262,7 +290,7 @@ function addEventListenerList() {
                
                 
             }
-            if(sliderImage && (amount > -300) && index !== 0 && index !== 8) {
+            if((sliderImage || currentMiniButton) && (amount > -300) && index !== 0 && index !== 8) {
                 for(i=0; i < allSliderArray.length; i++) {
                     allSliderArray[i].style = `transform: translateX(${amount}%); transition: transform 0.7s ease;`;
                 }
@@ -309,7 +337,7 @@ function addEventListenerList() {
 
             // Closes every gallery except current one 
         document.querySelectorAll('.slider-items.active').forEach(click => {
-            if (click === currentSliderItem || button1 && !sliderImage) return
+            if (click === currentSliderItem || button1 && !sliderImage ) return
             click.classList.remove('active', 'outline');
             
 
