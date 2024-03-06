@@ -399,7 +399,7 @@ a {
 }
 
 .top-nav-dropdown-menu.transition {
-    transition: max-height 150ms ease-out;
+    transition: max-height 0.2s ease;
    
 
   }
@@ -781,6 +781,7 @@ a {
     cursor: pointer;
     
 }
+
 .mini-buttons.highlight {
     background-color: #0070CB;
 }

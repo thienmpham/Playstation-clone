@@ -222,9 +222,16 @@ function addEventListenerList() {
             let allSlider = document.querySelectorAll('.slider-items-images-container');
             let allSliderArray = Array.from(allSlider);
 
+            let descriptionArray = document.querySelectorAll('.slider-item-description');
+
+
             let miniButtons = document.querySelectorAll('.mini-buttons');
             let miniButtonsArray = Array.from(miniButtons);
             let currentMiniButton = e.target.closest('.mini-buttons')
+
+            let sliderWrapper = document.querySelector('.slider-wrapper');
+
+            
             // let miniButtonIndex = 0;
 
             if(currentMiniButton){
@@ -244,10 +251,13 @@ function addEventListenerList() {
         
 
             // Removes all class highlight except for currentMiniButton
-            document.querySelectorAll('.mini-buttons.highlight').forEach(click => {
-                if (click === currentMiniButton) return
-                click.classList.remove('highlight');
-    
+            document.querySelectorAll('.mini-buttons.highlight').forEach(mini => {
+            if ((mini === currentMiniButton) || !sliderImage) return
+                mini.classList.remove('highlight')
+
+            if(sliderImage && mini === miniButtons){
+                mini.classList.remove('highlight')
+            }
             })
 
   
@@ -270,9 +280,12 @@ function addEventListenerList() {
                 index = index - 1;
                 sliderArrayItems[index].classList.add('outline', 'active',);
                 sliderArrayItems[index + 1].classList.remove('outline', 'active');
-                console.log('1st')
+                console.log('1st');
+                miniButtonsArray[index].classList.add('highlight'); 
+
                 for(i=0; i < allSliderArray.length; i++) {
                     allSliderArray[i].style = `transform: translateX(${amount}%); transition: transform 0.7s ease;`;
+                    descriptionArray[i].style = `transform: translateX(${amount}%); transition: transform 0.7s ease;`;
                 }
        
                
@@ -283,9 +296,13 @@ function addEventListenerList() {
                 sliderArrayItems[index].classList.add('outline', 'active');
                 sliderArrayItems[index - 1].classList.remove('outline', 'active');
                 console.log('2nd');
+                miniButtonsArray[index].classList.add('highlight'); 
+
 
                 for(i=0; i < allSliderArray.length; i++) {
                     allSliderArray[i].style = `transform: translateX(${amount}%); transition: transform 0.7s ease;`;
+                    descriptionArray[i].style = `transform: translateX(${amount}%); transition: transform 0.7s ease;`;
+
                 }
                
                 
@@ -293,15 +310,32 @@ function addEventListenerList() {
             if((sliderImage || currentMiniButton) && (amount > -300) && index !== 0 && index !== 8) {
                 for(i=0; i < allSliderArray.length; i++) {
                     allSliderArray[i].style = `transform: translateX(${amount}%); transition: transform 0.7s ease;`;
+                    descriptionArray[i].style = `transform: translateX(${amount}%); transition: transform 0.7s ease;`;
+
                 }
                 
              
          
             }
 
+            if (index === 1 || index === 2){ 
+                for(i=0; i < allSliderArray.length; i++) {
+                    allSliderArray[i].style = `transform: translateX(-40%); transition: transform 0.7s ease;`;
+                    descriptionArray[i].style = `transform: translateX(-40%); transition: transform 0.7s ease;`;
+                }
+            }
+
+            if( index === 7 || index === 6){ 
+                for(i=0; i < allSliderArray.length; i++) {
+                    allSliderArray[i].style = `transform: translateX(-280%); transition: transform 0.7s ease;`;
+                    descriptionArray[i].style = `transform: translateX(-280%); transition: transform 0.7s ease;`;
+
+                }
+            }
             
             if (index >= 4 ){
                 allSliderArray.style =  'transform: translateX(-40%)';
+                descriptionArray.style =  'transform: translateX(-40%)';
             }
 
             // Lower opacity of next buttons
@@ -309,12 +343,15 @@ function addEventListenerList() {
                 button1.classList.add('opacity');
                 for(i=0; i < allSliderArray.length; i++) {
                     allSliderArray[i].style = `transform: translateX(0); transition: transform 0.7s ease;`;
+                    descriptionArray[i].style = `transform: translateX(0); transition: transform 0.7s ease;`;
                 }
             }
             if(index === 8){
                 button2.classList.add('opacity');
                 for(i=0; i < allSliderArray.length; i++) {
                     allSliderArray[i].style = `transform: translateX(-310%); transition: transform 0.7s ease;`;
+                    descriptionArray[i].style = `transform: translateX(-310%); transition: transform 0.7s ease;`;
+
                 }
             }
            
