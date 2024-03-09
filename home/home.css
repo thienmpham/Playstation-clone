@@ -539,13 +539,12 @@ a {
 .slider-text {
     display: flex;
     flex-direction: column;
-    
     position: absolute;
     top: 59rem;
     left: 0;
     margin: 0 5rem;
     width: 26rem;
-    font-family: sans-serif;
+    font-family: arial, sans-serif;
     font-weight: 100;
     
 }
@@ -554,6 +553,7 @@ a {
 .slider-text-header {
     font-size: 3rem;
     margin: 0 0 3rem 0;
+    
 }
 .slider-text-subheader {
     color: #0070CB;

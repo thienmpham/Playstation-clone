@@ -251,12 +251,12 @@ function addEventListenerList() {
         
 
             // Removes all class highlight except for currentMiniButton
-            document.querySelectorAll('.mini-buttons.highlight').forEach(mini => {
-            if ((mini === currentMiniButton) || !sliderImage) return
-                mini.classList.remove('highlight')
+            document.querySelectorAll('.mini-buttons').forEach(mini => {
+            if (mini === currentMiniButton ) return
+               
 
-            if(sliderImage && mini === miniButtons){
-                mini.classList.remove('highlight')
+            if((mini && currentMiniButton) || sliderImage){
+                mini.classList.remove('highlight');
             }
             })
 
@@ -280,6 +280,7 @@ function addEventListenerList() {
                 index = index - 1;
                 sliderArrayItems[index].classList.add('outline', 'active',);
                 sliderArrayItems[index + 1].classList.remove('outline', 'active');
+                miniButtonsArray[index + 1]. classList.remove('highlight')
                 console.log('1st');
                 miniButtonsArray[index].classList.add('highlight'); 
 
@@ -297,6 +298,8 @@ function addEventListenerList() {
                 sliderArrayItems[index - 1].classList.remove('outline', 'active');
                 console.log('2nd');
                 miniButtonsArray[index].classList.add('highlight'); 
+                miniButtonsArray[index - 1]. classList.remove('highlight')
+
 
 
                 for(i=0; i < allSliderArray.length; i++) {
@@ -369,16 +372,12 @@ function addEventListenerList() {
             allBtn.forEach(click => {
                 if (click === currentButton) return
                 click.classList.remove('outline');
-    
             })
 
             // Closes every gallery except current one 
         document.querySelectorAll('.slider-items.active').forEach(click => {
             if (click === currentSliderItem || button1 && !sliderImage ) return
             click.classList.remove('active', 'outline');
-            
-
-
         })
         })
         
