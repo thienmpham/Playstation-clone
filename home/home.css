@@ -786,9 +786,73 @@ a {
     background-color: #0070CB;
 }
 
-/* Slider animation  */
-/* .slider-gallery.animation1 {
-  transform: translateX(-10.1rem);
-  transition: transform 0.6s ease;
-} */
+/* Game gallery dark */
+.game-gallery-dark {
+    width: 100%;
+    height: 50rem; 
+    background-color: black;
+    margin: 5rem 0 0 0;
+    
+  
+}
+.game-gallery-header-container {
+    display: flex;
+    justify-content: center;
+    padding: 4rem 0 3rem 0;
+    
+}
+#game-gallery-header-text {
+    color: white;
+    font-size: 2.5rem;
+    font-weight: 100;
+    
+}
+
+.game-gallery-main-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    position: relative;
+}
+.game-gallery-button-choice {
+    padding: 1rem;
+    border-radius: 2rem;
+}
+.button-choice  {
+    color:white;
+   
+}
+
+.game-gallery-items-container {
+    background-color: lightblue;
+    width: 82rem;
+    height: 34rem;
+    position: absolute;
+    /* margin-left: auto;
+    margin-right: auto; */
+    margin: auto;
+    top: 5rem; left: 0; right: 0;
+
+}
+
+.game-gallery-items {
+    width: 13rem;
+    height: 15rem;
+    background-color: #ffffff;
+    margin: 1rem;
+    border-radius: 1rem;
+}
+
+.game-gallery-items-image {
+    background-color: lightpink;
+    width: 13rem;
+    height: 13rem;
+    border-radius: 1rem;
+}
+.game-gallery-items-text {
+    background-color: gray;
+    width: 13rem;
+    height: 1.8rem;
+}
+
 
