@@ -384,3 +384,57 @@ function addEventListenerList() {
 }
 addEventListenerList();
 
+function gameGalleryMouseOver() {
+    let gameGallery = document.querySelectorAll('.game-gallery-items');
+    let gameGalleryArray = Array.from(gameGallery);
+    for( let i=0; i < gameGalleryArray.length; i++) {
+        gameGalleryArray[i].addEventListener('mouseover', (e) => {
+            let  currentGameGalleryItem = e.target.closest('.game-gallery-items');
+            if(gameGalleryArray){
+                for(i = 0; i < gameGalleryArray.length; i++){
+                    gameGalleryArray[i].classList.add('opacity');
+                }
+                currentGameGalleryItem.classList.remove('opacity');
+            }
+        })
+    }
+}
+gameGalleryMouseOver();
+
+function gameGalleryMouseOut(){
+    let gameGallery = document.querySelectorAll('.game-gallery-items');
+    let gameGalleryArray = Array.from(gameGallery);
+    for( let i=0; i < gameGalleryArray.length; i++) {
+        gameGalleryArray[i].addEventListener('mouseout', (e) => {
+            if(gameGalleryArray){
+                for(i = 0; i < gameGalleryArray.length; i++){
+                    gameGalleryArray[i].classList.remove('opacity');
+                }
+            }
+        })
+    }
+}
+gameGalleryMouseOut();
+
+function gameGalleryActive(){
+    let buttonChoiceContainer = document.querySelector('.game-gallery-buttons-container');
+    let newReleases = document.querySelector('#new-releases-choice');
+    let comingSoon = document.querySelector('#coming-soon-choice');
+
+    buttonChoiceContainer.addEventListener('click', e => {
+        let currentButtonChoice = e.target.closest('.game-gallery-button-choice');
+    
+        if (currentButtonChoice){
+            console.log(currentButtonChoice)
+            currentButtonChoice.classList.add('active');
+        }
+
+           // Closes every game gallery except current one 
+           document.querySelectorAll('.game-gallery-button-choice.active').forEach(click => {
+            if (click === currentButtonChoice) return
+            click.classList.remove('active');
+            console.log(click)
+        })
+    })
+}
+gameGalleryActive();

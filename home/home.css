@@ -823,15 +823,12 @@ a {
     justify-content: center;
     position: relative;
     width: 16rem;
+    height: 2.8rem;
+    align-items: center;
     background-color: rgb(31, 31, 31);
     border-radius: 2rem;
 }
-.game-gallery-button-choice {
-    padding: 1rem;
-    border-radius: 2rem;
-    cursor: pointer;
 
-}
 .button-choice  {
     color:white;
    
@@ -846,6 +843,8 @@ a {
     display: flex;
     justify-content: space-evenly;
     flex-wrap: wrap;
+    opacity: 0;
+    pointer-events: none;
  
 
 }
@@ -853,17 +852,27 @@ a {
 .game-gallery-items {
     width: 13rem;
     height: 15rem;
-    
-    
     border-radius: 1rem;
+    transition: opacity 0.1s ease-in-out;
+    /* opacity: 0;
+    pointer-events: none; */
 }
 
+.game-gallery-items.opacity { 
+    opacity: 0.6;
+ 
+    transition: opacity 0.1s ease-in-out;
+}
+
+.highlight {
+    opacity: 1;
+}
 .game-gallery-items-image {
     width: 13rem;
     height: 13rem;
 }
 .gallery-image:hover {
-    transform: scale(1.02); 
+    transform: scale(1.03); 
     transition: transform 0.2s ease-in-out;
 }
 .gallery-image {
@@ -902,12 +911,38 @@ a {
     white-space: nowrap;
 }
 
-#new-releases-container {
-    opacity: 1;
+.game-gallery-button-choice {
+    padding: 1rem;
+    border-radius: 2rem;
+    cursor: pointer;
+   
+    display: flex;
+    
+    
+}
+
+
+
+/* #new-releases-container {
+    opacity: 0;
+    pointer-events: none;
 }
 
 #coming-soon-container {
     opacity: 0;
     pointer-events: none;
+} */
+.game-gallery-button-choice.active > button + .game-gallery-items-container {
+    opacity: 1;
+    pointer-events: auto;
 }
 
+.game-gallery-button-choice.active {
+    background-color: white;
+    border-radius: 2rem;
+    
+
+}
+.game-gallery-button-choice.active > button > span {
+    color: black;
+}
