@@ -266,7 +266,7 @@ function addEventListenerList() {
                 currentSliderItem.classList.add('active');
                 currentSliderItem.classList.add('outline');
                 index = sliderArrayItems.indexOf(currentSliderItem);
-                console.log(index); 
+                
                 miniButtonsArray[index].classList.add('highlight'); 
             }
 
@@ -425,7 +425,7 @@ function gameGalleryActive(){
         let currentButtonChoice = e.target.closest('.game-gallery-button-choice');
     
         if (currentButtonChoice){
-            console.log(currentButtonChoice)
+
             currentButtonChoice.classList.add('active');
         }
 
@@ -433,8 +433,15 @@ function gameGalleryActive(){
            document.querySelectorAll('.game-gallery-button-choice.active').forEach(click => {
             if (click === currentButtonChoice) return
             click.classList.remove('active');
-            console.log(click)
+            
         })
     })
 }
 gameGalleryActive();
+
+document.addEventListener('load', loadGameGallery());
+
+function loadGameGallery(){
+    let firstButtonChoice = document.querySelector('.game-gallery-button-choice');
+    firstButtonChoice.classList.add('active');
+}
