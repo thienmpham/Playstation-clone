@@ -628,10 +628,11 @@ a {
 }
 
 .slider-items-images-container:hover {
-    transform: scale(1.02); 
+    transform: scale(1.02) ; 
     transition: transform 0.2s ease-in-out;
     box-shadow: 0 0 0.9rem rgba(0, 0, 0, 0.5);
     opacity: 1;
+    
     
 }
 
@@ -833,6 +834,15 @@ a {
     color:white;
    
 }
+ /* .game-gallery-button-choice:hover .button-choice {
+    color: #0070CB; 
+} */
+
+.blue-text {
+    color: #0070CB; 
+}
+
+
 
 .game-gallery-items-container {
     width: 84rem;
@@ -859,8 +869,10 @@ a {
 }
 
 .game-gallery-items.opacity { 
-    opacity: 0.6;
-    transition: opacity 0.1s ease-in-out;
+    opacity: 0.6 !important; 
+    transition: opacity 0.1s ease-in-out !important; 
+    transition-delay: 1s;
+    
 
 }
 
@@ -978,17 +990,6 @@ div.game-gallery-button-choice div:nth-child(13) {
     
 }
 
-
-
-/* #new-releases-container {
-    opacity: 0;
-    pointer-events: none;
-}
-
-#coming-soon-container {
-    opacity: 0;
-    pointer-events: none;
-} */
 .game-gallery-button-choice.active > button + .game-gallery-items-container {
     transition: opacity 0.4s ease-in;
     visibility: visible;

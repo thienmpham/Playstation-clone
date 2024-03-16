@@ -387,9 +387,18 @@ addEventListenerList();
 function gameGalleryMouseOver() {
     let gameGallery = document.querySelectorAll('.game-gallery-items');
     let gameGalleryArray = Array.from(gameGallery);
+    let buttonChoiceText = document.querySelector('.button-choice');
+    let gameGalleryButtonChoiceActive = document.querySelector('.game-gallery-button-choice.active');
+    let gameGalleryButtonChoice = document.querySelector('.game-gallery-button-choice');
+
+
     for( let i=0; i < gameGalleryArray.length; i++) {
         gameGalleryArray[i].addEventListener('mouseover', (e) => {
             let  currentGameGalleryItem = e.target.closest('.game-gallery-items');
+
+            if (!gameGalleryButtonChoiceActive && gameGalleryButtonChoice) {
+                buttonChoiceText.classList.add('blue-text');
+            }
             if(gameGalleryArray){
                 for(i = 0; i < gameGalleryArray.length; i++){
                     gameGalleryArray[i].classList.add('opacity');
@@ -418,16 +427,17 @@ gameGalleryMouseOut();
 
 function gameGalleryActive(){
     let buttonChoiceContainer = document.querySelector('.game-gallery-buttons-container');
-    let newReleases = document.querySelector('#new-releases-choice');
-    let comingSoon = document.querySelector('#coming-soon-choice');
+    
 
     buttonChoiceContainer.addEventListener('click', e => {
         let currentButtonChoice = e.target.closest('.game-gallery-button-choice');
-    
+        
         if (currentButtonChoice){
 
             currentButtonChoice.classList.add('active');
+            
         }
+       
 
            // Closes every game gallery except current one 
            document.querySelectorAll('.game-gallery-button-choice.active').forEach(click => {
