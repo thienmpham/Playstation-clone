@@ -387,23 +387,32 @@ addEventListenerList();
 function gameGalleryMouseOver() {
     let gameGallery = document.querySelectorAll('.game-gallery-items');
     let gameGalleryArray = Array.from(gameGallery);
-    let buttonChoiceText = document.querySelector('.button-choice');
+    let buttonChoiceText = document.querySelectorAll('.button-choice');
     let gameGalleryButtonChoiceActive = document.querySelector('.game-gallery-button-choice.active');
-    let gameGalleryButtonChoice = document.querySelector('.game-gallery-button-choice');
+    let gameGalleryButtonChoice = document.querySelectorAll('.game-gallery-button-choice');
+    let gameGalleryButtonChoiceArray = Array.from(document.querySelectorAll('.game-gallery-button-choice'));
 
+    for(i=0; i < gameGalleryButtonChoice.length; i++){ 
+        gameGalleryButtonChoice[i].addEventListener('mouseover', e => {
+            let currentButtonChoice = e.target.closest('.game-gallery-button-choice');
+            let index = gameGalleryButtonChoiceArray.indexOf(currentButtonChoice);
+
+            if (gameGalleryButtonChoice) {
+                buttonChoiceText[index].classList.add('blue-text')
+            }
+
+        })
+    }
 
     for( let i=0; i < gameGalleryArray.length; i++) {
         gameGalleryArray[i].addEventListener('mouseover', (e) => {
             let  currentGameGalleryItem = e.target.closest('.game-gallery-items');
-
-            if (!gameGalleryButtonChoiceActive && gameGalleryButtonChoice) {
-                buttonChoiceText.classList.add('blue-text');
-            }
             if(gameGalleryArray){
                 for(i = 0; i < gameGalleryArray.length; i++){
                     gameGalleryArray[i].classList.add('opacity');
                 }
                 currentGameGalleryItem.classList.remove('opacity');
+                
             }
         })
     }
@@ -413,11 +422,29 @@ gameGalleryMouseOver();
 function gameGalleryMouseOut(){
     let gameGallery = document.querySelectorAll('.game-gallery-items');
     let gameGalleryArray = Array.from(gameGallery);
+    let buttonChoiceText = document.querySelectorAll('.button-choice');
+    let gameGalleryButtonChoiceActive = document.querySelector('.game-gallery-button-choice.active');
+    let gameGalleryButtonChoice = document.querySelectorAll('.game-gallery-button-choice');
+    let gameGalleryButtonChoiceArray = Array.from(document.querySelectorAll('.game-gallery-button-choice'));
+
+    for(i=0; i < gameGalleryButtonChoice.length; i++){ 
+        gameGalleryButtonChoice[i].addEventListener('mouseout', e => {
+            let currentButtonChoice = e.target.closest('.game-gallery-button-choice');
+            let index = gameGalleryButtonChoiceArray.indexOf(currentButtonChoice);
+
+            if(gameGalleryButtonChoice[index]) {
+                buttonChoiceText[index].classList.remove('blue-text');
+            }
+        })
+    }
+
     for( let i=0; i < gameGalleryArray.length; i++) {
         gameGalleryArray[i].addEventListener('mouseout', (e) => {
             if(gameGalleryArray){
                 for(i = 0; i < gameGalleryArray.length; i++){
                     gameGalleryArray[i].classList.remove('opacity');
+                    // gameGalleryArray[i].classList.add('notopacity');
+
                 }
             }
         })
@@ -441,7 +468,7 @@ function gameGalleryActive(){
 
            // Closes every game gallery except current one 
            document.querySelectorAll('.game-gallery-button-choice.active').forEach(click => {
-            if (click === currentButtonChoice) return
+            if (click === currentButtonChoice || click === buttonChoiceContainer) return
             click.classList.remove('active');
             
         })
@@ -455,3 +482,19 @@ function loadGameGallery(){
     let firstButtonChoice = document.querySelector('.game-gallery-button-choice');
     firstButtonChoice.classList.add('active');
 }
+
+
+// Changes top nav bar fixed position based on 
+// position of scrollbar
+addEventListener('scroll', e => {
+    let gameGalleryButtonsContainer = document.querySelector('.game-gallery-buttons-container');
+    let scroll = window.scrollY;
+    console.log(scroll)
+    // if (scroll > 1700) {
+    //         gameGalleryButtonsContainer.classList.add('fixed');
+            
+    // }
+    // else {
+    //         gameGalleryButtonsContainer.classList.remove('fixed');
+    // }
+})

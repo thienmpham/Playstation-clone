@@ -830,6 +830,11 @@ a {
     border-radius: 2rem;
 }
 
+.fixed {
+    position: fixed; 
+    top: 0;
+}
+
 .button-choice  {
     color:white;
    
@@ -863,18 +868,30 @@ a {
     width: 13rem;
     height: 15rem;
     border-radius: 1rem;
-    transition: opacity 0.1s ease-in-out;
-    opacity: 0;
+    /* transition: opacity 0.5s ease-out !important;
+    transition-delay: 1s !important;
+    opacity: 1 !important; */
+    animation-name: fadeIn2;
+    animation-delay: 1s !important;
+    animation-duration: 1s;
     pointer-events: none;
 }
 
 .game-gallery-items.opacity { 
     opacity: 0.6 !important; 
     transition: opacity 0.1s ease-in-out !important; 
-    transition-delay: 1s;
-    
+    /* transition-delay: 1s !important; */
 
 }
+@keyframes fadeIn2 {
+    from {
+      opacity: 0.6;
+    }
+    
+    to {
+      opacity: 1;
+    }
+  }
 
 .game-gallery-button-choice.active > button + .game-gallery-items-container > .game-gallery-items{
     pointer-events: auto;
@@ -999,12 +1016,22 @@ div.game-gallery-button-choice div:nth-child(13) {
     opacity: 1;
     pointer-events: auto;
 } */
-
-.game-gallery-button-choice.active {
+.game-gallery-button-choice.active > .gallery-buttons span {
+    color: black
+}
+.game-gallery-button-choice.active  {
     background-color: white;
     border-radius: 2rem;
-    
+}
 
+
+.game-gallery-buttons-container.fixed {
+    position: fixed; 
+    top: 10rem;
+}
+.game-gallery-buttons-container.fixed > .game-gallery-button-choice > button + .game-gallery-items-container {
+    /* position: static; */ */
+    /* top: 5rem; left: -35rem; right: 0;
 }
 .game-gallery-button-choice.active > button > span {
     color: black;
