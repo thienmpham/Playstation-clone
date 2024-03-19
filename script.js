@@ -476,6 +476,7 @@ function gameGalleryActive(){
 }
 gameGalleryActive();
 
+// When window loads,  first button choice adds class active 
 document.addEventListener('load', loadGameGallery());
 
 function loadGameGallery(){
@@ -486,15 +487,15 @@ function loadGameGallery(){
 
 // Changes top nav bar fixed position based on 
 // position of scrollbar
-addEventListener('scroll', e => {
-    let gameGalleryButtonsContainer = document.querySelector('.game-gallery-buttons-container');
-    let scroll = window.scrollY;
-    console.log(scroll)
-    // if (scroll > 1700) {
-    //         gameGalleryButtonsContainer.classList.add('fixed');
+// addEventListener('scroll', e => {
+//     let gameGalleryButtonsContainer = document.querySelector('.game-gallery-buttons-container');
+//     let scroll = window.scrollY;
+//     console.log(scroll)
+//     // if (scroll > 1700) {
+//     //         gameGalleryButtonsContainer.classList.add('fixed');
             
-    // }
-    // else {
-    //         gameGalleryButtonsContainer.classList.remove('fixed');
-    // }
-})
+//     // }
+//     // else {
+//     //         gameGalleryButtonsContainer.classList.remove('fixed');
+//     // }
+// })
