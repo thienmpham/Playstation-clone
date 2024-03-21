@@ -484,3 +484,42 @@ function loadGameGallery(){
     firstButtonChoice.classList.add('active');
 }
 
+
+function mediaBlock(){
+    
+
+    let container = document.querySelector('.media-block');
+    let items = document.querySelectorAll('.media-block-carousel-items');
+    let itemsArray = Array.from(items);
+
+    let itemsContainer = document.querySelector('.media-block-carousel')
+
+
+    let nextBtn1 = document.querySelector('#media-block-next-button-1');
+    let nextBtn2 = document.querySelector('#media-block-next-button-2');
+
+    
+    console.log(container)
+    
+    container.addEventListener('click', e => {
+        let currentItem = e.target.closest('.media-block-carousel-items');
+        let index = itemsArray.indexOf(currentItem);
+        let amount =  index * 100;
+
+        if(items){
+            console.log(index)
+        }
+        if(nextBtn1){
+            index = 0;
+            for(i=0; i < itemsArray.length; i++){
+                itemsArray[i].style = `transform: translateX(${-amount}%); transition: transform 0.7s ease;`;
+                
+
+            }
+            itemsContainer.appendChild( items[index] )  // mov first slide to the end
+                console.log(items[index + 1])
+        }
+    })
+}
+
+mediaBlock();
