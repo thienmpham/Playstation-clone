@@ -3,6 +3,10 @@
 body { 
     margin: 0;
     font-family: Arial, Helvetica;
+    width: 1468px;
+    max-width: 100%;
+    overflow-x: hidden;
+    
 }
 
 a {
@@ -204,7 +208,9 @@ a {
     filter: invert(57%) sepia(99%) saturate(7482%) hue-rotate(195deg) brightness(99%) contrast(101%);
 }
 
-
+.media-showcase {
+    overflow: hidden;
+}
 .media-div {
     height: 38rem;
     background-color: black;
@@ -310,9 +316,10 @@ a {
 }
 
 .image-gallery {
-    padding: 2.5rem 4rem 2.5rem 4rem;
+    margin: 4rem 0 4rem 0;
     display: flex;
-    justify-content: space-evenly;
+    gap: 1rem;
+    justify-content: center;
 }
 
 .image-gallery-items {
@@ -529,6 +536,8 @@ a {
 .slider-wrapper {
     height: 51rem;
     margin: 2rem 0 0 0;
+    width: 100%;
+   overflow: hidden;
 }
 
 .slider-main {
@@ -597,10 +606,14 @@ a {
     outline-offset: 0.15rem;
 }
 .slider-gallery {
+    overflow: hidden;
     display: flex;
     flex-direction: row;
     margin: 4rem 5rem;
     transition: transform 1s ease;
+    width: 100%;
+    max-width: 100%;
+    
     
 }
 .slider-items-images-container {
@@ -637,7 +650,7 @@ a {
 }
 
 .slider-items {
-    padding: 0 0.6rem 0 0.6rem;
+    padding: 0.5rem 0.6rem 0 0.6rem;
     
     
 }
@@ -707,7 +720,7 @@ a {
     justify-content: center;
     position: absolute;
     left: 0;
-    top: 89.5rem;
+    top: 93rem;
     margin: 0 0 0 4.5rem;
     opacity: 1;
     
@@ -733,7 +746,7 @@ a {
     margin: 0 4.5rem 0 0;
     position: absolute;
     right: 0;
-    top: 89.5rem;
+    top: 93rem;
     opacity: 1;
 }
 
@@ -793,6 +806,7 @@ a {
     height: 50rem; 
     background-color: black;
     margin: 5rem 0 0 0;
+    overflow: hidden;
 
     
   
@@ -1012,6 +1026,7 @@ div.game-gallery-button-choice div:nth-child(13) {
 
 
 /* Media block css */
+
 .media-block {
     height: 51rem;
     width: 100%;
@@ -1050,7 +1065,9 @@ div.game-gallery-button-choice div:nth-child(13) {
 
 .media-block-carousel {
     position: relative;
-    width: 92rem;
+    width: 100%;
+    gap: 1rem;
+    overflow: hidden;
     margin: 1rem 0 0 0;
     display: flex;
     justify-content: center;
