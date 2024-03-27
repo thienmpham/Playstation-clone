@@ -155,8 +155,12 @@ document.addEventListener('click', e => {
     })
 }
 
+
 document.addEventListener('click', e => {
     const isSearch = e.target.matches('#search-img');
+    let burgerIcon = document.querySelector('#burger-button-container');
+
+    
     
     // If click is not search button and is inside of dropdown menu then do not do anything
     if(!isSearch && e.target.closest('.dropdown-menu-search')!=null)return
