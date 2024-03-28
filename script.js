@@ -117,7 +117,11 @@ document.addEventListener('click', e => {
         let name = document.querySelectorAll('.category-name');
         let image = document.querySelectorAll('.category-image')
         let dropdown = document.querySelectorAll('.top-nav-dropdown-menu');
-
+        
+        // if(!container2 || !allButton) {
+        //     burger.classList.remove('display')
+        // }
+            
             if (isButton.classList.contains('active')){
 
                 sonyIcon.classList.add('active');
@@ -155,18 +159,36 @@ document.addEventListener('click', e => {
     })
 }
 
+document.querySelector('.top-nav').addEventListener('click', e => {
+    let topNav = document.querySelector('.top-nav')
+    let burger = document.querySelector('#burger-button-container');
+    let allButton = document.querySelectorAll('.top-nav-category-item');
+    let button = document.querySelectorAll('.top-nav-category-button');
+    let items = document.querySelector('.top-nav-category-items');
+    let container2 = document.querySelector('.top-nav-category-container-2');
+
+        if(e.target === burger) {
+                burger.classList.toggle('display');
+        }
+        // if(e.target !== (topNav || burger)){
+        //     burger.classList.remove('display')
+        // }
+        console.log(e.target)
+
+        if(e.target === burger && topNav)return;
+
+})
 
 document.addEventListener('click', e => {
     const isSearch = e.target.matches('#search-img');
-    let burgerIcon = document.querySelector('#burger-button-container');
+    
 
-    
-    
     // If click is not search button and is inside of dropdown menu then do not do anything
     if(!isSearch && e.target.closest('.dropdown-menu-search')!=null)return
 
     let dropDown = document.querySelector('.dropdown-menu-search');
     let overlay = document.querySelector('.overlay');
+    
     if(isSearch){ 
         dropDown.classList.toggle('active');
         overlay.classList.add('active');

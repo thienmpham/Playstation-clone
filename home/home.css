@@ -148,6 +148,10 @@
         font-size: 0.8rem;
         margin: 0 0.3rem;
     }
+    .top-nav-category-container-2 {
+        display: flex;
+        flex-direction: row;
+    }
 
    
     .category-name {
@@ -1264,7 +1268,15 @@
         }
         
         .top-nav-category-item.active > .top-nav-category-button + .top-nav-dropdown-menu {
-        max-height: 25rem;
+        max-height: 35rem;
+        }
+
+        .top-nav-category-container-2 {
+            display: none;
+        }
+        
+        #burger-button-container.display + .top-nav-category-container-2 {
+            display: block;
         }
     }
 }
