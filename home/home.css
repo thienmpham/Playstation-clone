@@ -229,7 +229,7 @@
         overflow: hidden;
     }
     .media-div {
-        height: 38rem;
+        height: 34rem;
         background-color: black;
     }
     .media-images {
@@ -256,7 +256,8 @@
     }
 
     .media-text {
-        padding: 12rem 5rem 5rem 5rem;
+        font-size: clamp(15px, 16px, 20px);
+        padding: 5rem 5rem 5rem 5rem;
         font-family: sans-serif;
         position: absolute;
         color: white;
@@ -267,6 +268,7 @@
         left: 0;
         opacity: 0;
         pointer-events: none;
+        
     }
 
     .media-text-header {
@@ -333,17 +335,21 @@
     }
 
     .image-gallery {
-        margin: 4rem 0 4rem 0;
+        margin: 4rem 4rem 4rem 4rem;
         display: flex;
         gap: 1rem;
         justify-content: center;
+       
     }
 
     .image-gallery-items {
-        max-width: 100%;
-        height: 100%;
+       
+        min-width: 11rem;
+        min-height: 8rem;
+   
+        /* width: clamp(11rem, 11rem, 20rem);
+        height: clamp(7rem, 7rem, 15rem); */
         
-    
     }
 
 
@@ -356,8 +362,9 @@
 
     }
     .image-gallery-items .images {
-        width: 11rem;
-        height: 7rem;
+        max-width: 100%;
+        max-height: 100%;
+        height: 100%;
         object-fit: cover;
         border-radius: 1rem;
         opacity: 0.7;
@@ -1277,6 +1284,16 @@
         
         #burger-button-container.display + .top-nav-category-container-2 {
             display: block;
+        }
+
+        .media-text {
+            left: 10rem;
+            text-align: center;
+        }
+        .image-gallery-items {
+           min-width: 20rem;
+           min-height: 10rem;
+        
         }
     }
 }
