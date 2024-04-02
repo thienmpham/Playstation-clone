@@ -234,9 +234,10 @@
     .media-div {
         height: 34rem;
         background-color: black;
+        opacity: 0;
     }
     .media-images {
-        height: 34rem;
+        height: 32rem;
         overflow: hidden;
         position: absolute;
         top: 6.2rem;
@@ -244,6 +245,7 @@
         pointer-events: none;
         opacity: 0;
         width: 100%;
+      
     }
 
     .media-images img {
@@ -347,11 +349,11 @@
 
     .image-gallery-items {
        
-        min-width: 11rem;
-        min-height: 8rem;
+        /* min-width: 11rem;
+        min-height: 8rem; */
    
-        /* width: clamp(11rem, 11rem, 20rem);
-        height: clamp(7rem, 7rem, 15rem); */
+        width: clamp(10rem, 11rem, 20rem);
+        height: clamp(6rem, 7rem, 15rem);
         
     }
 
@@ -567,6 +569,13 @@
         width: 100%;
     overflow: hidden;
     }
+  .empty {
+    height: 25rem;
+    width: 100%;
+    max-width: 100%;
+    display: none;
+
+  }
 
     .slider-main {
         height: 29rem;
@@ -599,7 +608,7 @@
     }
     .slider-text-body {
         color: rgb(63, 63, 63);
-        font-size: 0.9rem;
+        font-size: clamp(0.9rem, 1.1rem, 1.2rem);
         line-height: 1.2rem;
         margin: 0 0 1.2rem 0;
 
@@ -634,7 +643,6 @@
         outline-offset: 0.15rem;
     }
     .slider-gallery {
-        overflow: hidden;
         display: flex;
         flex-direction: row;
         margin: 4rem 5rem;
@@ -1253,6 +1261,14 @@
 
 /* Mobile version */
 @media only screen and (min-width: 0rem) {
+
+    @media (max-width: 1310px){
+        .slider-main-images-container {
+            left: 0;
+            margin: 0;
+        }
+     
+    }
     @media (max-width: 700px){
 
         body {
@@ -1319,11 +1335,7 @@
         
         }
 
-        .slider-main-content {
-            display: flex;
-            flex-direction: column;
-    
-        }
+       
         .slider-text-header {
             text-align: center;
         }
@@ -1358,6 +1370,30 @@
             
             
         }
+
+        #slider-main-button-1{
+           display: none;
+        }
+        #slider-main-button-2 {
+           display: none;
+        }
+        .empty {
+            display: inline-block;
+        }
+        .slider-text {
+            display: flex;
+            top: 80rem;
+            align-items: center;
+        }
+        .slider-text-body {
+            text-align: center;
+        }
+        .slider-items-images-container {
+            width: clamp(12rem, 14rem, 18rem);
+            height: clamp(7rem, 9rem, 11rem);
+        }
+
+
        
     }
     @media (max-width: 430px){
