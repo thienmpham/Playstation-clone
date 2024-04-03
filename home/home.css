@@ -868,6 +868,7 @@
         display: flex;
         flex-direction: row;
         justify-content: center;
+        position: relative;
         
 
     }
@@ -875,7 +876,7 @@
         display: flex;
         flex-direction: row;
         justify-content: center;
-        position: relative;
+     
         width: 16rem;
         height: 2.8rem;
         align-items: center;
@@ -898,16 +899,28 @@
 
 
     .game-gallery-items-container {
-        width: 84rem;
+        width: 100%;
         height: 34rem;
         position: absolute;
-        margin: auto;
-        top: 5rem; left: -35rem; right: 0;
+        /* margin: auto; */
+        /* top: 5rem; left: -35rem; right: 0; */
         display: flex;
-        justify-content: space-evenly;
+       
         flex-wrap: wrap;
         visibility: hidden;
         pointer-events: none;
+
+        margin-left: auto;
+        margin-right: auto;
+        left: 0;
+        right: 0;
+        text-align: center;
+        top: 7rem;
+        /* gap: 1.5rem; */
+        
+     
+        padding: 0 2rem 0 2rem;
+ 
     
 
     }
@@ -915,6 +928,7 @@
     .game-gallery-items {
         width: 13rem;
         height: 15rem;
+        flex-basis: calc(100%/6);
         border-radius: 1rem;
         transition: opacity 0.1s ease-in-out;
         opacity: 0;
@@ -1261,11 +1275,27 @@
 
 /* Mobile version */
 @media only screen and (min-width: 0rem) {
+ 
 
     @media (max-width: 1310px){
         .slider-main-images-container {
             left: 0;
             margin: 0;
+        }
+        .empty {
+            display: inline-block;
+        }
+        .slider-text {
+            display: flex;
+            top: 80rem;
+            align-items: center;
+        }
+        .slider-text-body {
+            text-align: center;
+        }
+        .slider-items-images-container {
+            width: clamp(12rem, 14rem, 18rem);
+            height: clamp(7rem, 9rem, 11rem);
         }
      
     }
@@ -1377,21 +1407,11 @@
         #slider-main-button-2 {
            display: none;
         }
-        .empty {
-            display: inline-block;
-        }
-        .slider-text {
-            display: flex;
-            top: 80rem;
-            align-items: center;
-        }
-        .slider-text-body {
+        .game-gallery-header {
             text-align: center;
+
         }
-        .slider-items-images-container {
-            width: clamp(12rem, 14rem, 18rem);
-            height: clamp(7rem, 9rem, 11rem);
-        }
+        
 
 
        
