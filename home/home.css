@@ -842,7 +842,7 @@
     /* Game gallery dark */
     .game-gallery-dark {
         width: 100%;
-        height: 50rem; 
+        height: 55rem; 
         background-color: black;
         margin: 5rem 0 0 0;
         overflow: hidden;
@@ -904,9 +904,11 @@
         position: absolute;
         /* margin: auto; */
         /* top: 5rem; left: -35rem; right: 0; */
-        display: flex;
+        /* display: flex;
        
-        flex-wrap: wrap;
+        flex-wrap: wrap; */
+        display: grid;
+        grid-template-columns: repeat(6, 1fr);
         visibility: hidden;
         pointer-events: none;
 
@@ -920,9 +922,6 @@
         
      
         padding: 0 2rem 0 2rem;
- 
-    
-
     }
 
     .game-gallery-items {
@@ -933,8 +932,10 @@
         transition: opacity 0.1s ease-in-out;
         opacity: 0;
         pointer-events: none;
+        
     }
 
+ 
     .game-gallery-items.opacity { 
         opacity: 0.6 !important; 
         transition: opacity 0.1s ease-in-out !important; 
@@ -950,6 +951,7 @@
         animation-iteration-count: 1;
         animation-fill-mode: forwards;
     }
+
     div.game-gallery-button-choice div:nth-child(1) {
         animation-delay: 0.1s
     }
@@ -1004,13 +1006,14 @@
         opacity: 1;
     }
     .game-gallery-items-image {
-        width: 13rem;
-        height: 13rem;
+        width: 100%;
+        height: 100%;
     }
     .gallery-image:hover {
         transform: scale(1.03); 
         transition: transform 0.2s ease-in-out;
     }
+
     .gallery-image {
         display: flex;
         max-width: 100%;
@@ -1276,7 +1279,18 @@
 /* Mobile version */
 @media only screen and (min-width: 0rem) {
  
+    @media (max-width: 1420px){
+        .game-gallery-items-container {
+            grid-template-columns: repeat(3, 1fr);
 
+        }
+
+        .game-gallery-dark {
+            height: 80rem;
+        }
+       
+
+    }
     @media (max-width: 1310px){
         .slider-main-images-container {
             left: 0;
