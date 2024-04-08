@@ -900,13 +900,9 @@
 
     .game-gallery-items-container {
         width: 100%;
-        height: 34rem;
+      
         position: absolute;
-        /* margin: auto; */
-        /* top: 5rem; left: -35rem; right: 0; */
-        /* display: flex;
-       
-        flex-wrap: wrap; */
+  
         display: grid;
         grid-template-columns: repeat(6, 1fr);
         visibility: hidden;
@@ -925,13 +921,15 @@
     }
 
     .game-gallery-items {
-        width: 13rem;
-        height: 15rem;
+        max-width: 13rem;
+        height: auto;
         flex-basis: calc(100%/6);
         border-radius: 1rem;
         transition: opacity 0.1s ease-in-out;
         opacity: 0;
         pointer-events: none;
+        margin: 0 0 1rem 0;
+        aspect-ratio: 1 / 1;
         
     }
 
@@ -1008,6 +1006,7 @@
     .game-gallery-items-image {
         width: 100%;
         height: 100%;
+        margin: 0 0 0.6rem 0;
     }
     .gallery-image:hover {
         transform: scale(1.03); 
@@ -1035,10 +1034,9 @@
     }
     .game-gallery-items-text {
         
-        width: 13rem;
-        height: 1.8rem;
+        width: 100%;
+       
         display: flex;
-        align-items: flex-end;
         color: white;  
         font-weight: 100;
         font-size: 0.9rem;
@@ -1301,8 +1299,11 @@
         }
         .slider-text {
             display: flex;
-            top: 80rem;
+            top: 85rem;
             align-items: center;
+        }
+        .slider-text-header {
+            text-align: center;
         }
         .slider-text-body {
             text-align: center;
@@ -1317,6 +1318,9 @@
 
         body {
             font-size: 20px;
+        }
+        .gallery-buttons span {
+            font-size: 16px;
         }
         .top-nav {
             margin: 1rem 0 0 0;
@@ -1429,6 +1433,22 @@
 
 
        
+    }
+    @media (max-width: 890px){
+        .game-gallery-dark {
+            height: 115rem;
+        }
+        .game-gallery-header {
+            text-align: center;
+        }
+        .game-gallery-items-container {
+            grid-template-columns: repeat(2, 1fr);
+        }
+
+
+    }
+
+
     }
     @media (max-width: 430px){
         .top-nav-sony-icon {
