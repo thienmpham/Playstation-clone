@@ -522,7 +522,6 @@ function mediaBlock(){
     let item3 = document.querySelector('.media-block-carousel-items-3');
 
     let itemsContainer = document.querySelector('.media-block-carousel')
-    let itemParent = item1.parentNode;
 
     let nextBtn1 = document.querySelector('#media-block-next-button-1');
     let nextBtn2 = document.querySelector('#media-block-next-button-2');
@@ -530,24 +529,19 @@ function mediaBlock(){
     
     console.log(container)
     
-    container.addEventListener('click', e => {
-        let currentItem = e.target.closest('.media-block-carousel-items');
-        let index = itemsArray.indexOf(currentItem);
-        let amount =  index * 100;
+    container.addEventListener('click', function() {
+      
+      
 
-        if(items){
-            console.log(index)
-        }
         if(nextBtn1){
 
             index = 0;
             for(i=0; i < itemsArray.length; i++){
-                itemsArray[i].style = `transform: translateX(${-amount}%); transition: transform 0.7s ease;`;
+                itemsArray[i].style = `transform: translateX('20%'); transition: transform 0.7s ease;`;
                 
 
             }
-            itemParent.insertBefore( item1, item3 )  // mov first slide to the end
-            console.log(itemsArray[1])
+           
         }
     })
 }
