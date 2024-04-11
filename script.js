@@ -511,39 +511,44 @@ function loadGameGallery(){
 }
 
 
-function mediaBlock(){
-    
+function carousel(){
+    let prev = document.querySelector('#media-block-next-button-1');
+    let next = document.querySelector('#media-block-next-button-2');
+    let parent = document.querySelector('.media-block-carousel');
+    let direction;
 
-    let container = document.querySelector('.media-block');
-    let items = document.querySelectorAll('.media-block-carousel-items');
-    let itemsArray = Array.from(items);
-    let item1 = document.querySelector('.media-block-carousel-items-1');
-    let item2 = document.querySelector('.media-block-carousel-items-2');
-    let item3 = document.querySelector('.media-block-carousel-items-3');
+        next.addEventListener('click', function() {
+            parent.style.transform = 'translate(-60%)';
+            console.log('next')
+            direction = -1;
+        })
 
-    let itemsContainer = document.querySelector('.media-block-carousel')
+        prev.addEventListener('click', function(){
+            parent.style.transform = 'translate(60%)';
+            console.log('prev');
+            direction = 1;
+        })
 
-    let nextBtn1 = document.querySelector('#media-block-next-button-1');
-    let nextBtn2 = document.querySelector('#media-block-next-button-2');
+        parent.addEventListener('transitionend', function(){
+            console.log('end');
 
-    
-    console.log(container)
-    
-    container.addEventListener('click', function() {
-      
-      
-
-        if(nextBtn1){
-
-            index = 0;
-            for(i=0; i < itemsArray.length; i++){
-                itemsArray[i].style = `transform: translateX('20%'); transition: transform 0.7s ease;`;
-                
-
+            if(direction === -1) {
+                // Puts first child at the end of the parent 
+                parent.appendChild(parent.firstElementChild);
+                console.log('next')
             }
-           
-        }
-    })
+
+            else {
+                parent.prepend(parent.lastElementChild);
+            }
+            parent.style.transition = 'none';
+            // Makes next element into the first element
+            parent.style.transform = 'translate(0)';
+            setTimeout(function(){
+                parent.style.transition = 'all 0.5s';
+            })
+            
+        })
 }
 
-mediaBlock();
+carousel();
