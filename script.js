@@ -516,11 +516,29 @@ function carousel(){
     let next = document.querySelector('#media-block-next-button-2');
     let parent = document.querySelector('.media-block-carousel');
     let direction;
-
+        
         next.addEventListener('click', function() {
+            parent.style.transition = 'all 0.5s';
             parent.style.transform = 'translate(-60%)';
-            console.log('next')
-            direction = -1;
+            parent.appendChild(parent.firstElementChild);
+
+            
+
+            setTimeout(function(){
+                parent.style.transition = 'none';
+                // Makes next element into the first element
+                parent.style.transform = 'translate(0)';
+                setTimeout(function(){
+                    parent.style.transition = 'all 0.5s';
+                })
+    
+                
+            })
+          
+
+            console.log('next');
+        
+            
         })
 
         prev.addEventListener('click', function(){
@@ -541,12 +559,12 @@ function carousel(){
             else {
                 parent.prepend(parent.lastElementChild);
             }
-            parent.style.transition = 'none';
-            // Makes next element into the first element
-            parent.style.transform = 'translate(0)';
-            setTimeout(function(){
-                parent.style.transition = 'all 0.5s';
-            })
+            // parent.style.transition = 'none';
+            // // Makes next element into the first element
+            // parent.style.transform = 'translate(0)';
+            // setTimeout(function(){
+            //     parent.style.transition = 'all 0.5s';
+            // })
             
         })
 }
