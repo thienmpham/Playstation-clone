@@ -518,22 +518,29 @@ function carousel(){
     let direction;
         
         next.addEventListener('click', function() {
-            parent.style.transition = 'all 0.5s';
-            parent.style.transform = 'translate(-60%)';
-            parent.appendChild(parent.firstElementChild);
+            
+            
+            
+            parent.style.transform = 'translateX(-60%)';
+            
+            // parent.appendChild(parent.firstElementChild);
+            direction = -1;
+                
+           
+            
+            
 
             
 
-            setTimeout(function(){
-                parent.style.transition = 'none';
-                // Makes next element into the first element
-                parent.style.transform = 'translate(0)';
-                setTimeout(function(){
-                    parent.style.transition = 'all 0.5s';
-                })
-    
-                
-            })
+            // setTimeout(function(){
+            //     parent.style.transition = 'none';
+            //     // Makes next element into the first element
+            //     parent.style.transform = 'translate(0)';
+            //     console.log('Done loading')
+            //     setTimeout(function(){
+            //         parent.style.transition = 'all 0.5s';
+            //     })
+            // })
           
 
             console.log('next');
@@ -559,12 +566,16 @@ function carousel(){
             else {
                 parent.prepend(parent.lastElementChild);
             }
-            // parent.style.transition = 'none';
-            // // Makes next element into the first element
-            // parent.style.transform = 'translate(0)';
-            // setTimeout(function(){
-            //     parent.style.transition = 'all 0.5s';
-            // })
+          
+                parent.style.transition = 'none';
+                // Makes next element into the first element
+                parent.style.transform = 'translate(0)';
+                console.log('translate0')
+                setTimeout(function(){
+                    parent.style.transition = 'all 0.5s';
+                })
+         
+            
             
         })
 }
