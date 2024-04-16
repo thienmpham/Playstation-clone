@@ -1153,6 +1153,10 @@
         flex-shrink: 0;
 
     }
+    #media-block-carousel-items-main {
+        opacity: 0;
+        pointer-events: none;
+    }
 
     .media-block-carousel-items:hover {
         box-shadow: 0 0 0.9rem rgba(0, 0, 0, 0.5);
@@ -1214,7 +1218,7 @@
         justify-content: center;
         margin: 2rem 0 2rem 0;
     }
-    .media-block-mini-buttons button {
+    .media-block-mini {
         width: 1rem;
         height: 0.15rem;
         margin: 0 0.2rem;
@@ -1222,8 +1226,11 @@
         background-color: #979797;
     }
 
-    .media-block-mini-buttons button:hover {
+    .media-block-mini:hover {
         cursor: pointer;
+        background-color:#0070CB;
+    }
+    .media-block-mini.outline {
         background-color:#0070CB;
     }
     .media-block-main-button {

@@ -515,52 +515,48 @@ function carousel(){
     let prev = document.querySelector('#media-block-next-button-1');
     let next = document.querySelector('#media-block-next-button-2');
     let parent = document.querySelector('.media-block-carousel');
+
+    let tabs = document.querySelectorAll('.media-block-mini');
     let direction;
-        
+    let i = 0;
+    document.addEventListener('click', e => {
+        let currentTab = e.target.closest('media-block-mini');
+        let isTab = e.target.matches('media-block-mini');
+        if(isTab){
+            currentTab.classList.add('outline');
+        }
+
+        document.querySelectorAll('.media-block-mini.outline').forEach(click => {
+            if (click === currentTab ) return
+            click.classList.remove('remove');
+        })
+
+    })    
+    
         next.addEventListener('click', function() {
-            
-            
             
             parent.style.transform = 'translateX(-60%)';
             
             // parent.appendChild(parent.firstElementChild);
             direction = -1;
-                
-           
-            
-            
+            console.log(i)
 
             
-
-            // setTimeout(function(){
-            //     parent.style.transition = 'none';
-            //     // Makes next element into the first element
-            //     parent.style.transform = 'translate(0)';
-            //     console.log('Done loading')
-            //     setTimeout(function(){
-            //         parent.style.transition = 'all 0.5s';
-            //     })
-            // })
           
-
-            console.log('next');
-        
             
         })
 
         prev.addEventListener('click', function(){
             parent.style.transform = 'translate(60%)';
-            console.log('prev');
             direction = 1;
         })
 
         parent.addEventListener('transitionend', function(){
-            console.log('end');
+      
 
             if(direction === -1) {
                 // Puts first child at the end of the parent 
                 parent.appendChild(parent.firstElementChild);
-                console.log('next')
             }
 
             else {
@@ -570,14 +566,17 @@ function carousel(){
                 parent.style.transition = 'none';
                 // Makes next element into the first element
                 parent.style.transform = 'translate(0)';
-                console.log('translate0')
+              
                 setTimeout(function(){
                     parent.style.transition = 'all 0.5s';
                 })
-         
-            
-            
+        })
+
+        tabs[0].addEventListener('click', function(){
+            tabs[0].classList.add('outline');
+
         })
 }
+
 
 carousel();
