@@ -515,32 +515,81 @@ function carousel(){
     let prev = document.querySelector('#media-block-next-button-1');
     let next = document.querySelector('#media-block-next-button-2');
     let parent = document.querySelector('.media-block-carousel');
+    let mediaBlock = document.querySelector('.media-block');
 
     let tabs = document.querySelectorAll('.media-block-mini');
     let direction;
-    let i = 0;
+    let index = 0;
+
+    // On page load add outline to first tab 
+    window.addEventListener('load', function(){
+            tabs[0].classList.add('outline');
+            console.log('page loading')
+            console.log(index)
+    });
+
     document.addEventListener('click', e => {
-        let currentTab = e.target.closest('media-block-mini');
-        let isTab = e.target.matches('media-block-mini');
+        let currentTab = e.target.closest('.media-block-mini');
+        let isTab = e.target.matches('.media-block-mini');
+
+    
+
         if(isTab){
             currentTab.classList.add('outline');
         }
 
+      
+       
+
+     
+        // Removes previous outline when another button is clicked 
         document.querySelectorAll('.media-block-mini.outline').forEach(click => {
-            if (click === currentTab ) return
-            click.classList.remove('remove');
+            if ((click === currentTab) || e.target === next ) return
+            click.classList.remove('outline');
         })
 
+        
+
     })    
-    
+
         next.addEventListener('click', function() {
             
-            parent.style.transform = 'translateX(-60%)';
+            parent.style.transform = 'translateX(-60% * index)';
             
             // parent.appendChild(parent.firstElementChild);
             direction = -1;
-            console.log(i)
+            index++;
 
+            
+
+            if(index !== 0 && index < 3) {
+                
+               
+                tabs[index].classList.add('outline');
+                console.log(tabs[index])
+                console.log(index);
+                tabs[index - 1].classList.remove('outline');
+                
+            }
+            
+    
+    
+            if(index >= 2){
+             
+                index = -1;
+            }
+
+            if(index === 0) {
+                tabs[2].classList.remove('outline');
+                console.log(tabs[2])
+                tabs[0].classList.add('outline');
+            }
+
+            // if(index === -1) {
+            //     tabs[2].classList.remove('outline')
+            // }
+
+           
             
           
             
@@ -572,10 +621,7 @@ function carousel(){
                 })
         })
 
-        tabs[0].addEventListener('click', function(){
-            tabs[0].classList.add('outline');
-
-        })
+    
 }
 
 
