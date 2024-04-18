@@ -515,7 +515,7 @@ function carousel(){
     let prev = document.querySelector('#media-block-next-button-1');
     let next = document.querySelector('#media-block-next-button-2');
     let parent = document.querySelector('.media-block-carousel');
-    let mediaBlock = document.querySelector('.media-block');
+  
 
     let tabs = document.querySelectorAll('.media-block-mini');
     let direction;
@@ -535,42 +535,49 @@ function carousel(){
     
 
         if(isTab){
+             //// Removes each class of outline and after adds the class outline to the next tab 
+             document.querySelectorAll('.media-block-mini.outline').forEach(click => {
+                click.classList.remove('outline');
+            })
             currentTab.classList.add('outline');
         }
+
+        
 
       
        
 
-     
+        //// Weird bug where the button registered as a click on the next button except for the image inside
+        //// Solution:::: e.target.id to target the image within the next button 
         // Removes previous outline when another button is clicked 
-        document.querySelectorAll('.media-block-mini.outline').forEach(click => {
-            if ((click === currentTab) || e.target === next ) return
-            click.classList.remove('outline');
-        })
+        // document.querySelectorAll('.media-block-mini.outline').forEach(click => {
+        //     if ((click === currentTab) || (e.target === next) || (e.target.id ==='media-arrow-2')) return
+        //     click.classList.remove('outline');
+        // })
 
         
 
     })    
-
+    
         next.addEventListener('click', function() {
-            
-            parent.style.transform = 'translateX(-60% * index)';
-            
-            // parent.appendChild(parent.firstElementChild);
+            parent.style.transform = 'translateX(-60%)';
             direction = -1;
             index++;
-
             
 
-            if(index !== 0 && index < 3) {
-                
-               
+       
+
+                //// Removes each class of outline and after adds the class outline to the next tab 
+                document.querySelectorAll('.media-block-mini.outline').forEach(click => {
+                    click.classList.remove('outline');
+                })
+            
                 tabs[index].classList.add('outline');
                 console.log(tabs[index])
                 console.log(index);
-                tabs[index - 1].classList.remove('outline');
+                // tabs[index - 1].classList.remove('outline');
                 
-            }
+            
             
     
     
@@ -584,20 +591,39 @@ function carousel(){
                 console.log(tabs[2])
                 tabs[0].classList.add('outline');
             }
-
-            // if(index === -1) {
-            //     tabs[2].classList.remove('outline')
-            // }
-
-           
-            
-          
-            
+  
         })
 
         prev.addEventListener('click', function(){
             parent.style.transform = 'translate(60%)';
             direction = 1;
+            if(index === 0) {
+                index = 3;
+                tabs[2].classList.add('outline');
+                console.log('is zero')
+                tabs[0].classList.remove('outline');
+            }
+            
+            index = index - 1;
+                console.log(index)
+                //// Removes each class of outline and after adds the class outline to the next tab 
+                document.querySelectorAll('.media-block-mini.outline').forEach(click => {
+                    click.classList.remove('outline');
+                })
+            
+                tabs[index].classList.add('outline');
+                console.log(tabs[index])
+                console.log(index);
+                // tabs[index - 1].classList.remove('outline');
+
+
+
+            // if(index <= 0) {
+            //     index = 3;
+            // }
+
+
+         
         })
 
         parent.addEventListener('transitionend', function(){
