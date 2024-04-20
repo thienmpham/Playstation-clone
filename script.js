@@ -540,26 +540,21 @@ function carousel(){
                 click.classList.remove('outline');
             })
             currentTab.classList.add('outline');
+
+            
         }
 
         
-
-      
-       
-
-        //// Weird bug where the button registered as a click on the next button except for the image inside
-        //// Solution:::: e.target.id to target the image within the next button 
-        // Removes previous outline when another button is clicked 
-        // document.querySelectorAll('.media-block-mini.outline').forEach(click => {
-        //     if ((click === currentTab) || (e.target === next) || (e.target.id ==='media-arrow-2')) return
-        //     click.classList.remove('outline');
-        // })
-
+        
         
 
     })    
+
+        // I need to pass the value of currentTab to another addEventListener
     
-        next.addEventListener('click', function() {
+        next.addEventListener('click', e => {
+            let currentTab = e.target.closest('.media-block-carousel-items');
+            console.log(currentTab)
             parent.style.transform = 'translateX(-60%)';
             direction = -1;
             index++;
