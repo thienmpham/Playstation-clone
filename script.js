@@ -515,8 +515,8 @@ function carousel(){
     let prev = document.querySelector('#media-block-next-button-1');
     let next = document.querySelector('#media-block-next-button-2');
     let parent = document.querySelector('.media-block-carousel');
-  
-
+    
+    let tabArray = Array.from(document.querySelectorAll('.media-block-mini'));
     let tabs = document.querySelectorAll('.media-block-mini');
     let direction;
     let index = 0;
@@ -533,14 +533,16 @@ function carousel(){
         let isTab = e.target.matches('.media-block-mini');
 
     
-
+        
         if(isTab){
              //// Removes each class of outline and after adds the class outline to the next tab 
              document.querySelectorAll('.media-block-mini.outline').forEach(click => {
                 click.classList.remove('outline');
             })
             currentTab.classList.add('outline');
+            let index = tabArray.indexOf(currentTab);
 
+            console.log(index)
             
         }
 
@@ -553,10 +555,13 @@ function carousel(){
         // I need to pass the value of currentTab to another addEventListener
     
         next.addEventListener('click', e => {
-            let currentTab = e.target.closest('.media-block-carousel-items');
-            console.log(currentTab)
+            
             parent.style.transform = 'translateX(-60%)';
             direction = -1;
+            let currentTab = e.target.closest('.media-block-mini');
+            // let tabArray = Array.from(document.querySelectorAll('.media-block-mini'));
+            // let index = tabArray.indexOf(currentTab);
+
             index++;
             
 
@@ -570,7 +575,6 @@ function carousel(){
                 tabs[index].classList.add('outline');
                 console.log(tabs[index])
                 console.log(index);
-                // tabs[index - 1].classList.remove('outline');
                 
             
             
