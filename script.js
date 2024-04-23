@@ -226,6 +226,7 @@ function loadFirstSliderItem() {
     let nextButton1 = document.querySelector('#slider-main-button-1');
     let firstSliderItem = sliderItems[0];
     let miniButtons = document.querySelectorAll('.mini-buttons');
+
     firstSliderItem.classList.add('active', 'outline')
     miniButtons[0].classList.add('highlight')
     console.log(firstSliderItem);
@@ -532,53 +533,36 @@ function carousel(){
         let currentTab = e.target.closest('.media-block-mini');
         let isTab = e.target.matches('.media-block-mini');
 
-    
-        
-        if(isTab){
+        // Problem::: When clicking currentTab, it did not update the index when clicking the next or 
+        //before buttons after so
+        // Solution::: you need to do is to re-define index (without let) when clicking a tab so it does update
+        if(currentTab){
              //// Removes each class of outline and after adds the class outline to the next tab 
              document.querySelectorAll('.media-block-mini.outline').forEach(click => {
                 click.classList.remove('outline');
             })
             currentTab.classList.add('outline');
-            let index = tabArray.indexOf(currentTab);
+            index = tabArray.indexOf(currentTab);
 
             console.log(index)
             
         }
 
-        
-        
-        
-
-    })    
-
-        // I need to pass the value of currentTab to another addEventListener
-    
-        next.addEventListener('click', e => {
-            
-            parent.style.transform = 'translateX(-60%)';
-            direction = -1;
-            let currentTab = e.target.closest('.media-block-mini');
-            // let tabArray = Array.from(document.querySelectorAll('.media-block-mini'));
-            // let index = tabArray.indexOf(currentTab);
-
-            index++;
-            
-
-       
-
+     
+        if((next && e.target.id === 'media-block-next-button-2') || e.target.id === 'media-arrow-2') {
                 //// Removes each class of outline and after adds the class outline to the next tab 
                 document.querySelectorAll('.media-block-mini.outline').forEach(click => {
                     click.classList.remove('outline');
                 })
-            
+                
+                index = index + 1;
                 tabs[index].classList.add('outline');
-                console.log(tabs[index])
+                console.log(tabs[index]);
                 console.log(index);
                 
             
             
-    
+        
     
             if(index >= 2){
              
@@ -590,12 +574,9 @@ function carousel(){
                 console.log(tabs[2])
                 tabs[0].classList.add('outline');
             }
-  
-        })
+        }
 
-        prev.addEventListener('click', function(){
-            parent.style.transform = 'translate(60%)';
-            direction = 1;
+        if((prev && e.target.id === 'media-block-next-button-1') || e.target.id === 'media-arrow-1') {
             if(index === 0) {
                 index = 3;
                 tabs[2].classList.add('outline');
@@ -613,6 +594,29 @@ function carousel(){
                 tabs[index].classList.add('outline');
                 console.log(tabs[index])
                 console.log(index);
+        }
+
+        
+        
+        
+
+    })    
+
+        // I need to pass the value of currentTab to another addEventListener
+    
+        next.addEventListener('click', e => {
+            
+            parent.style.transform = 'translateX(-60%)';
+            direction = -1;
+            let currentTab = e.target.closest('.media-block-mini');
+        
+        
+        })
+
+        prev.addEventListener('click', function(){
+            parent.style.transform = 'translate(60%)';
+            direction = 1;
+           
                 // tabs[index - 1].classList.remove('outline');
 
 
