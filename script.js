@@ -521,6 +521,7 @@ function carousel(){
     let tabs = document.querySelectorAll('.media-block-mini');
     let direction;
     let index = 0;
+    let amount;
 
     // On page load add outline to first tab 
     window.addEventListener('load', function(){
@@ -543,13 +544,32 @@ function carousel(){
             })
             currentTab.classList.add('outline');
             index = tabArray.indexOf(currentTab);
-
+            amount = index * 60;
+            parent.style.transform = `translateX(-${index * 60}%)`;
+            console.log(amount)
             console.log(index)
-            
+            direction = -1;
+            // if(index === 0){
+            //     parent.style.transform = 'translateX(-60%)';
+
+            // }
+            // if(index === 2){
+            //     parent.style.transform = 'translateX(-120%)';
+
+            // }
         }
 
      
         if((next && e.target.id === 'media-block-next-button-2') || e.target.id === 'media-arrow-2') {
+            parent.style.transform = 'translateX(-60%)';
+            direction = -1;
+
+            if(index === 2){
+             
+                index = -1;
+                tabs[0].classList.add('outline');
+            }
+            
                 //// Removes each class of outline and after adds the class outline to the next tab 
                 document.querySelectorAll('.media-block-mini.outline').forEach(click => {
                     click.classList.remove('outline');
@@ -559,17 +579,11 @@ function carousel(){
                 tabs[index].classList.add('outline');
                 console.log(tabs[index]);
                 console.log(index);
-                
+
             
-            
-        
-    
-            if(index >= 2){
-             
-                index = -1;
-            }
 
             if(index === 0) {
+                
                 tabs[2].classList.remove('outline');
                 console.log(tabs[2])
                 tabs[0].classList.add('outline');
@@ -577,6 +591,9 @@ function carousel(){
         }
 
         if((prev && e.target.id === 'media-block-next-button-1') || e.target.id === 'media-arrow-1') {
+            parent.style.transform = 'translate(60%)';
+            direction = 1;
+
             if(index === 0) {
                 index = 3;
                 tabs[2].classList.add('outline');
@@ -604,30 +621,9 @@ function carousel(){
 
         // I need to pass the value of currentTab to another addEventListener
     
-        next.addEventListener('click', e => {
-            
-            parent.style.transform = 'translateX(-60%)';
-            direction = -1;
-            let currentTab = e.target.closest('.media-block-mini');
-        
-        
-        })
+     
 
-        prev.addEventListener('click', function(){
-            parent.style.transform = 'translate(60%)';
-            direction = 1;
-           
-                // tabs[index - 1].classList.remove('outline');
-
-
-
-            // if(index <= 0) {
-            //     index = 3;
-            // }
-
-
-         
-        })
+   
 
         parent.addEventListener('transitionend', function(){
       
@@ -648,6 +644,7 @@ function carousel(){
                 setTimeout(function(){
                     parent.style.transition = 'all 0.5s';
                 })
+                console.log('end of transition')
         })
 
     
