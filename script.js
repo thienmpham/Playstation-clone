@@ -522,6 +522,11 @@ function carousel(){
     let direction;
     let index = 0;
     let amount;
+    let prevIndex;
+    // currIndex = 0  because of prevIndex = currIndex and our index when page loads is 0
+    // due to our load function above
+    let currIndex = 0;
+    let sumIndex; 
 
     // On page load add outline to first tab 
     window.addEventListener('load', function(){
@@ -534,6 +539,10 @@ function carousel(){
         let currentTab = e.target.closest('.media-block-mini');
         let isTab = e.target.matches('.media-block-mini');
 
+
+        
+   
+
         // Problem::: When clicking currentTab, it did not update the index when clicking the next or 
         //before buttons after so
         // Solution::: you need to do is to re-define index (without let) when clicking a tab so it does update
@@ -543,20 +552,43 @@ function carousel(){
                 click.classList.remove('outline');
             })
             currentTab.classList.add('outline');
+            /// Problem::: Getting the previous index 
+            /// Solution::: 1. Define prevIndex and currIndex outside of the click event so it persists/ doesn't change
+                        /// 2. Have prevIndex = currIndex  which stores the previous currIndex value 
+                        /// 3. Redefine currIndex = index  This updates currIndex into the current index
             index = tabArray.indexOf(currentTab);
-            amount = index * 60;
-            parent.style.transform = `translateX(-${index * 60}%)`;
-            console.log(amount)
-            console.log(index)
-            direction = -1;
-            // if(index === 0){
-            //     parent.style.transform = 'translateX(-60%)';
+            prevIndex = currIndex;
+            currIndex = index;
+            console.log('prevIndex:', prevIndex);
+            console.log('currIndex:', currIndex);
+            sumIndex = prevIndex - currIndex;
+            console.log('sumIndex', sumIndex);
 
-            // }
-            // if(index === 2){
-            //     parent.style.transform = 'translateX(-120%)';
+            // if(sumIndex !== 0) makes it so that when clicking the same tab again, it doesnt translatex 
+            if(sumIndex !== 0){
+                parent.style.transform = `translateX(${sumIndex * 60}%)`;
 
-            // }
+            }
+            if( sumIndex < 0) {
+                direction = -1;
+            }
+            
+            if ( sumIndex > 0) {
+                direction = 1;
+            }
+            /// Problem::: If the sumIndex was greater than 2 than the transition at the end was bugging out
+                        /// Probably due to my code of having the flex: center code on the children... my bad
+            /// Solution::: Make a seperate if statement for direction within here and also transitionend listener
+                        /// where the if statement prepends or appends twice rather than once based off 
+                        /// value of  direction 
+            if ( sumIndex < -1  ) {
+                direction = 3
+            }
+
+            if ( sumIndex > 1 ) {
+                direction = 4;
+            }
+            
         }
 
      
@@ -613,17 +645,8 @@ function carousel(){
                 console.log(index);
         }
 
-        
-        
-        
-
     })    
 
-        // I need to pass the value of currentTab to another addEventListener
-    
-     
-
-   
 
         parent.addEventListener('transitionend', function(){
       
@@ -633,8 +656,21 @@ function carousel(){
                 parent.appendChild(parent.firstElementChild);
             }
 
-            else {
+            if( direction === 1 ) {
                 parent.prepend(parent.lastElementChild);
+            }
+            
+            if ( direction === 3) {
+                parent.appendChild(parent.firstElementChild);
+                parent.appendChild(parent.firstElementChild);
+
+
+            }
+
+            if (direction === 4) {
+                parent.prepend(parent.lastElementChild);
+                parent.prepend(parent.lastElementChild);
+
             }
           
                 parent.style.transition = 'none';
