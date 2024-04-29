@@ -39,6 +39,12 @@
     a {
         color: inherit;
     }
+
+    section {
+        width: 100%;
+        margin: 0;
+        padding: 0;
+    }
 }
 
 
@@ -1291,7 +1297,73 @@
         top: 26rem;
         right: 3.5rem;
     }
+    #media-block-hero {
+        width: 100%;
 
+    }
+    .media-block-hero-container {
+        width: 100%;
+        
+        height: 100%;
+        
+        
+    }
+    .media-block-hero-1 {
+        background-image: url(home/images/hero_psvr2.webp);
+        background-size: cover;
+        background-repeat: no-repeat;
+        height: clamp(30rem, 32rem, 34rem);
+        display: flex;
+        align-items: center;
+
+    }
+    .media-block-hero-1-text {
+        width: 30%;
+        color: white;
+        font-weight: 100;
+        line-height: 1.7rem;
+        
+        padding: 0 0 0 10rem;
+         
+    }
+
+ 
+    .media-block-hero-1-text h2 {
+        margin: 0;
+        padding: 0 0 1rem 0;
+    }
+
+    .media-block-hero-1-text button {
+        display: inline-block;
+        border-radius: 1.5rem;
+        padding: 0.4rem 1rem 0.4rem 1rem;
+        background-color: #0070CB;
+        
+       
+    }
+
+    .media-block-hero-1-text #find-out {
+        color: black;
+        background-color: white;
+        margin: 1.5rem 0.7rem 0 0;
+        
+
+    }
+
+    .media-block-hero-1-text #find-out:hover {
+        outline: 0.15rem solid white;
+        outline-offset: 0.15rem;
+    }
+
+    .media-block-hero-1-text #buy-now {
+        background-color: #C03400;
+
+    }
+
+    .media-block-hero-1-text #buy-now:hover {
+        outline: 0.15rem solid #C03400;;
+        outline-offset: 0.15rem;
+    }
 
 }
 
@@ -1340,6 +1412,21 @@
             box-shadow: inset 0 -14rem 5rem rgb(48, 48, 48);
         }
      
+    }
+    @media (max-width: 900px){
+        .media-block-hero-1 {
+            height: clamp( 48rem,50rem, 55rem);
+            align-items: flex-end;
+            justify-content: center;
+            background-position: right;
+
+        }
+        .media-block-hero-1-text {
+            width: 100%;
+            text-align: center;
+            padding: 0 2rem 3rem 2rem;
+        }
+
     }
     @media (max-width: 700px){
 
