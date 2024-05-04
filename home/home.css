@@ -881,8 +881,6 @@
         display: flex;
         flex-direction: row;
         justify-content: center;
-     
-        width: 16rem;
         height: 2.8rem;
         align-items: center;
         background-color: rgb(31, 31, 31);
@@ -1511,8 +1509,104 @@
         box-shadow: 0 0 0.9rem rgba(0, 0, 0, 0.4);
     }
     
+/* merch section */
+/*  */        
+/*  */
+/*  */
+     #merch {
+        background-image: url(home/images/merch_background.webp);
+        background-color: rgba(255,255,255,0.6);
+        background-blend-mode: lighten;
+        background-repeat: no-repeat;
+        background-size: cover;
+        
 
-    
+    }
+    .merch-text {
+        width: 35%;
+        padding: 5% 0 10% 20%;
+        color: white;
+       
+        letter-spacing: 0.05rem;
+        
+    }
+    .merch-text img {
+        width: 20%;
+       
+    }
+    .merch-text h2 {
+        font-weight: 300;
+        font-size: 2.1rem;
+        margin: 1.5rem 0;
+    }
+    .merch-text h4 {
+        font-weight: 300;
+        color: rgb(93, 93, 93);
+        line-height: 1.7rem;
+       
+    }
+    .merch-card ul{
+      
+        width: 30%;
+        list-style:none;
+        
+
+    }
+    .merch-card ul li {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    .merch-card ul li img {
+        width: 100%;
+        border-radius: 1.5rem;
+        box-shadow: 0 0 0.9rem rgba(0, 0, 0, 0.2);
+        transition: transform 0.2s ease-in-out;
+
+    }
+
+    .merch-card ul li img:hover {
+        transform: scale(1.02); 
+        transition: transform 0.2s ease-in-out;
+        box-shadow: 0 0 0.9rem rgba(0, 0, 0, 0.4);
+    }
+    .merch-card ul li h4 {
+        font-weight: 300;
+    }
+
+    .merch-card button {
+        color: white;
+        background-color: #C03400;
+        padding: 0.4rem 1rem 0.4rem 1rem;
+        font-weight: 400;
+        border-radius: 1.5rem;
+        font-size: 0.9rem;
+    }
+
+    .merch-card button:hover {
+        outline: 0.15rem solid #C03400;;
+        outline-offset: 0.15rem;
+    }
+    .merch-container {
+        display: flex;
+        width: 100%;
+        justify-content: center;
+        padding: 7rem 0;
+    }
+    #collection {
+        color: white;
+        background-color: #0070CB;
+        padding: 0.4rem 1rem 0.4rem 1rem;
+        font-weight: 400;
+        border-radius: 1.5rem;
+        font-size: 0.9rem;
+        text-align: center;
+        
+    }
+    #collection:hover {
+        outline: 0.15rem solid #0070CB;
+        outline-offset: 0.15rem;
+    }
 
 
 }
