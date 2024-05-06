@@ -1519,6 +1519,8 @@
         background-blend-mode: lighten;
         background-repeat: no-repeat;
         background-size: cover;
+        background-position: top;
+        overflow: hidden;
         
 
     }
@@ -1545,17 +1547,38 @@
         line-height: 1.7rem;
        
     }
+
+    .merch-card {
+        width: 100%;
+        
+    }
+   
     .merch-card ul{
-      
-        width: 30%;
+        
+        display: flex;
+        flex-direction: row;
+        width: 100%;
         list-style:none;
+        
+        position: relative;
+        padding: 25% 0 0 0;
+        
         
 
     }
     .merch-card ul li {
+        width: 33%;
         display: flex;
         flex-direction: column;
         align-items: center;
+        margin: 0 1rem 0 0;
+        position: absolute;
+        left: 50%;
+        top: 0;
+        transform: translate(-50%, 0);
+
+       
+       
     }
     .merch-card ul li img {
         width: 100%;
@@ -1846,6 +1869,10 @@
 
         .media-block-next-buttons {
             display: none;
+        }
+        #merch ul {
+            padding: 50% 0 0 0;
+
         }
        
     }
