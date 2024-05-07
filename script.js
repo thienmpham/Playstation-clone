@@ -685,6 +685,5 @@ function carousel(){
 
     
 }
-
-
 carousel();
+
