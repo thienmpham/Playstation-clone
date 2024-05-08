@@ -687,3 +687,35 @@ function carousel(){
 }
 carousel();
 
+
+
+///////////////////////////////////
+// Working on modular/resuable code
+///////////////////////////////////
+///////////////////////////////////
+function appendChild( parentSelector, next ){
+    let parent = document.querySelector(parentSelector);
+    let nextBtn = document.querySelector(next)
+
+    nextBtn.addEventListener('click', function(){
+        parent.style.transform = 'translate(35%)';
+
+        parent.appendChild(parent.firstElementChild);
+        console.log('next button clicked')
+    })
+}
+appendChild('#merch-list', '.next-btn');
+
+
+function prependChild( parentSelector, prev ){
+    let parent = document.querySelector(parentSelector);
+    let prevBtn = document.querySelector(prev)
+
+    prevBtn.addEventListener('click', function(){
+        parent.prepend(parent.lastElementChild);
+        console.log('prev button clicked')
+    })
+    
+}
+
+prependChild('#merch-list', '.prev-btn');
