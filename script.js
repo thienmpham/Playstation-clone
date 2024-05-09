@@ -698,7 +698,7 @@ function appendChild( parentSelector, next ){
     let nextBtn = document.querySelector(next)
 
     nextBtn.addEventListener('click', function(){
-        parent.style.transform = 'translate(35%)';
+        parent.style.transform = 'translate(-35%)';
 
         parent.appendChild(parent.firstElementChild);
         console.log('next button clicked')
@@ -717,5 +717,22 @@ function prependChild( parentSelector, prev ){
     })
     
 }
-
 prependChild('#merch-list', '.prev-btn');
+
+
+function awaitTransitionEnd ( parentSelector ) {
+    let parent = document.querySelector(parentSelector);
+
+    parent.addEventListener('transitionend', function() {
+        parent.style.transition = 'none';
+        // Makes next element into the first element
+        parent.style.transform = 'translate(0)';
+      
+        setTimeout(function(){
+            parent.style.transition = 'all 0.5s';
+        })
+        console.log('Transition has ended')
+    })
+}
+awaitTransitionEnd ( '#merch-list' );
+
