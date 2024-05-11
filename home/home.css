@@ -1705,7 +1705,7 @@
         position: absolute;
         left: 50%;
         transform: translate(-50%, 0);
-        top: 80%;
+        top: 75%;
     }
     .tabs {
         width: 1rem;

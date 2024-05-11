@@ -680,7 +680,7 @@ function carousel(){
                 setTimeout(function(){
                     parent.style.transition = 'all 0.5s';
                 })
-                console.log('end of transition')
+               
         })
 
     
@@ -693,18 +693,18 @@ carousel();
 // Working on modular/resuable code
 ///////////////////////////////////
 ///////////////////////////////////
-function appendChild( parentSelector, next ){
+function appendChild( parentSelector, next, num){
     let parent = document.querySelector(parentSelector);
     let nextBtn = document.querySelector(next)
 
     nextBtn.addEventListener('click', function(){
-        parent.style.transform = 'translate(-35%)';
+        parent.style.transform = `translate(-${num}%)`;
 
         parent.appendChild(parent.firstElementChild);
-        console.log('next button clicked')
+        console.log('next button clicked');
     })
 }
-appendChild('#merch-list', '.next-btn');
+appendChild('#merch-list', '.next-btn', '35');
 
 
 function prependChild( parentSelector, prev ){
@@ -730,8 +730,9 @@ function awaitTransitionEnd ( parentSelector ) {
       
         setTimeout(function(){
             parent.style.transition = 'all 0.5s';
+           
         })
-        console.log('Transition has ended')
+        console.log('Transition has ended');
     })
 }
 awaitTransitionEnd ( '#merch-list' );
