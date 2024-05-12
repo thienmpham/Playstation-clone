@@ -698,7 +698,7 @@ function appendChild( parentSelector, next, num){
     let nextBtn = document.querySelector(next)
 
     nextBtn.addEventListener('click', function(){
-        parent.style.transform = `translate(-${num}%)`;
+        parent.style.transform = `translatex(-${num}%)`;
 
         parent.appendChild(parent.firstElementChild);
         console.log('next button clicked');
@@ -726,13 +726,13 @@ function awaitTransitionEnd ( parentSelector ) {
     parent.addEventListener('transitionend', function() {
         parent.style.transition = 'none';
         // Makes next element into the first element
-        parent.style.transform = 'translate(0)';
+        parent.style.transform = 'translate(-10%)';
       
         setTimeout(function(){
             parent.style.transition = 'all 0.5s';
            
         })
-        console.log('Transition has ended');
+        console.log('Transition has ended', parent);
     })
 }
 awaitTransitionEnd ( '#merch-list' );
