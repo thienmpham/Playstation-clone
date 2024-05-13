@@ -696,37 +696,41 @@ carousel();
 function appendChild( parentSelector, next, num){
     let parent = document.querySelector(parentSelector);
     let nextBtn = document.querySelector(next)
-
+  
     nextBtn.addEventListener('click', function(){
-        parent.style.transform = `translatex(-${num}%)`;
+        parent.style.transform = `translateX(-${num}%)`;
 
         parent.appendChild(parent.firstElementChild);
         console.log('next button clicked');
+       
     })
 }
-appendChild('#merch-list', '.next-btn', '35');
+appendChild('#merch-list', '.next-btn', '31');
 
 
-function prependChild( parentSelector, prev ){
+function prependChild( parentSelector, prev, num){
     let parent = document.querySelector(parentSelector);
     let prevBtn = document.querySelector(prev)
 
     prevBtn.addEventListener('click', function(){
+        parent.style.transform = `translateX(${num}%)`;
         parent.prepend(parent.lastElementChild);
         console.log('prev button clicked')
+        
     })
     
 }
-prependChild('#merch-list', '.prev-btn');
+prependChild('#merch-list', '.prev-btn', '31');
 
 
 function awaitTransitionEnd ( parentSelector ) {
     let parent = document.querySelector(parentSelector);
-
+ 
     parent.addEventListener('transitionend', function() {
+        
         parent.style.transition = 'none';
         // Makes next element into the first element
-        parent.style.transform = 'translate(-10%)';
+        parent.style.transform = 'translate(0)';
       
         setTimeout(function(){
             parent.style.transition = 'all 0.5s';
@@ -734,6 +738,8 @@ function awaitTransitionEnd ( parentSelector ) {
         })
         console.log('Transition has ended', parent);
     })
+
 }
+
 awaitTransitionEnd ( '#merch-list' );
 
