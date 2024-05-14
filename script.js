@@ -727,14 +727,12 @@ function awaitTransitionEnd ( parentSelector ) {
     let parent = document.querySelector(parentSelector);
  
     parent.addEventListener('transitionend', function() {
-        
         parent.style.transition = 'none';
         // Makes next element into the first element
         parent.style.transform = 'translate(0)';
-      
+              
         setTimeout(function(){
-            parent.style.transition = 'all 0.5s';
-           
+        parent.style.transition = 'all 0.5s';
         })
         console.log('Transition has ended', parent);
     })
