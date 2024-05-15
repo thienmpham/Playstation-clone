@@ -695,13 +695,21 @@ carousel();
 ///////////////////////////////////
 function appendChild( parentSelector, next, num){
     let parent = document.querySelector(parentSelector);
-    let nextBtn = document.querySelector(next)
+    let nextBtn = document.querySelector(next);
+    let index = 0;
+    // let child = parent.children[0];
+    // let width = child.offsetWidth;
+    
   
     nextBtn.addEventListener('click', function(){
-        parent.style.transform = `translateX(-${num}%)`;
+        index++;
+        parent.style.transform = `translateX(-${num * index}%)`;
 
         parent.appendChild(parent.firstElementChild);
         console.log('next button clicked');
+        
+        return index;
+
        
     })
 }
@@ -710,7 +718,9 @@ appendChild('#merch-list', '.next-btn', '31');
 
 function prependChild( parentSelector, prev, num){
     let parent = document.querySelector(parentSelector);
-    let prevBtn = document.querySelector(prev)
+    let prevBtn = document.querySelector(prev);
+    let index = appendChild(index);
+    console.log(index);
 
     prevBtn.addEventListener('click', function(){
         parent.style.transform = `translateX(${num}%)`;
@@ -739,5 +749,5 @@ function awaitTransitionEnd ( parentSelector ) {
 
 }
 
-awaitTransitionEnd ( '#merch-list' );
+// awaitTransitionEnd ( '#merch-list' );
 
