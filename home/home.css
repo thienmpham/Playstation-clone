@@ -1556,9 +1556,6 @@
     }
     #merch-list {
         transition: all 0.5s;
-    }
-    .merch-card ul{
-        
         display: flex;
         flex-direction: row;
         width: 100%;
@@ -1566,10 +1563,8 @@
         
         position: relative;
         padding: 25% 0 0 0;
-        
-        
-
     }
+
     .merch-card ul li {
         width: 30%;
         display: flex;
