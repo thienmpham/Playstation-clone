@@ -696,18 +696,21 @@ carousel();
 function appendChild( parentSelector, next, num){
     let parent = document.querySelector(parentSelector);
     let nextBtn = document.querySelector(next);
-    // let index = 0;
-    // let child = parent.children[0];
+    let index = 0;
+    // let childCount = parent.childElementCount;
+    // let child = parent.firstElementChild;
     // let width = child.offsetWidth;
     
   
     nextBtn.addEventListener('click', function(){
-        // index++;
-        parent.style.transform = `translateX(-${num}%)`;
-        parent.appendChild(parent.firstElementChild);
+        index++;
+        parent.lastElementChild.style.transform = `translateX(1175px)`;
+
+        parent.style.transform = `translateX(-${index * num}px)`;
+        parent.appendChild(parent.lastElementChild);
+        console.log(parent.lastElementChild)
         
-        
-      
+
         console.log('next button clicked');
         
         // return index;
@@ -715,7 +718,7 @@ function appendChild( parentSelector, next, num){
        
     })
 }
-appendChild('#merch-list', '.next-btn', '31');
+// appendChild('#merch-list', '.next-btn', '460');
 
 
 function prependChild( parentSelector, prev, num){
@@ -733,7 +736,7 @@ function prependChild( parentSelector, prev, num){
     })
     
 }
-prependChild('#merch-list', '.prev-btn', '31');
+// prependChild('#merch-list', '.prev-btn', '31');
 
 
 function awaitTransitionEnd ( parentSelector ) {
@@ -754,5 +757,5 @@ function awaitTransitionEnd ( parentSelector ) {
 
 }
 
-awaitTransitionEnd ( '#merch-list' );
+// awaitTransitionEnd ( '#merch-list' );
 
