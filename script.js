@@ -696,34 +696,36 @@ carousel();
 function appendChild( parentSelector, next, num){
     let parent = document.querySelector(parentSelector);
     let nextBtn = document.querySelector(next);
-    let index = 0;
+    let direction;
+    // let index = 0;
     // let childCount = parent.childElementCount;
     // let child = parent.firstElementChild;
     // let width = child.offsetWidth;
     
   
     nextBtn.addEventListener('click', function(){
-        index++;
-        parent.lastElementChild.style.transform = `translateX(1175px)`;
+        // index++;
 
-        parent.style.transform = `translateX(-${index * num}px)`;
-        parent.appendChild(parent.lastElementChild);
-        console.log(parent.lastElementChild)
+        parent.style.transform = `translateX(-${num}%)`;
+        direction = 1;
+        // parent.appendChild(parent.firstElementChild);
+        
         
 
         console.log('next button clicked');
         
-        // return index;
+        return direction;
 
        
     })
 }
-// appendChild('#merch-list', '.next-btn', '460');
+appendChild('#merch-list', '.next-btn', '31');
 
 
 function prependChild( parentSelector, prev, num){
     let parent = document.querySelector(parentSelector);
     let prevBtn = document.querySelector(prev);
+    let direction;
     // let index = appendChild(index);
 
 
@@ -736,15 +738,21 @@ function prependChild( parentSelector, prev, num){
     })
     
 }
-// prependChild('#merch-list', '.prev-btn', '31');
+prependChild('#merch-list', '.prev-btn', '31');
 
 
 function awaitTransitionEnd ( parentSelector ) {
     let parent = document.querySelector(parentSelector);
-   
+    
+
 
     parent.addEventListener('transitionend', function() {
-       
+        let direction = appendChild();
+        console.log(direction);
+        if( direction = 1) {
+            parent.appendChild(parent.firstElementChild);
+        }
+
         parent.style.transition = 'none';
         // Makes next element into the first element
         parent.style.transform = 'translate(0)';
@@ -757,5 +765,5 @@ function awaitTransitionEnd ( parentSelector ) {
 
 }
 
-// awaitTransitionEnd ( '#merch-list' );
+awaitTransitionEnd ( '#merch-list' );
 
