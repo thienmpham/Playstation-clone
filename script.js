@@ -714,11 +714,14 @@ function appendChild( parentSelector, next, num){
 
         console.log('next button clicked');
         
-        return direction;
-
+        
+        awaitTransitionEnd ( '#merch-list', direction );
        
     })
+   
 }
+
+
 appendChild('#merch-list', '.next-btn', '31');
 
 
@@ -741,18 +744,23 @@ function prependChild( parentSelector, prev, num){
 prependChild('#merch-list', '.prev-btn', '31');
 
 
-function awaitTransitionEnd ( parentSelector ) {
+function awaitTransitionEnd ( parentSelector, directionNum ) {
     let parent = document.querySelector(parentSelector);
-    
+    let direction = directionNum;
+    console.log( direction);
+   
 
 
     parent.addEventListener('transitionend', function() {
-        let direction = appendChild();
-        console.log(direction);
-        if( direction = 1) {
+ 
+        if( direction === 1) {
+            console.log(parent.firstElementChild)
             parent.appendChild(parent.firstElementChild);
+            console.log('Direction 1: working')
+            
         }
-
+        
+        
         parent.style.transition = 'none';
         // Makes next element into the first element
         parent.style.transform = 'translate(0)';
@@ -760,10 +768,10 @@ function awaitTransitionEnd ( parentSelector ) {
         setTimeout(function(){
         parent.style.transition = 'all 0.5s';
         })
-        console.log('Transition has ended', parent);
+        console.log('Transition has ended');
     })
 
 }
 
-awaitTransitionEnd ( '#merch-list' );
+// awaitTransitionEnd ( '#merch-list' );
 
