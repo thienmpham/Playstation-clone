@@ -728,7 +728,7 @@ appendChild('#merch-list', '.next-btn', '31');
 function prependChild( parentSelector, prev, num){
     let parent = document.querySelector(parentSelector);
     let prevBtn = document.querySelector(prev);
-    let direction;
+    let direction = 0;
     // let index = appendChild(index);
 
 
@@ -748,13 +748,12 @@ function awaitTransitionEnd ( parentSelector, directionNum ) {
     let parent = document.querySelector(parentSelector);
     let direction = directionNum;
     console.log( direction);
-   
-
-
-    parent.addEventListener('transitionend', function() {
- 
+    
+  
+    parent.addEventListener('transitionend', function(e) {
+        console.log(e.propertyName)
         if( direction === 1) {
-            console.log(parent.firstElementChild)
+            console.log('await function working')
             parent.appendChild(parent.firstElementChild);
             console.log('Direction 1: working')
             
