@@ -696,7 +696,7 @@ carousel();
 function appendChild( parentSelector, next, num){
     let parent = document.querySelector(parentSelector);
     let nextBtn = document.querySelector(next);
-    let direction;
+    let direction = 0;
     // let index = 0;
     // let childCount = parent.childElementCount;
     // let child = parent.firstElementChild;
@@ -716,11 +716,13 @@ function appendChild( parentSelector, next, num){
         
         
         awaitTransitionEnd ( '#merch-list', direction );
-       
-    })
-   
-}
+        
 
+    }) 
+    
+
+    
+}
 
 appendChild('#merch-list', '.next-btn', '31');
 
@@ -735,7 +737,7 @@ function prependChild( parentSelector, prev, num){
     prevBtn.addEventListener('click', function(){
         parent.style.transform = `translateX(${num}%)`;
         parent.prepend(parent.lastElementChild);
-        console.log('prev button clicked')
+        console.log('prev button clicked');
         
         
     })
@@ -747,15 +749,15 @@ prependChild('#merch-list', '.prev-btn', '31');
 function awaitTransitionEnd ( parentSelector, directionNum ) {
     let parent = document.querySelector(parentSelector);
     let direction = directionNum;
-    console.log( direction);
+    console.log( parent );
     
   
     parent.addEventListener('transitionend', function(e) {
-        console.log(e.propertyName)
+      
         if( direction === 1) {
-            console.log('await function working')
+          
             parent.appendChild(parent.firstElementChild);
-            console.log('Direction 1: working')
+            console.log('Direction 1: working');
             
         }
         
@@ -765,10 +767,14 @@ function awaitTransitionEnd ( parentSelector, directionNum ) {
         parent.style.transform = 'translate(0)';
               
         setTimeout(function(){
-        parent.style.transition = 'all 0.5s';
+            parent.style.transition = 'all 0.5s';
         })
         console.log('Transition has ended');
-    })
+     
+       
+    }, {once : true})
+    
+   
 
 }
 
