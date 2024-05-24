@@ -696,19 +696,12 @@ carousel();
 function appendChild( parentSelector, next, num){
     let parent = document.querySelector(parentSelector);
     let nextBtn = document.querySelector(next);
-    let direction = 0;
-    // let index = 0;
-    // let childCount = parent.childElementCount;
-    // let child = parent.firstElementChild;
-    // let width = child.offsetWidth;
     
   
     nextBtn.addEventListener('click', function(){
-        // index++;
 
         parent.style.transform = `translateX(-${num}%)`;
         direction = 1;
-        // parent.appendChild(parent.firstElementChild);
         
         
 
@@ -724,26 +717,26 @@ function appendChild( parentSelector, next, num){
     
 }
 
-appendChild('#merch-list', '.next-btn', '31');
+appendChild('#merch-list', '.next-btn', '24');
 
 
 function prependChild( parentSelector, prev, num){
     let parent = document.querySelector(parentSelector);
     let prevBtn = document.querySelector(prev);
-    let direction = 0;
-    // let index = appendChild(index);
-
 
     prevBtn.addEventListener('click', function(){
         parent.style.transform = `translateX(${num}%)`;
-        parent.prepend(parent.lastElementChild);
         console.log('prev button clicked');
+        direction = 0;
+
+        awaitTransitionEnd ( '#merch-list', direction );
+
         
         
     })
     
 }
-prependChild('#merch-list', '.prev-btn', '31');
+prependChild('#merch-list', '.prev-btn', '24');
 
 
 function awaitTransitionEnd ( parentSelector, directionNum ) {
@@ -754,11 +747,16 @@ function awaitTransitionEnd ( parentSelector, directionNum ) {
   
     parent.addEventListener('transitionend', function(e) {
       
+
         if( direction === 1) {
           
             parent.appendChild(parent.firstElementChild);
             console.log('Direction 1: working');
             
+        }
+        else {
+            parent.prepend(parent.lastElementChild);
+            console.log('Direction 0: working')
         }
         
         
@@ -770,13 +768,32 @@ function awaitTransitionEnd ( parentSelector, directionNum ) {
             parent.style.transition = 'all 0.5s';
         })
         console.log('Transition has ended');
-     
        
     }, {once : true})
     
-   
+
 
 }
 
-// awaitTransitionEnd ( '#merch-list' );
 
+function uniqueMerchCode() {
+    let parent = document.querySelector('#merch-list');
+    let items = document.querySelectorAll('.merch-item');
+
+
+    items[1].classList.add('scale');
+    console.log(items[1])
+
+    parent.addEventListener('transitionend', function(e) {
+        document.querySelectorAll('.merch-item.scale').forEach(item => {
+            item.classList.remove('scale');
+         console.log( document.querySelectorAll('.merch-item.scale'))
+        })
+
+        items[1].classList.add('scale')
+
+        console.log('End of transition 2')
+    });
+}
+
+uniqueMerchCode();
