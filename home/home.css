@@ -1570,7 +1570,8 @@
         display: flex;
         flex-direction: column;
         align-items: center;
-        padding: 0 0.8rem;
+        padding: 0 1.2rem;
+
       
        
         
@@ -1724,19 +1725,16 @@
         cursor: pointer;
         background-color:#0070CB;
     }
-/* 
-    ul #shirt {
-        transform: translatex(55%);
+
+     .merch-item.scale > a img {
+        transform: scale(1.1);
+
     }
+    .merch-item.scale > a img:hover {
+        transform: scale(1.12); 
 
-    ul #hat {
-        transform: translatex(160%);
     }
-
-    ul #cup {
-        transform: translatex(-155%);
-    } */
-
+    
 
 
 
