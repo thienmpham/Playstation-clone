@@ -751,12 +751,12 @@ function awaitTransitionEnd ( parentSelector, directionNum ) {
         if( direction === 1) {
           
             parent.appendChild(parent.firstElementChild);
-            console.log('Direction 1: working');
+            // console.log('Direction 1: working');
             
         }
         else {
             parent.prepend(parent.lastElementChild);
-            console.log('Direction 0: working')
+            // console.log('Direction 0: working')
         }
         
         
@@ -779,20 +779,55 @@ function awaitTransitionEnd ( parentSelector, directionNum ) {
 function uniqueMerchCode() {
     let parent = document.querySelector('#merch-list');
     let items = document.querySelectorAll('.merch-item');
-
-
+    let next = document.querySelector('.next-btn');
+    let prev = document.querySelector('.prev-btn');
+    let index = 1;
+    let merchText = document.querySelectorAll('.merch-text-container');
     items[1].classList.add('scale');
-    console.log(items[1])
+    merchText[1].classList.add('flex');
 
-    parent.addEventListener('transitionend', function(e) {
+    next.addEventListener('click',e => {
+        index = index + 1;
         document.querySelectorAll('.merch-item.scale').forEach(item => {
             item.classList.remove('scale');
-         console.log( document.querySelectorAll('.merch-item.scale'))
-        })
+        });
+        document.querySelectorAll('.merch-text-container.flex').forEach(item => {
+            item.classList.remove('flex');
+        });
+        console.log('next:',index)
+        console.log(items.length)
+        if(index >= items.length) {
+            index = 0;
+        }
+        if(index === items.length){
+            index = 0;
+        }
+        items[index].classList.add('scale');
+        merchText[index].classList.add('flex');  
+    });
 
-        items[1].classList.add('scale')
 
-        console.log('End of transition 2')
+    prev.addEventListener('click',e => {
+        index = index - 1;
+        document.querySelectorAll('.merch-item.scale').forEach(item => {
+            item.classList.remove('scale');
+        });
+        document.querySelectorAll('.merch-text-container.flex').forEach(item => {
+            item.classList.remove('flex');
+        });
+        if(index < 0) {
+            index = items.length - 1;
+        }
+        if(index >= items.length) {
+            // index = 1;
+        }
+        
+        console.log('prev:',index)
+        items[index].classList.add('scale');
+        merchText[index].classList.add('flex');
+
+       
+        
     });
 }
 
