@@ -744,7 +744,7 @@ function awaitTransitionEnd ( parentSelector, directionNum ) {
     let direction = directionNum;
     console.log( parent );
     
-  
+    
     parent.addEventListener('transitionend', function(e) {
       
 
@@ -770,11 +770,58 @@ function awaitTransitionEnd ( parentSelector, directionNum ) {
         console.log('Transition has ended');
        
     }, {once : true})
-    
-
 
 }
 
+function updateTabIndex( nextSelector, prevSelector, tabSelector, blue, ){
+    let next = document.querySelector(nextSelector);
+    let prev = document.querySelector(prevSelector);
+    let tabs = document.querySelectorAll(tabSelector);
+
+    let index = 0;
+    tabs[0].classList.add('blue');
+    next.addEventListener('click',e => {
+        index = index + 1;
+        document.querySelectorAll(blue).forEach(item => {
+            item.classList.remove('blue');
+        });
+
+        if(index >= tabs.length) {
+            index = 0;
+        }
+        if(index === tabs.length){
+            index = 0;
+        }
+        tabs[index].classList.add('blue');
+
+    })
+
+    prev.addEventListener('click',e => {
+        index = index - 1;
+        document.querySelectorAll(blue).forEach(item => {
+            item.classList.remove('blue');
+        });
+
+        if(index < 0) {
+            index = tabs.length - 1;
+        }
+        tabs[index].classList.add('blue');
+    })
+}
+updateTabIndex( '.next-btn', '.prev-btn', '.tabs', '.tabs.blue')
+
+function onClickTab(tabSelector){
+    let tabs = document.querySelector(tabSelector);
+    for ( i=0; i < tabs.length; i++){
+        
+    }
+    document.addEventListener('click', e => {
+        if(tabs) {
+            console.log('tab is clicked')
+        }
+    })
+}
+onClickTab('.tabs');
 
 function uniqueMerchCode() {
     let parent = document.querySelector('#merch-list');
