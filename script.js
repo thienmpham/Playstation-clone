@@ -773,12 +773,16 @@ function awaitTransitionEnd ( parentSelector, directionNum ) {
 
 }
 
-function updateTabIndex( nextSelector, prevSelector, tabSelector, blue, ){
+function updateTabIndex( nextSelector, prevSelector, tabSelector, blue, indexNum){
     let next = document.querySelector(nextSelector);
     let prev = document.querySelector(prevSelector);
     let tabs = document.querySelectorAll(tabSelector);
-
-    let index = 0;
+    
+    let index = indexNum;
+    console.log(index);
+    if(index === undefined) {
+        index = 0;
+    }
     tabs[0].classList.add('blue');
     next.addEventListener('click',e => {
         index = index + 1;
@@ -792,7 +796,11 @@ function updateTabIndex( nextSelector, prevSelector, tabSelector, blue, ){
         if(index === tabs.length){
             index = 0;
         }
+        console.log(index)
         tabs[index].classList.add('blue');
+
+        onClickTab('.tabs', '.tabs.blue', index);
+
 
     })
 
@@ -806,22 +814,50 @@ function updateTabIndex( nextSelector, prevSelector, tabSelector, blue, ){
             index = tabs.length - 1;
         }
         tabs[index].classList.add('blue');
+        onClickTab('.tabs', '.tabs.blue', index);
+
     })
+
+
 }
 updateTabIndex( '.next-btn', '.prev-btn', '.tabs', '.tabs.blue')
 
-function onClickTab(tabSelector){
-    let tabs = document.querySelector(tabSelector);
+
+function onClickTab(tabSelector, blueSelector, indexNum){
+    let index = indexNum;
+    let prevIndex;
+    let currIndex = 0;
+    let sumIndex;
+
+    let tabs = document.querySelectorAll(tabSelector);
+    let tabsArray = Array.from(tabs);
     for ( i=0; i < tabs.length; i++){
-        
+        tabs[i].addEventListener('click', e =>{
+            let currTab = e.target.closest('.tabs');
+            
+            document.querySelectorAll(blueSelector).forEach(item => {
+                item.classList.remove('blue');
+            });
+            currTab.classList.add('blue');
+            index = tabsArray.indexOf(currTab);
+            prevIndex = currIndex;
+            currIndex = index;
+            sumIndex = prevIndex - currIndex;
+            
+            updateTabIndex( '.next-btn', '.prev-btn', '.tabs', '.tabs.blue', index)
+
+            console.log('index:', index)
+            console.log('sumIndex:',sumIndex)
+            console.log('currIndex:',currIndex)
+            console.log('prevIndex:',prevIndex)
+            
+        })
     }
-    document.addEventListener('click', e => {
-        if(tabs) {
-            console.log('tab is clicked')
-        }
-    })
 }
-onClickTab('.tabs');
+onClickTab('.tabs', '.tabs.blue');
+
+
+
 
 function uniqueMerchCode() {
     let parent = document.querySelector('#merch-list');
@@ -869,7 +905,7 @@ function uniqueMerchCode() {
             // index = 1;
         }
         
-        console.log('prev:',index)
+       
         items[index].classList.add('scale');
         merchText[index].classList.add('flex');
 
