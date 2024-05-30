@@ -711,12 +711,8 @@ function appendChild( parentSelector, next, num){
         awaitTransitionEnd ( '#merch-list', direction );
         
 
-    }) 
-    
-
-    
+    })   
 }
-
 appendChild('#merch-list', '.next-btn', '24');
 
 
@@ -772,6 +768,14 @@ function awaitTransitionEnd ( parentSelector, directionNum ) {
     }, {once : true})
 
 }
+function onLoadWindow( tabSelector) {
+    let tabs = document.querySelectorAll(tabSelector);
+    window.addEventListener('load', function(){
+        tabs[0].classList.add('blue');
+    });
+}
+onLoadWindow('.tabs')
+
 
 function updateTabIndex( nextSelector, prevSelector, tabSelector, blue, indexNum){
     let next = document.querySelector(nextSelector);
@@ -779,11 +783,11 @@ function updateTabIndex( nextSelector, prevSelector, tabSelector, blue, indexNum
     let tabs = document.querySelectorAll(tabSelector);
     
     let index = indexNum;
-    console.log(index);
+    
     if(index === undefined) {
         index = 0;
     }
-    tabs[0].classList.add('blue');
+    // tabs[0].classList.add('blue');
     next.addEventListener('click',e => {
         index = index + 1;
         document.querySelectorAll(blue).forEach(item => {
@@ -828,7 +832,7 @@ function onClickTab(tabSelector, blueSelector, indexNum){
     let prevIndex;
     let currIndex = 0;
     let sumIndex;
-
+    console.log('index is:', index)
     let tabs = document.querySelectorAll(tabSelector);
     let tabsArray = Array.from(tabs);
     for ( i=0; i < tabs.length; i++){
@@ -850,11 +854,33 @@ function onClickTab(tabSelector, blueSelector, indexNum){
             console.log('sumIndex:',sumIndex)
             console.log('currIndex:',currIndex)
             console.log('prevIndex:',prevIndex)
+
+            calcTransition('#merch-list', sumIndex, '24');
             
+
         })
     }
 }
 onClickTab('.tabs', '.tabs.blue');
+
+function calcTransition (parentSelector, sumIndexNum, numVal){
+    let parent = document.querySelector(parentSelector);
+    let sumIndex = sumIndexNum;
+    let direction;
+    let num = numVal
+
+    if(sumIndex !== 0){
+        parent.style.transform = `translateX(${sumIndex * num}%)`;
+    }
+    if( sumIndex < 0) {
+        direction = -1;
+    }
+    
+    if ( sumIndex > 0) {
+        direction = 1;
+    }
+    return direction;
+}
 
 
 
