@@ -828,7 +828,7 @@ updateTabIndex( '.next-btn', '.prev-btn', '.tabs', '.tabs.blue')
 
 
 function onClickTab(tabSelector, blueSelector, indexNum){
-    let index = indexNum;
+    let index;
     let prevIndex;
     let currIndex = 0;
     let sumIndex;
@@ -844,6 +844,7 @@ function onClickTab(tabSelector, blueSelector, indexNum){
             });
             currTab.classList.add('blue');
             index = tabsArray.indexOf(currTab);
+            // Problem is how do I save prevIndex from the updateTabIndex function
             prevIndex = currIndex;
             currIndex = index;
             sumIndex = prevIndex - currIndex;
