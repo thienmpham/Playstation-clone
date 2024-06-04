@@ -531,8 +531,7 @@ function carousel(){
     // On page load add outline to first tab 
     window.addEventListener('load', function(){
             tabs[0].classList.add('outline');
-            console.log('page loading')
-            console.log(index)
+            
     });
 
     document.addEventListener('click', e => {
@@ -734,11 +733,36 @@ function prependChild( parentSelector, prev, num){
 }
 prependChild('#merch-list', '.prev-btn', '24');
 
+function addAppendForLoop( parentSelector, childSelector, sumIndexNum ){
+    let parent = document.querySelector(parentSelector)
+    let children = document.querySelectorAll(childSelector);
+    let sumIndex = Math.abs(sumIndexNum);
 
-function awaitTransitionEnd ( parentSelector, directionNum ) {
+    for( i=0; i < children.length - sumIndex; i++){
+        parent.appendChild(parent.firstElementChild);
+    }
+    console.log(sumIndex)
+
+}
+
+function addPrependForLoop( parentSelector, childSelector, sumIndexNum ){
+    let parent = document.querySelector(parentSelector)
+    let children = document.querySelectorAll(childSelector);
+    let sumIndex = Math.abs(sumIndexNum);
+
+    for( i=0; i < children.length - sumIndex; i++){
+        parent.prepend(parent.lastElementChild);
+    }
+   
+
+}
+
+
+function awaitTransitionEnd ( parentSelector, directionNum, sumIndexNum ) {
     let parent = document.querySelector(parentSelector);
     let direction = directionNum;
-    console.log( parent );
+    let sumIndex = sumIndexNum;
+    
     
     
     parent.addEventListener('transitionend', function(e) {
@@ -750,9 +774,20 @@ function awaitTransitionEnd ( parentSelector, directionNum ) {
             // console.log('Direction 1: working');
             
         }
-        else {
+        if(direction === 0) {
             parent.prepend(parent.lastElementChild);
             // console.log('Direction 0: working')
+        }
+
+        if ( direction === 3) {
+        addAppendForLoop('#merch-list', '.merch-item', sumIndex);
+        
+
+
+        }
+
+        if (direction === 4) {
+        addPrependForLoop('#merch-list', '.merch-item', sumIndex);
         }
         
         
@@ -783,6 +818,7 @@ function updateTabIndex( nextSelector, prevSelector, tabSelector, blue, indexNum
     let tabs = document.querySelectorAll(tabSelector);
     
     let index = indexNum;
+    console.log('Tab index:', index)
     
     if(index === undefined) {
         index = 0;
@@ -832,24 +868,31 @@ function onClickTab(tabSelector, blueSelector, indexNum){
     let prevIndex;
     let currIndex = 0;
     let sumIndex;
-    console.log('index is:', index)
+   
     let tabs = document.querySelectorAll(tabSelector);
     let tabsArray = Array.from(tabs);
     for ( i=0; i < tabs.length; i++){
         tabs[i].addEventListener('click', e =>{
-            let currTab = e.target.closest('.tabs');
+            let currTab = e.target.closest(tabSelector);
             
             document.querySelectorAll(blueSelector).forEach(item => {
                 item.classList.remove('blue');
             });
             currTab.classList.add('blue');
             index = tabsArray.indexOf(currTab);
-            // Problem is how do I save prevIndex from the updateTabIndex function
+            
+          
             prevIndex = currIndex;
+            if( prevIndex === 0){
+                prevIndex = indexNum;
+            }
+            if( prevIndex === undefined) {
+                prevIndex = 0;
+            }
             currIndex = index;
             sumIndex = prevIndex - currIndex;
             
-            updateTabIndex( '.next-btn', '.prev-btn', '.tabs', '.tabs.blue', index)
+            updateTabIndex( '.next-btn', '.prev-btn', '.tabs', '.tabs.blue', currIndex)
 
             console.log('index:', index)
             console.log('sumIndex:',sumIndex)
@@ -874,13 +917,24 @@ function calcTransition (parentSelector, sumIndexNum, numVal){
         parent.style.transform = `translateX(${sumIndex * num}%)`;
     }
     if( sumIndex < 0) {
-        direction = -1;
+        direction = 1;
     }
     
     if ( sumIndex > 0) {
-        direction = 1;
+        direction = 0;
     }
-    return direction;
+    if ( sumIndex < -1  ) {
+        direction = 4;
+        awaitTransitionEnd ( '#merch-list', direction, sumIndex );
+
+    }
+
+    if ( sumIndex > 1 ) {
+        direction = 3;
+        awaitTransitionEnd ( '#merch-list', direction, sumIndex );
+    }
+
+    awaitTransitionEnd( '#merch-list', direction);
 }
 
 
@@ -904,8 +958,8 @@ function uniqueMerchCode() {
         document.querySelectorAll('.merch-text-container.flex').forEach(item => {
             item.classList.remove('flex');
         });
-        console.log('next:',index)
-        console.log(items.length)
+       
+        
         if(index >= items.length) {
             index = 0;
         }
