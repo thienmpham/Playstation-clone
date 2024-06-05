@@ -803,13 +803,19 @@ function awaitTransitionEnd ( parentSelector, directionNum, sumIndexNum ) {
     }, {once : true})
 
 }
-function onLoadWindow( tabSelector) {
+function onLoadWindow( tabSelector, itemSelector, textSelector) {
     let tabs = document.querySelectorAll(tabSelector);
+    let items = document.querySelectorAll(itemSelector);
+    let merchText = document.querySelectorAll(textSelector);
+
     window.addEventListener('load', function(){
         tabs[0].classList.add('blue');
+        items[1].classList.add('scale');
+        merchText[1].classList.add('flex');
     });
+   
 }
-onLoadWindow('.tabs')
+onLoadWindow('.tabs', '.merch-item', '.merch-text-container' )
 
 
 function updateTabIndex( nextSelector, prevSelector, tabSelector, blue, indexNum){
@@ -836,7 +842,6 @@ function updateTabIndex( nextSelector, prevSelector, tabSelector, blue, indexNum
         if(index === tabs.length){
             index = 0;
         }
-        console.log(index)
         tabs[index].classList.add('blue');
 
         onClickTab('.tabs', '.tabs.blue', index);
@@ -868,6 +873,8 @@ function onClickTab(tabSelector, blueSelector, indexNum){
     let prevIndex;
     let currIndex = 0;
     let sumIndex;
+    let items = document.querySelectorAll('.merch-item');
+    let text = document.querySelectorAll('.merch-text-container');
    
     let tabs = document.querySelectorAll(tabSelector);
     let tabsArray = Array.from(tabs);
@@ -891,7 +898,24 @@ function onClickTab(tabSelector, blueSelector, indexNum){
             }
             currIndex = index;
             sumIndex = prevIndex - currIndex;
+
+            document.querySelectorAll('.merch-item.scale').forEach(item => {
+                item.classList.remove('scale');
+            });
+            document.querySelectorAll('.merch-text-container.flex').forEach(item => {
+                item.classList.remove('flex');
+            });
+            if(currIndex >= items.length - 1) {
+                currIndex = -1;
+            }
+            items[currIndex + 1].classList.add('scale');
+            text[currIndex + 1].classList.add('flex');
+            console.log(currIndex, items.length)
             
+           
+            // if(currIndex === items.length){
+            //     currIndex = 0;
+            // }
             updateTabIndex( '.next-btn', '.prev-btn', '.tabs', '.tabs.blue', currIndex)
 
             console.log('index:', index)
@@ -901,7 +925,7 @@ function onClickTab(tabSelector, blueSelector, indexNum){
 
             calcTransition('#merch-list', sumIndex, '24');
             
-
+            uniqueMerchCode(currIndex);
         })
     }
 }
@@ -940,18 +964,21 @@ function calcTransition (parentSelector, sumIndexNum, numVal){
 
 
 
-function uniqueMerchCode() {
+function uniqueMerchCode(currIndex) {
     let parent = document.querySelector('#merch-list');
     let items = document.querySelectorAll('.merch-item');
     let next = document.querySelector('.next-btn');
     let prev = document.querySelector('.prev-btn');
-    let index = 1;
+    let index = currIndex;
     let merchText = document.querySelectorAll('.merch-text-container');
-    items[1].classList.add('scale');
-    merchText[1].classList.add('flex');
+    if( index === undefined){
+        index = 1;
+    }
+   
 
     next.addEventListener('click',e => {
         index = index + 1;
+        console.log('click index is:', index)
         document.querySelectorAll('.merch-item.scale').forEach(item => {
             item.classList.remove('scale');
         });
