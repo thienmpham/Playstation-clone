@@ -1016,9 +1016,6 @@ function uniqueMerchCode(currIndex) {
        
         items[index].classList.add('scale');
         merchText[index].classList.add('flex');
-
-       
-        
     });
 }
 
