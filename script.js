@@ -1020,3 +1020,19 @@ function uniqueMerchCode(currIndex) {
 }
 
 uniqueMerchCode();
+
+function onClickRotate(parentSelector, imageSelector) {
+   
+    
+    document.addEventListener('click', e => {
+        let parent = e.target.closest(parentSelector)
+        let currImage = e.target.closest(imageSelector);
+        
+        if(currImage) {
+            parent.classList.toggle('active');
+        }
+        
+    })
+}
+onClickRotate('.footer-list-2-container', '.max-min');
+
