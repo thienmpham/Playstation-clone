@@ -1859,7 +1859,7 @@
 .max-min {
     display: none;
 }
-#socials-list {
+.footer-list-2-container > ul > #socials-list {
     display: flex;
     flex-direction: row;
 }
@@ -2129,7 +2129,7 @@
         .top-nav-right {
             align-items: flex-start;
             display: flex;
-            align-items: center;
+           
         }
         
         .top-nav-category-item.active > .top-nav-category-button + .top-nav-dropdown-menu {
@@ -2274,13 +2274,13 @@
             flex-direction: column;
             padding: 0;
         }
-        .footer-list-container ul {
+        /* .footer-list-container ul {
             padding: 0 0 2rem 0;
-        }
+        } */
 
-        #about-list {
+        /* #about-list {
             padding: 0 0 2rem 0;
-        }
+        } */
 
         .footer-list-2-container {
             display: flex;
@@ -2294,22 +2294,48 @@
             transition: transform 0.3s ease;
             
         }
-
-         .footer-list-2-container.active> ul + .max-min-container > .max-min {
+        .footer-list-2-container.active> ul + .max-min-container > .max-min {
             transform: rotate(45deg);
             transition: transform 0.3s ease;
         }
+
+        .footer-list-2-container> ul > .sub-li {
+            visibility: hidden;
+            opacity: 0;
+            transition:  visiblilty 0.3s ease;
+
+       
+        }
+       
         .footer-list-2-container.active > ul > .sub-li {
-            display: none;
-            animation: dropAnimate 0.2s linear backwards;
-            transform-origin: top;
-            line-height: 2;
+            visibility: visible;
+            opacity: 1;
+            transition: opacity 0.1s ease-in, visiblilty 0.3s ease;
+           
+
             
         }
-        @keyframes dropAnimate {
-            0% {
-                transform: scaleY(0)
-            }
+        .footer-list-2-container> ul {
+            max-height: 0;
+            transition: max-height 0.3s ease;
+
+
+        }
+        .footer-list-2-container.active> ul {
+            max-height: 15rem;
+            transition: max-height 0.3s ease;
+        }
+
+        .footer-list-2-container > ul > #socials-list {
+            visibility: hidden;
+            
+        }
+        .footer-list-2-container.active > ul > #socials-list {
+            visibility: visible;
+            transition: visiblity 0.1s ease-in;
+        }
+       
+     
         } 
       
         .footer-links-container {
@@ -2351,7 +2377,7 @@
         }
     }
 
-}
+
    
 
 
